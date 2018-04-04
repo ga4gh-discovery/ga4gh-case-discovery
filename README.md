@@ -1,4 +1,4 @@
-# Global Alliance for Genomics and Health Discovery Search API
+# GA4GH Discovery Search API
 
 A standard for a global federated data sharing network that allows the querying, and subsequent -optional- processing of the results on a cloud environment
 
