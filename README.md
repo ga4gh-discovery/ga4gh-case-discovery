@@ -1,8 +1,20 @@
 # GA4GH Discovery Search API
 
-A standard for a global federated data sharing network that allows the querying, and subsequent -optional- processing of the results on a cloud environment
+A standard for a global federated data sharing network that allows the querying, and subsequent -optional- processing of the results on a cloud environment.
 
-This standard is work in progress, and built using existing work and contributions by:
+Please note this standard is work in progress.
+
+
+# Concept
+
+We would define the two parties involved as the `host` and the `querier`. 
+
+1. The querier would would pose a question to the host. We will define this as the `question`
+2. The `question` will contain an `optional` patient data structure. While the Matchmaker Exchange (MME) requires a patient to be offered with any query, other networks may not. Therefore in order to make the standard general, we propose this value be `optional` and have the host decide whether to support it.
+3. The host uses the `query` section to determine the set of results to return
+4. Within the `query` section there are components. Some are used for searching, and some are `filters` used for sieving search results further.
+
+This standard was built using existing work, and contributions by:
 
 * Global Alliance for Genomics and Health Discovery Search API team
 * Anthony J. Brookes and his team at the Cafe Variome discovery platform
@@ -89,7 +101,8 @@ For example:
         "inheritanceMode": {
           "terms": [<HPO terms that describe inheritance>,]
         }
-        "filters": [ annotation | alleleFrequency | consequence | gene | phenotype ]
+        "filters": [ annotation | alleleFrequency | consequence | gene | phenotype ],
+        
       }
     }
   }
