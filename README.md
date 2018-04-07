@@ -19,10 +19,10 @@ We would define the two parties involved as the `host` and the `querier`.
 1. The querier would would pose a question to the host. We will define this as the `question`
 2. The `question` will contain an `optional` patient data structure. While the Matchmaker Exchange (MME) requires a patient to be offered with any query, other networks may not. Therefore in order to make the standard general, we propose this value be `optional` and have the host decide whether to support that specific question.
 3. The host uses the `query` section to find a set of results to return. We will define the structure it returns as the `result`
-4. Within the `query` section there are sections called `components` and `filters`.
-5. `components` are used as the search criteria, while `filters` apply specific rules to limit/sieve the search results further
-6. Within the top level `meta` structure, there is field named `maximumNumberOfResultsRequested` that allows the querier to specify a limit on the number of results returned. This value can be superceded by any limit the host is able to support
-7. The return results maybe scored, and/or sorted, by some host-internal mechanism, as expected from a typical database query, but it is not expected or guarenteed.
+4. Within the `query` section there are one or more sections called `components`.
+5. `components` are used as the search criteria. Each `component` has one or more associated `filters` that apply specific rules to limit/sieve the search results of that specific `component` further
+6. Within the top level `meta` structure, there is field named `maximumNumberOfResultsRequested` that allows the querier to specify a limit on the number of results returned. This value can be superseded by any limit the host is able to support
+7. The return results maybe scored, and/or sorted, by some host-internal mechanism, as expected from a typical database query, but it is not expected or guaranteed.
 
 
 # OVERVIEW

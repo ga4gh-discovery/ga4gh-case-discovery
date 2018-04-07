@@ -8,7 +8,7 @@ this is work in progress....
 
 `HTTP POST` request to `<base_remote_url>/search`, with an `application/json` body with the following format:
 
-### Specification for query
+### Specification for query at a high level
 
 ```
 {
@@ -47,16 +47,22 @@ this is work in progress....
 	"maximumNumberOfResultsRequested" : <limits number of results returned; is be superseded by host limits>,
   }
   "query": {
-    "components": {
-      "genome": {
-        "inheritanceMode": {
-          "terms": [<HPO terms that describe inheritance>,]
-        }
-        "filters": [ annotation | alleleFrequency | consequence | gene | phenotype ],
-        
-      }
-    }
+    "components": { < genome | features |  >}
   }
 }
 ```
+
+
+### Specification for the `componenents` structure
+
+* `componenents` can be either `genome` or `features`
+
+### Specification for the `genome` subtype of the `componenents` structure
+
+* `genome` component can have types 
+	`inheritanceMode | gene | ..`
+
+* `genome` component can have the following `filters`
+
+	` annotation | alleleFrequency | consequence  `
 
