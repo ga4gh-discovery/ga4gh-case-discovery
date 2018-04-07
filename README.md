@@ -4,11 +4,11 @@ A standard for a global federated data sharing network that allows the querying,
 
 Please note this standard is work in progress.
 
-This standard was built using existing work, and contributions by:
+This generalized standard was inspired, adapted, and built up from existing work by:
 
 * Global Alliance for Genomics and Health Discovery Search API team
-* Anthony J. Brookes and his team at the Cafe Variome discovery platform
 * Orion Buske (@buske, https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md)
+* GePh-Query API ("Jeff") by Anthony J. Brookes and his team at the [Cafe Variome](https://www.cafevariome.org) discovery platform
 * The Matchmaker Exchange APIs  (http://www.matchmakerexchange.org, https://github.com/ga4gh/mme-apis/blob/master/search-api.md)
 
 
@@ -17,9 +17,12 @@ This standard was built using existing work, and contributions by:
 We would define the two parties involved as the `host` and the `querier`. 
 
 1. The querier would would pose a question to the host. We will define this as the `question`
-2. The `question` will contain an `optional` patient data structure. While the Matchmaker Exchange (MME) requires a patient to be offered with any query, other networks may not. Therefore in order to make the standard general, we propose this value be `optional` and have the host decide whether to support it.
-3. The host uses the `query` section to determine the set of results to return. We will define the structure it returns as the `result`
-4. Within the `query` section there are components. Some are used for searching, and some are `filters` used for sieving search results further.
+2. The `question` will contain an `optional` patient data structure. While the Matchmaker Exchange (MME) requires a patient to be offered with any query, other networks may not. Therefore in order to make the standard general, we propose this value be `optional` and have the host decide whether to support that specific question.
+3. The host uses the `query` section to find a set of results to return. We will define the structure it returns as the `result`
+4. Within the `query` section there are sections called `components` and `filters`.
+5. `components` are used as the search criteria, while `filters` apply specific rules to limit/sieve the search results further
+6. Within the top level `meta` structure, there is field named `maximumNumberOfResultsRequested` that allows the querier to specify a limit on the number of results returned. This value can be superceded by any limit the host is able to support
+7. The return results maybe scored, and/or sorted, by some host-internal mechanism, as expected from a typical database query, but it is not expected or guarenteed.
 
 
 # OVERVIEW
