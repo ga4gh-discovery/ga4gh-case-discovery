@@ -103,7 +103,40 @@ this is work in progress....
 	}
  ```
 
+### Specification for the `term` structure
 
+* `gene`: the `id` must be an exact match
+	```
+	{
+	"ontology":<ontology of term. Example: HGNC>,
+	"id":<id>,
+	"label":<label>
+	}
+	```
+* `zygosity`: must be an exact match
+	```
+	{
+	"ontology":<ontology of term. Example: SO code>,
+	"id":<id>,
+	"label":<label>
+	}
+	```
+* `consequence`: match must be the term or a descendant
+	```
+	{
+	"ontology":<ontology of term. Example: SO code>,
+	"id":<id>,
+	"label":<label>
+	}
+	```
+* `variant`: one or more of the following sub-fields may be provided and must match exactly
+    * `assembly`: must be an exact match
+    * `referenceName`: must be an exact match
+    * `start`: must be an exact match
+    * `end`: must be an exact match
+    * `id`: must be an exact match
+    * `referenceBases`: must be an exact match
+    * `alternateBases`: must be an exact match
 
 	
 
