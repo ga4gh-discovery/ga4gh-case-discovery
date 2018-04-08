@@ -98,7 +98,7 @@ this is work in progress....
  	{
  		"ontology": <name of ontology/source used example: HPO or HGNC or ENSG etc>,
  		"annotation": <this could be "gene" for example,
-        "operator": "ANY" | "OR" | "LT" | "GT"
+        	"operator": "ANY" | "OR" | "LT" | "GT"
  		"terms" : [ <a list of terms. This could HPO, gene IDs etc. Each has a "Id" and "Label" field>]
  
  ```
