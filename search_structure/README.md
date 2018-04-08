@@ -48,23 +48,24 @@ this is work in progress....
   }
   "query": {
     "components": { 
-    			"genome":{
-    				"inheritanceMode": [
-    									{
-    									 "ontology": <example: HPO>,
-    									 "id": <example HPO Id>,
-    									 "label": ""
-    									},],
-    				"filters": [<list of filters>,]
-    					},
-    			"features":[{
-    					"feature":{ "ontology":<example HPO>,
-    								"id":<id>,
-    								"label":<label>,
-    							  }
-    					"filters":[<list of filters to apply to above feature. For example "ageOfOnset">,]
-    				},]
-    			}
+		"genome":{
+			"inheritanceMode": [
+					{
+					"ontology": <example: HPO>,
+					"id": <example HPO Id>,
+					"label": ""
+					},],
+			"filters": [<list of filters>,]
+				},
+		"features":[{
+				"feature":{ 	
+					"ontology":<example HPO>,
+					"id":<id>,
+					"label":<label>,
+					}
+				"filters":[<list of filters to apply to above feature. For example "ageOfOnset">,]
+			},]
+    		}
   }
 }
 ```
