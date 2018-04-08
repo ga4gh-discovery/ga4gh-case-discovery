@@ -14,10 +14,10 @@ This generalized standard was inspired, adapted, and built up from existing work
 
 # Concept
 
-We would define the two parties involved as the `host` and the `querier`. 
+We define the two parties involved as the `host` and the `querier`. 
 
-1. The querier would would pose a question to the host. We will define this as the `question`
-2. The `question` will contain an `optional` patient data structure. While the Matchmaker Exchange (MME) requires a patient to be offered with any query, other networks may not. Therefore in order to make the standard general, we propose this value be `optional` and have the host decide whether to support that specific question.
+1. The querier would pose a question regarding a patient to the host. We will define this as the `question`
+2. The `question` will contain an `optional` patient data structure. While the Matchmaker Exchange (MME) requires a backing patient to be offered with any query, other networks may not. Therefore in order to make the standard general, we propose this value be `optional` and have the host decide whether to support that specific question.
 3. The host uses the `query` section to find a set of results to return. We will define the structure it returns as the `result`
 4. Within the `query` section there are one or more sections called `components`.
 5. `components` are used as the search criteria. Each `component` has one or more associated `filters` that apply specific rules to limit/sieve the search results of that specific `component` further
@@ -35,13 +35,13 @@ For example: `https://yournode.org/v0.1/search`
 ## Security
 
 This specification is expected to support:
-* Open data sources that does not require authentication 
+* Open data sources that does not require authentication
 * Protected data sources that would would expect authentication tokens in message headers
-* The host can decide to support incoming search request
+* The host can decide to support the incoming search request. We will define specific standard HTTP responses to clarify when they do not.
 
 ## API Versioning
 
-Where `<api-version>` takes the form `vX.Y`, where `X` is a major version and `Y` is a minor version. Minor versions are cross-compatible. 
+Where `<api-version>` takes the form `vX.Y`, where `X` is a major version and `Y` is a minor version. Minor versions are cross-compatible. The version will be specified within the `question` to help the host identify the target of the `question`. The URL of the host must also specify the version of it. 
 
 For example:
 
