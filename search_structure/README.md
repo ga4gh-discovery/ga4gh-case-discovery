@@ -95,12 +95,12 @@ this is work in progress....
  * A filter has the following structure
  
  ```
- 	{
-	"ontology": <name of ontology/source used example: HPO or HGNC or ENSG etc>,
-	"annotation": <this could be "gene" for example,
-	"operator": "ANY" | "OR" | "LT" | "GT"
-	"terms" : [ <a list of terms. This could HPO, gene IDs etc. Each has a "Id" and "Label" field>]
-	}
+{
+"ontology": <name of ontology/source used example: HPO or HGNC or ENSG etc>,
+"annotation": <this could be "gene" for example,
+"operator": "ANY" | "OR" | "LT" | "GT"
+"terms" : [ <a list of terms. This could HPO, gene IDs etc. Each has a "Id" and "Label" field>]
+}
  ```
 
 ### Specification for the `term` structure
