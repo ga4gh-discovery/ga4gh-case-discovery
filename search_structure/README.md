@@ -47,22 +47,62 @@ this is work in progress....
 	"maximumNumberOfResultsRequested" : <limits number of results returned; is be superseded by host limits>,
   }
   "query": {
-    "components": { < genome | features |  >}
+    "components": { 
+    			"genome":{
+    				"inheritanceMode": [
+    									{
+    									 "ontology": <example: HPO>,
+    									 "id": <example HPO Id>,
+    									 "label": ""
+    									},],
+    				"filters": [<list of filters>,]
+    					},
+    			"features":[{
+    					"feature":{ "ontology":<example HPO>,
+    								"id":<id>,
+    								"label":<label>,
+    							  }
+    					"filters":[<list of filters to apply to above feature. For example "ageOfOnset">,]
+    				},]
+    			}
   }
 }
 ```
 
 
-### Specification for the `componenents` structure
+### Specification for the `components` structure
 
-* `componenents` can be either `genome` or `features`
+* `components` can be either `genome` or `features`
 
-### Specification for the `genome` subtype of the `componenents` structure
+## Specification for the `genome` subtype of the `components` structure
 
-* `genome` component can have types 
-	`inheritanceMode | gene | ..`
+* `genome` component can have type 
+	`inheritanceMode `
 
-* `genome` component can have the following `filters`
+* `inheritanceMode ` of the `genome` component can have the following `filters`
 
-	` annotation | alleleFrequency | consequence  `
+	` annotation | alleleFrequency | consequence | deleteriousnessPrediction | variant | zygosity`
+	
+
+## Specification for the `features` subtype of the `components` structure
+
+* The `features` field is a list of feature + filter combinations relevant to phenotypes
+
+
+### Specification for the `filters` structure
+
+ * A filter has the following structure
+ 
+ ```
+ 	{
+ 		"ontology": <name of ontology/source used example: HPO or HGNC or ENSG etc>,
+ 		"annotation": <this could be "gene" for example,
+        "operator": "ANY" | "OR" | "LT" | "GT"
+ 		"terms" : [ <a list of terms. This could HPO, gene IDs etc. Each has a "Id" and "Label" field>]
+ 
+ ```
+
+
+
+	
 
