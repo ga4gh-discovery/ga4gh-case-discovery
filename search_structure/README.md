@@ -91,6 +91,15 @@ this is work in progress....
 
 * `genome` component can have type 
 	`inheritanceMode `
+ 
+ ```
+{
+"ontology": <name of ontology used example: HPO>,
+"id": <id>,
+"label" :<label>
+}
+```
+
 
 * `inheritanceMode ` of the `genome` component can have the following `filters`
 
@@ -100,7 +109,13 @@ this is work in progress....
 ## Specification for the `features` subtype of the `components` structure
 
 * The `features` field is a list of feature + filter combinations relevant to phenotypes
-
+```
+"features":[
+{
+	"feature":{},
+	"filters":[{},..]
+},]
+```
 
 ### Specification for the `filters` structure
 
@@ -109,9 +124,9 @@ this is work in progress....
  ```
 {
 "ontology": <name of ontology/source used example: HPO or HGNC or ENSG etc>,
-"annotation": <this could be "gene" for example,
-"operator": "ANY" | "OR" | "LT" | "GT"
-"terms" : [ <a list of terms. This could HPO, gene IDs etc. Each has a "Id" and "Label" field>]
+"annotation": <type example: annotation or gene>,
+"operator": <"ANY" | "OR" | "LT" | "GT">
+"terms" : [ <a list of terms. This could HPO, gene IDs etc. Each has a "id" and "label" field>]
 }
  ```
 
@@ -125,7 +140,7 @@ this is work in progress....
 	"label":<label>
 	}
 	```
-* `zygosity`: must be an exact match
+* `zygosity`
 	```
 	{
 	"ontology":<ontology of term. Example: SO code>,
@@ -133,7 +148,7 @@ this is work in progress....
 	"label":<label>
 	}
 	```
-* `consequence`: match must be the term or a descendant
+* `consequence`
 	```
 	{
 	"ontology":<ontology of term. Example: SO code>,
@@ -141,14 +156,16 @@ this is work in progress....
 	"label":<label>
 	}
 	```
-* `variant`: one or more of the following sub-fields may be provided and must match exactly
-    * `assembly`: must be an exact match
-    * `referenceName`: must be an exact match
-    * `start`: must be an exact match
-    * `end`: must be an exact match
-    * `id`: must be an exact match
-    * `referenceBases`: must be an exact match
-    * `alternateBases`: must be an exact match
-
+* `variant`: 
+```
+{
+"assembly": "",
+"referenceName": "",
+"start":"",
+"end": "",
+"referenceBases": ",
+"alternateBases": ""
+}
+```
 	
 
