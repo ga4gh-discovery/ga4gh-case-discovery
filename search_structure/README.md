@@ -70,6 +70,18 @@ this is work in progress....
 }
 ```
 
+### Specification for the `provenance` structure (optional)
+
+* This is an optional section that is in-place to support the documentation of `methods` and `data` that were used to generate the patient data that is being offered.
+
+* The `API` section describes the API version this query is targeted to
+
+### Specification for the `patientDescription` structure  (optional)
+
+* This is an optional section that is in-place to describe the optional patient data structure that is offered with the query.
+
+* It is meant to support multiple ontologies or networks such as MME, Beacon, and extensible to others as needed.
+
 
 ### Specification for the `components` structure
 
