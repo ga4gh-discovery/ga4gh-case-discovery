@@ -62,7 +62,7 @@ this is work in progress....
 					"ontology":<example HPO>,
 					"id":<id>,
 					"label":<label>,
-					}
+					},
 				"filters":[<list of filters to apply to above feature. For example "ageOfOnset">,]
 			},]
     		}
