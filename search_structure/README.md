@@ -48,21 +48,23 @@ this is work in progress....
   }
   "query": {
     "components": { 
-		"genome":{
-			"inheritanceMode": [
-					{
-					"ontology": <example: HPO>,
-					"id": <example HPO Id>,
-					"label": ""
-					},],
-			"filters": [<list of filters>,]
-				},
+		"genome":[{
+					"genomicFeature": 
+						{
+						"ontology": <example: HPO>,
+						"id": <example HPO Id>,
+						"label": <text description>
+						},
+					"operator": <will be applied to whole list of filters: "ANY" | "OR" | "LT" | "GT">,
+					"filters": [<list of filters>,]
+				},],
 		"features":[{
 				"feature":{ 	
 					"ontology":<example HPO>,
 					"id":<id>,
 					"label":<label>,
 					},
+				"operator": <will be applied to whole list of filters: "ANY" | "OR" | "LT" | "GT">,
 				"filters":[<list of filters to apply to above feature. For example "ageOfOnset">,]
 			},]
     		}
@@ -108,7 +110,7 @@ this is work in progress....
 
 ## Specification for the `features` subtype of the `components` structure
 
-* The `features` field is a list of feature + filter combinations relevant to phenotypes
+* The `features` field is a list of feature and filters to apply to that feature, combinations relevant to phenotypes
 ```
 "features":[
 {
@@ -116,6 +118,15 @@ this is work in progress....
 	"filters":[{},..]
 },]
 ```
+
+### Supported `operators`
+
+* Will be applied to whole list of filters
+
+```
+"operator": <"ANY" | "OR" | "LT" | "GT">
+```
+
 
 ### Specification for the `filters` structure
 
@@ -125,7 +136,7 @@ this is work in progress....
 {
 "ontology": <name of ontology/source used example: HPO or HGNC or ENSG etc>,
 "annotation": <type example: annotation or gene>,
-"operator": <"ANY" | "OR" | "LT" | "GT">
+
 "terms" : [ <a list of terms. This could HPO, gene IDs etc. Each has a "id" and "label" field>]
 }
  ```
