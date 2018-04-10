@@ -6,11 +6,35 @@ this is work in progress...
 
 ```
 {
-  "results": [
-    {
-	"ontology": < Phenopackets | MME | Beacon | cloud >,
-	"result: <result in one of the above ontologies>
-    }
-  ]
+  "reply": {
+    “provenance”:{
+		“api”:{
+			“version”:<semantic version of targeted API>,
+		}	
+		“methods”:[
+			  {
+				“name”:<method name as string>,
+				“version”:<semantic version of method used to generate data>,
+				“documentation”:<string pointing to github | publication | other>,
+			    },
+			],
+		“data”:[
+			{
+				“name”:<name of dataset>,
+				“version”:<semantic version of data used>,
+				“institution”:<institution data is hosted on>	
+			},
+			]
+  	},
+   "disclaimer" : {
+			  	"version": "<semantic version>"
+			  	"text": "Disclaimer text...",
+			  	"terms" : : "Terms text...",
+ 	 },
+   "results":[{
+				"ontology": < Phenopackets | MME | Beacon | cloud >,
+				"result": <result in one of the above ontologies>
+    },]
+  }
 }
 ```

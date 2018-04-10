@@ -36,7 +36,7 @@ this is work in progress....
   	"version": "<semantic version>"
   	"text": "Disclaimer text...",
   	"terms" : : "Terms text...",
-  }
+  },
   "patientDescription" : {
 	"ontology" : <supported types are: PhenoPackets | MME | Beacon | FHIR >,
 	"version" : <semantic version of ontology>,
