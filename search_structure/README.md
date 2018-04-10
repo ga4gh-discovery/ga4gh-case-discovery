@@ -66,14 +66,14 @@ this is work in progress....
   "query": {
     "components": { 
 		"genome":[{
-					"genomicFeature": 
-						{
-						"ontology": <example: HPO>,
-						"id": <example HPO Id>,
-						"label": <text description>
-						},
-					"operator": <will be applied to whole list of filters>,
-					"filters": [<list of filters>,]
+				"genomicFeature": 
+					{
+					"ontology": <example: HPO>,
+					"id": <example HPO Id>,
+					"label": <text description>
+					},
+				"operator": <will be applied to whole list of filters>,
+				"filters": [<list of filters>,]
 				},],
 		"features":[{
 				"feature":{ 	
