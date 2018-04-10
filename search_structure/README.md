@@ -72,7 +72,7 @@ this is work in progress....
 						"id": <example HPO Id>,
 						"label": <text description>
 						},
-					"operator": <will be applied to whole list of filters: "ANY" | "OR" | "LT" | "GT">,
+					"operator": <will be applied to whole list of filters>,
 					"filters": [<list of filters>,]
 				},],
 		"features":[{
@@ -81,7 +81,7 @@ this is work in progress....
 					"id":<id>,
 					"label":<label>,
 					},
-				"operator": <will be applied to whole list of filters: "ANY" | "OR" | "LT" | "GT">,
+				"operator": <will be applied to whole list of filters>,
 				"filters":[<list of filters to apply to above feature. For example "ageOfOnset">,]
 			},]
     		}
@@ -153,7 +153,6 @@ this is work in progress....
 {
 "ontology": <name of ontology/source used example: HPO or HGNC or ENSG etc>,
 "annotation": <type example: annotation or gene>,
-
 "terms" : [ <a list of terms. This could HPO, gene IDs etc. Each has a "id" and "label" field>]
 }
  ```
