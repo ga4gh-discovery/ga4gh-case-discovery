@@ -68,9 +68,8 @@ this is work in progress....
 		"genome":[{
 				"genomicFeature": 
 					{
-					"ontology": <example: HPO>,
-					"id": <example HPO Id>,
-					"label": <text description>
+					"operator": <example HPO Id>,
+					"terms": [<one ore more genomicFeature terms, example: "gene">,]
 					},
 				"operator": <will be applied to whole list of filters>,
 				"filters": [<list of filters>,]
@@ -185,14 +184,14 @@ this is work in progress....
 	```
 * `variant`: 
 ```
-{
-"assembly": "",
-"referenceName": "",
-"start":"",
-"end": "",
-"referenceBases": ",
-"alternateBases": ""
-}
+	{
+	"assembly": "",
+	"referenceName": "",
+	"start":"",
+	"end": "",
+	"referenceBases": ",
+	"alternateBases": ""
+	}
 ```
 	
 
