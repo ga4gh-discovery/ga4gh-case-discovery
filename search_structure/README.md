@@ -67,12 +67,14 @@ this is work in progress....
     "components": { 
 		"genome":[{
 				"genomicFeature": 
-					{
-					"operator": <example HPO Id>,
-					"terms": [<one ore more genomicFeature terms, example: "gene">,]
-					},
+					   {
+					      "annotation": <for example: alleleFrequency>,
+					      "source": <for example: 1000GP>,
+					      "population": <for example: "ALL">,
+					      "version": <for example: "phase3">
+					    }
 				"operator": <will be applied to whole list of filters>,
-				"filters": [<list of filters>,]
+				"filters": [<one or more genomicFeature terms, example: "gene">,]
 				},],
 		"features":[{
 				"feature":{ 	
