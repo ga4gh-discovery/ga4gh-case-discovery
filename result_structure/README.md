@@ -27,13 +27,13 @@ this is work in progress...
 			]
   	},
    "disclaimer" : {
-			  	"version": "<semantic version>"
-			  	"text": "Disclaimer text...",
-			  	"terms" : : "Terms text...",
+		"version": "<semantic version>"
+		"text": "Disclaimer text...",
+		"terms" : : "Terms text...",
  	 },
    "results":[{
-				"ontology": < Phenopackets | MME | Beacon | cloud >,
-				"result": <result in one of the above ontologies>
+		"ontology": < Phenopackets | MME | Beacon | cloud >,
+		"result": <result in one of the above ontologies>
     },]
   }
 }
