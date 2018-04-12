@@ -102,7 +102,7 @@ this is work in progress....
 
 ### Specification for the `components` structure
 
-* `components` can be either `genome` or `features`
+* `components` can be either `genome` or `features` and an `operator` to decide whether to apply both components in the search or where a result has to be `True` to both, or simply return the results both of them.
 
 ## Specification for the `genome` subtype of the `components` structure
 
