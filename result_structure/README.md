@@ -32,7 +32,7 @@ this is work in progress...
 		"terms" : : "Terms text...",
  	 },
    "results":[{
-		"ontology": < Phenopackets | MME | Beacon | cloud-dos >,
+		"ontology": < phenopackets | mme | yes-no | cloud-dos >,
 		"result": <result in one of the above ontologies>
     },]
   }
