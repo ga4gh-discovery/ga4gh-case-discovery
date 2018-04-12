@@ -12,36 +12,32 @@ this is work in progress....
 
 ```
 {
-
-  “provenance”:{
-		“api”:{
-			“version”:<semantic version of targeted API>,
-		}	
-		“methods”:[
-			  {
-				“name”:<method name as string>,
-				“version”:<semantic version of method used to generate data>,
-				“documentation”:<string pointing to github | publication | other>,
-			    },
-			],
-		“data”:[
-			{
-				“name”:<name of dataset>,
-				“version”:<semantic version of data used>,
-				“institution”:<institution data is hosted on>	
-			},
-			]
-  },
   "disclaimer" : {
   	"version": "<semantic version>"
   	"text": "Disclaimer text...",
   	"terms" : : "Terms text...",
   },
   "patientDescription" : {
-	"ontology" : <supported types are: PhenoPackets | MME | Beacon | FHIR >,
+	 “provenance”:{	
+			“methods”:[
+				  {
+					“name”:< name of method used to generate this patient data as string>,
+					“version”:<semantic version of method used to generate data>,
+					“documentation”:<string pointing to github | publication | other>,
+				    },
+				],
+			“data”:[
+				{
+					“name”:<name of dataset that was used in this patient data as a string>,
+					“version”:<semantic version of data used>,
+					“institution”:<institution data is hosted on>	
+				},
+				]
+	  },
+	"ontology" : <supported types are: phenoPackets | mme | beacon | fhir >,
 	"version" : <semantic version of ontology>,
 	"contentType" : <content type of ontology, for example: "Content-Type: application/vnd.ga4gh.matchmaker.v1.0+json">, 
-	"patient": <description of patient in ontology specified>
+	"patient": < description of patient in ontology specified >
   },
   "queryMetadata" : {
 	"queryId" : <identifier>,
@@ -64,7 +60,8 @@ this is work in progress....
 	}
   },
   "query": {
-    "components": { 
+    "components": {
+		"operator": <will be applied to all of the components. Initially will be only: AND | OR>,
 		"genome":[{
 				"genomicFeature": 
 					   {
