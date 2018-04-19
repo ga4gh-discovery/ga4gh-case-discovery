@@ -17,12 +17,13 @@ This generalized standard was inspired, adapted, and built up from existing work
 We define the two parties involved as the `host` and the `querier`. 
 
 1. The querier would pose a question regarding a patient to the host. We will define this as the `question`
-2. The `question` will contain an `optional` patient data structure. While the Matchmaker Exchange (MME) requires a backing patient to be offered with any query, other networks may not. Therefore in order to make the standard general, we propose this value be `optional` and have the host decide whether to support that specific question.
+2. The `question` will contain an `optional` patient data structure. While the Matchmaker Exchange (MME) requires a backing patient to be offered with any query, other networks may not. Therefore in order to make the standard general, we propose this value be `optional` and have the host decide whether to support that specific question. When they do not support, they will return a HTTP message such as `Not supported (status code: 512)`
 3. The host uses the `query` section to find a set of results to return. We will define the structure it returns as the `result`
-4. Within the `query` section there are one or more sections called `components`.
+4. Within the `query` section there is a `components` section and an `operator` section that is applied to all the components.
 5. `components` are used as the search criteria. Each `component` has one or more associated `filters` that apply specific rules to limit/sieve the search results of that specific `component` further
-6. Within the top level `meta` structure, there is field named `maximumNumberOfResultsRequested` that allows the querier to specify a limit on the number of results returned. This value can be superseded by any limit the host is able to support
-7. The return results maybe scored, and/or sorted, by some host-internal mechanism, as expected from a typical database query, but it is not expected or guaranteed.
+6. The object of the `operator` section is to designate whether `ALL` or `ANY` of the components to use in the query.
+7. Within the top level `queryMetadata` structure, along with query details for tracking, there is field named `maximumNumberOfResultsRequested` that allows the querier to specify a limit on the number of results returned. This value can be superseded by any limit the host is able to support
+8. The return results maybe scored, and/or sorted, by some host-internal mechanism, as expected from a typical database query, but it is not expected or guaranteed.
 
 
 # OVERVIEW

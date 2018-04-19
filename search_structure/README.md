@@ -60,51 +60,48 @@ this is work in progress....
 	}
   },
   "query": {
-    "components": {
-		"operator": <will be applied to all of the components. Initially will be only: AND | OR>,
-		"genome":[{
-				"genomicFeature": 
-					   {
-					      "annotation": <for example: alleleFrequency>,
-					      "source": <for example: 1000GP>,
-					      "population": <for example: "ALL">,
-					      "version": <for example: "phase3">
-					    }
-				"operator": <will be applied to whole list of filters>,
-				"filters": [<one or more genomicFeature terms, example: "gene">,]
-				},],
-		"features":[{
-				"feature":{ 	
-					"ontology":<example HPO>,
-					"id":<id>,
-					"label":<label>,
-					},
-				"operator": <will be applied to whole list of filters>,
-				"filters":[<list of filters to apply to above feature. For example "ageOfOnset">,]
-			},]
-    		}
+    "operator": <will be applied to all of the components. Initially will be only: AND | OR >,
+    "components": [ "genomicFeature" | "feature" | .. ]
   }
 }
 ```
 
-### Specification for the `provenance` structure (optional)
+### Specification for the `disclaimer` structure
 
-* This is an optional section that is in-place to support the documentation of `methods` and `data` that were used to generate the patient data that is being offered.
+* The legal disclaimers, their versions, from querier
 
-* The `API` section describes the API version this query is targeted to
+### Specification for the `patientDescription` structure (optional)
 
-### Specification for the `patientDescription` structure  (optional)
+* This is an optional section to support usage in networks such as the Matchmaker Exchange that require a backing patient to be offered with the query.
 
-* This is an optional section that is in-place to describe the optional patient data structure that is offered with the query.
+* `provenance` is an optional section that is in-place to support the documentation of `methods` and `data` that were used to generate the patient data that is being offered.
 
-* It is meant to support multiple ontologies or networks such as MME, Beacon, and extensible to others as needed.
+* The structure used to describe the patient can be of multiple multiple ontologies or networks such as MME, Beacon, and extensible to others as needed. 
+
+### Specification for the `queryMetadata` structure
+
+* This define details of the query and the fields are self-explanatory and `required`
 
 
-### Specification for the `components` structure
+### Specification for the `query` structure
 
-* `components` can be either `genome` or `features` and an `operator` to decide whether to apply both components in the search or where a result has to be `True` to both, or simply return the results both of them.
+* The query structure has an `operator` field, and a `components` field
 
-## Specification for the `genome` subtype of the `components` structure
+* The `operator` is `ALL` and `ANY` and is applied to all `components`.
+
+* `operator`  `ALL` implies: All the components have to be `TRUE` in results.
+
+* `operator`  `ANY` implies: ANY of the components can to be `TRUE` in results. This `ANY` is similar to a `OR`
+
+* `components` initially supported are:  `genomicFeature` (genotype related), `feature` (phenotype related).
+
+* Each `component` has,
+	* A domain specific (for example genotype would be different from phenootypes) query criteria 
+	* A list of `filters` to apply to domain specific general query
+	* An `operator` to apply to filters. Initially these will be `ALL` (all filters have to be `TRUE` or `ANY` (where any of the filters can be `TRUE` in to be added to results)
+
+
+## Specification for the `genomicFeature` type `components` structure
 
 * `genome` component can have type 
 	`inheritanceMode `
