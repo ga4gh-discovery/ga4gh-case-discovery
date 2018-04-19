@@ -104,12 +104,12 @@ this is work in progress....
 	
 	```
 		{
-		 "type": < genomicFeature | feature | ..>
+		 "type": < genomicFeature | feature | ..>,
 		 "ontology": <name of ontology used example: HPO will be supported initially >,
-		 "genomicFeatureId": <id based on the ontology>,
+		 "id": <id based on the ontology>,
+		 "filterOperator": < ALL | ANY >,
 		 "filters": [ < a list of applicable filters > ],
 		}
-	
 	```
 
 
@@ -119,26 +119,29 @@ this is work in progress....
 
 * `inheritanceMode ` can have the following `filters`
 
-	` annotation | alleleFrequency | consequence | deleteriousnessPrediction | variant | zygosity`
+	` annotation | alleleFrequency | consequence | deleteriousnessPrediction | variant | zygosity | transcript `
 	
 
-## Specification for the `features` subtype of the `components` structure
+## Specification for the `feature` structure
 
-* The `features` field is a list of feature and filters to apply to that feature, combinations relevant to phenotypes
-```
-"features":[
-{
-	"feature":{},
-	"filters":[{},..]
-},]
-```
+* A `feature` field is a list of feature and filters to apply to that feature, combinations relevant to phenotypes
 
-### Supported `operators`
+	```
+		{
+		 "type": < feature >,
+		 "ontology": <name of ontology used example: HPO will be supported initially >,
+		 "id": <id based on the ontology>,
+		 "filterOperator": < ALL | ANY >,
+		 "filters": [ < a list of applicable filters > ],
+		}
+	```
+
+### Supported `filterOperator`
 
 * Will be applied to whole list of filters
 
 ```
-"filterOperator": <"ANY" | "OR" | "LT" | "GT">
+"filterOperator": <"ALL" | "ANY" | "LT" | "GT">
 ```
 
 
