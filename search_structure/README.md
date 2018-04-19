@@ -60,7 +60,7 @@ this is work in progress....
 	}
   },
   "query": {
-    "operator": <will be applied to all of the components. Initially will be only: AND | OR >,
+    "queryOperator": <will be applied to all of the components. Initially will be only: AND | OR >,
     "components": [ "genomicFeature" | "feature" | .. ]
   }
 }
@@ -85,37 +85,39 @@ this is work in progress....
 
 ### Specification for the `query` structure
 
-* The query structure has an `operator` field, and a `components` field
+* The query structure has an `queryOperator` field, and a `components` field
 
-* The `operator` is `ALL` and `ANY` and is applied to all `components`.
+* The `queryOperator` is `ALL` and `ANY` and is applied to all `components`.
 
-* `operator`  `ALL` implies: All the components have to be `TRUE` in results.
+* `queryOperator`  `ALL` implies: All the components have to be `TRUE` in results.
 
-* `operator`  `ANY` implies: ANY of the components can to be `TRUE` in results. This `ANY` is similar to a `OR`
+* `queryOperator`  `ANY` implies: ANY of the components can to be `TRUE` in results. This `ANY` is similar to a `OR`
 
 * `components` initially supported are:  `genomicFeature` (genotype related), `feature` (phenotype related).
 
 * Each `component` has,
-	* A domain specific (for example genotype would be different from phenootypes) query criteria 
+	* A `type` to specify the domain (for example genotype, phenotype,..)
+	* A domain specific (for example genotype would be different from phenootypes) query criteria. We will initially support `genomicFeature` and `feature` types.
 	* A list of `filters` to apply to domain specific general query
-	* An `operator` to apply to filters. Initially these will be `ALL` (all filters have to be `TRUE` or `ANY` (where any of the filters can be `TRUE` in to be added to results)
+	* An `filterOperator` to apply to filters. Initially these will be `ALL` (all filters have to be `TRUE` or `ANY` (where any of the filters can be `TRUE` in to be added to results)
+	* For example,
+	
+	```
+		{
+		 "type": < genomicFeature | feature | ..>
+		 "ontology": <name of ontology used example: HPO will be supported initially >,
+		 "genomicFeatureId": <id based on the ontology>,
+		 "filters": [ < a list of applicable filters > ],
+		}
+	
+	```
 
 
-## Specification for the `genomicFeature` type `components` structure
+## Specification for the `genomicFeature` structure
 
-* `genome` component can have type 
-	`inheritanceMode `
- 
- ```
-{
-"ontology": <name of ontology used example: HPO>,
-"id": <id>,
-"label" :<label>
-}
-```
+* `genomicFeature` query type will initially only be `inheritanceMode ` with filters to refine results further.
 
-
-* `inheritanceMode ` of the `genome` component can have the following `filters`
+* `inheritanceMode ` can have the following `filters`
 
 	` annotation | alleleFrequency | consequence | deleteriousnessPrediction | variant | zygosity`
 	
@@ -136,7 +138,7 @@ this is work in progress....
 * Will be applied to whole list of filters
 
 ```
-"operator": <"ANY" | "OR" | "LT" | "GT">
+"filterOperator": <"ANY" | "OR" | "LT" | "GT">
 ```
 
 
