@@ -9,7 +9,7 @@ this is work in progress...
   "reply": {
     “provenance”:{
 		“api”:{
-			“version”:<semantic version of targeted API>,
+			“version”:<what version of API generated this>,
 		}	
 		“methods”:[
 			  {
