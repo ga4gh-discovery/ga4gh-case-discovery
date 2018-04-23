@@ -31,7 +31,7 @@ We define the two parties involved as the `host` and the `querier`.
 
 **Submit patient search request:**
 `HTTP POST` to remote server: `<base_remote_url>/<api-version>/search`
-For example: `https://yournode.org/v0.1/search`
+For example: `https://yournode.org/v1/search`
 
 
 ## Security
@@ -40,6 +40,8 @@ This specification is expected to support:
 * Open data sources that does not require authentication
 * Protected data sources that would would expect authentication tokens in message headers
 * The host can decide to support the incoming search request. We will define specific standard HTTP responses to clarify when they do not.
+* Details for authentication and authorization will be in header fields. We envision a GA4GH decentralized (as-needed) broker based system that is being developed for this in the future. Till it is ready, we see a simple token exchange model (as MME does) or open (as Beacon) does to get things started.
+
 
 ## API Versioning
 
@@ -58,9 +60,6 @@ For example:
 
 `Content-Type: application/json`
 
-## Authentication and authorization
-
-Details for this will be in header fields. We envision a GA4GH decentralized (as-needed) broker based system that is being developed for this in the future. Till it is ready, we see a simple token exchange model (as MME does) or open (as Beacon) does to get things started.
 
 ## Content
 
