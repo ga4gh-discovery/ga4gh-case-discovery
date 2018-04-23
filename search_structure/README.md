@@ -41,17 +41,17 @@ this is work in progress....
   },
   "queryMetadata" : {
 	"queryId" : <identifier>,
-	"queryType" : "once"|"periodic",
 	"queryStart" : <Date, Time>,
 	"queryStop" : <Date, Time>,
 	"queryLabel" : <identifier>,
 	"maximumNumberOfResultsRequested" : <limits number of results returned; is be superseded by host limits>,
-	"queryResultLevel" : "Exists"|"Counts"|"Records", "submitter" : {
-	"id" : "SubmitterPersonID",
-	"name" : "First [Middle] Last",
-	"email" : "",
-	"institution" : "AffiliationOfSubmitterPerson", "urls" : ["SubmitterPersonURL",...]
-	}
+	"queryResultLevel" :  < "Exists"|"Counts"|"Records" >,
+	"submitter": {
+		"id" : "SubmitterPersonID",
+		"name" : "First [Middle] Last",
+		"email" : "",
+		"institution" : "AffiliationOfSubmitterPerson", "urls" : ["SubmitterPersonURL",...]
+	},
 	"contact" : {
 	"id" : "ContactPersonID",
 	"name" : "First [Middle] Last",
