@@ -31,10 +31,17 @@ this is work in progress...
 		"text": "Disclaimer text...",
 		"terms" : : "Terms text...",
  	 },
-   "results":[{
-		"ontology": < phenopackets | mme | yes-no | cloud-dos >,
+   "results":{
+   	"exists": <true | false>,
+	"count": <numeric>,
+	"records": [{
+		"ontology": < phenopackets | mme | yes-no | cloud-dos | any GA4GH data model >,
 		"result": <result in one of the above ontologies>
-    },]
+    	},]
+   }
+   
+   
+   
   }
 }
 ```
