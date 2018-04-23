@@ -58,6 +58,10 @@ For example:
 
 `Content-Type: application/json`
 
+## Authentication and authorization
+
+Details for this will be in header fields. We envision a GA4GH decentralized (as-needed) broker based system that is being developed for this in the future. Till it is ready, we see a simple token exchange model (as MME does) or open (as Beacon) does to get things started.
+
 ## Content
 
 * [The structure of the `question` document](search_structure/README.md)
