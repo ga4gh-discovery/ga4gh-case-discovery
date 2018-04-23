@@ -43,11 +43,11 @@ This specification is expected to support:
 
 ## API Versioning
 
-Where `<api-version>` takes the form `vX.Y`, where `X` is a major version and `Y` is a minor version. Minor versions are cross-compatible. The version will be specified within the `question` to help the host identify the target of the `question`. The URL of the host must also specify the version of it. 
+Where `<api-version>` takes the form `vX`, where `X` is a major version. Minor versions are cross-compatible. The target semantic version will be specified within the `question` to help the host identify the target of the `question`. The URL of the host must specify the major version that it supports. 
 
 For example:
 
-`https://yournode.org/v0.1/search`
+`https://yournode.org/v1/search`
 
 
 ## Content type
