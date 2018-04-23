@@ -39,9 +39,5 @@ this is work in progress...
 		"result": <result in one of the above ontologies>
     	},]
    }
-   
-   
-   
-  }
 }
 ```
