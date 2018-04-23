@@ -12,6 +12,7 @@ this is work in progress....
 
 ```
 {
+  "target-api": <semantic version of API  this query is formatted for>,
   "disclaimer" : {
   	"version": "<semantic version>"
   	"text": "Disclaimer text...",
