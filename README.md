@@ -44,7 +44,7 @@ This specification is expected to support:
 * Details for authentication and authorization will be in header fields. We envision a GA4GH decentralized (as-needed) broker based system that is being developed for this in the future. Till it is ready, we see a simple token exchange model (as MME does) or open (as Beacon) does to get things started.
 
 
-## API Versioning
+## API Version
 
 Where `<api-version>` takes the form `vX`, where `X` is a major version. Minor versions are cross-compatible. The target semantic version will be specified within the `question` to help the host identify the target of the `question`. The URL of the host must specify the major version that it supports. 
 
@@ -66,3 +66,4 @@ For example:
 
 * [The structure of the `question` document](search_structure/README.md)
 * [The structure of the `result` document](result_structure/README.md)
+* [Example constructs based on driver project use-case feedback](example_usage/README.md)
