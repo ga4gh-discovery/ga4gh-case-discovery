@@ -54,10 +54,10 @@ this is work in progress....
 		"institution" : "AffiliationOfSubmitterPerson", "urls" : ["SubmitterPersonURL",...]
 	},
 	"contact" : {
-	"id" : "ContactPersonID",
-	"name" : "First [Middle] Last",
-	"email" : "",
-	"institution" : "AffiliationOfContactPerson", "urls" : ["ContactPersonURL",...]
+		"id" : "ContactPersonID",
+		"name" : "First [Middle] Last",
+		"email" : "",
+		"institution" : "AffiliationOfContactPerson", "urls" : ["ContactPersonURL",...]
 	}
   },
   "query": {
