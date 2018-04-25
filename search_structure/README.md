@@ -14,9 +14,9 @@ this is work in progress....
 {
   "target-api": <semantic version of API  this query is formatted for>,
   "disclaimer" : {
-  	"version": "<semantic version>"
+  	"version": "<semantic version>",
   	"text": "Disclaimer text...",
-  	"terms" : : "Terms text...",
+  	"terms" : "Terms text..."
   },
   "patientDescription" : {
 	 “provenance”:{	
@@ -42,22 +42,22 @@ this is work in progress....
   },
   "queryMetadata" : {
 	"queryId" : <identifier>,
-	"queryStart" : <Date, Time>,
-	"queryStop" : <Date, Time>,
 	"queryLabel" : <identifier>,
 	"maximumNumberOfResultsRequested" : <limits number of results returned; is be superseded by host limits>,
 	"queryResultLevel" :  < "Exists"|"Counts"|"Records" >,
 	"submitter": {
-		"id" : "SubmitterPersonID",
-		"name" : "First [Middle] Last",
-		"email" : "",
-		"institution" : "AffiliationOfSubmitterPerson", "urls" : ["SubmitterPersonURL",...]
+	    "id" : < id > (optional),
+		"name" : < First [Middle] Last >,
+		"email" : < email >,
+		"institution" : < name of institution > , 
+		"urls" : < URLs > (optional)
 	},
 	"contact" : {
-		"id" : "ContactPersonID",
-		"name" : "First [Middle] Last",
-		"email" : "",
-		"institution" : "AffiliationOfContactPerson", "urls" : ["ContactPersonURL",...]
+		"id" : < ContactPersonID > (optional),
+		"name" : < First [Middle] Last >,
+		"email" : <email>,
+		"institution" : < name of institution >, 
+		"urls" : < URLs > (optional)
 	}
   },
   "query": {

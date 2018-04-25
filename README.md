@@ -8,9 +8,9 @@ This generalized standard was inspired, adapted, and built up from existing work
 
 * Global Alliance for Genomics and Health Discovery Search API team
 * Requirements, design, brainstorming, and ideas gathered from the GA4GH driver project community, summerized [here](https://docs.google.com/document/d/1jPPVhSvmzW5kK_rKTxkjPvxlcGicHhHPgO4cqqP3CBU/edit?ts=5a84936c#heading=h.4lfahcth694x).
-* Orion Buske ([@buske](@buske), [@github](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md))
+* Orion Buske @buske [@github](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md)
 * GePh-Query API ("Jeff") by Anthony J. Brookes and his team at the [Cafe Variome](https://www.cafevariome.org) discovery platform
-* The merging of concepts, content, and building of first draft by Harindra Arachchi [@harindra-a](@harindra-a)
+* The merging of concepts, content, and building of first draft by Harindra Arachchi @harindra-a
 * The Matchmaker Exchange APIs [@github](http://www.matchmakerexchange.org, https://github.com/ga4gh/mme-apis/blob/master/search-api.md)
 
 
@@ -70,4 +70,4 @@ For example:
 
 ## Example usage
 
-These example constructs are based on use-cases from the driver projects and their feedback: [Examples](example_usage/README.md)
+These example constructs are based on use-cases from the driver projects and their feedback: [examples](example_usage/README.md)
