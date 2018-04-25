@@ -66,4 +66,8 @@ For example:
 
 * [The structure of the `question` document](search_structure/README.md)
 * [The structure of the `result` document](result_structure/README.md)
-* [Example constructs based on driver project use-case feedback](example_usage/README.md)
+
+
+## Example usage
+
+These example constructs are based on use-cases from the driver projects and their feedback: [Examples](example_usage/README.md)
