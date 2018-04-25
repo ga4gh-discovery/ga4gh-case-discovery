@@ -2,7 +2,9 @@
 
 These examples were gathered from the Discovery WS driver project community and can be found [here.](https://docs.google.com/spreadsheets/d/1Vxfo7hssqsMtJeLUWTj5HRTAkE0q8bcl10V_N-SjwpE/edit#gid=0)
 
-1. Use case: Trio Analysis	
+These are still in progress..more to come!
+
+## Use case example 1: Trio Analysis	
 ```
 
 	Query:
