@@ -35,7 +35,7 @@ this is work in progress...
    	"exists": <true | false>,
 	"count": <numeric>,
 	"records": [{
-		"ontology": < phenopackets | mme | yes-no | cloud-dos | any GA4GH data model >,
+		"ontology": < phenopackets | mme | cloud-dos | any GA4GH patient data model >,
 		"result": <result in one of the above ontologies>
     	},]
    }
