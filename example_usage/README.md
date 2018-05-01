@@ -61,7 +61,7 @@ The `query` can be represented by,
 ```
 
 
-The `reply` would be, (assuming there was a patient, with a variant in the gene specified)
+A the simplest, with minimum required values, the `reply` would be, (assuming there was a patient, with a variant in the gene specified)
 
 ```
 
