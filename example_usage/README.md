@@ -4,7 +4,7 @@ These examples were gathered from the Discovery WS driver project community and 
 
 These are still in progress..more to come!
 
-## Use case example 1: Query on if a case exists with a given gene
+## Use case example 1: Query on if a case exists with a variant in the given gene
 ```
 
 	Query:
@@ -61,10 +61,23 @@ The `query` can be represented by,
 ```
 
 
-The `reply` would be,
+The `reply` would be, (assuming there was a patient, with a variant in the gene specified)
 
 ```
 
-
+{
+  "reply": {
+   "provenance":{},
+   "disclaimer" : {
+		"version": "v0.0.1"
+		"text": "we hereby..",
+		"terms" : "the terms are such..",
+ 	 },
+   "results":{
+   	"exists": "true",
+	"count": 1,
+	"records": []
+   }
+}
 
 ```
