@@ -44,7 +44,6 @@ this is work in progress....
 	"queryId" : <identifier>,
 	"queryLabel" : <identifier>,
 	"maximumNumberOfResultsRequested" : <limits number of results returned; is be superseded by host limits>,
-	"queryResultLevel" :  < this is optional, to limit the host, values can be: "Exists"|"Counts"|"Records" >,
 	"submitter": {
 	    "id" : < id > (optional),
 		"name" : < First [Middle] Last >,
