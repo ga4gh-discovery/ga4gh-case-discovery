@@ -35,7 +35,6 @@ The `query` can be represented by,
 	"queryId" : 1,
 	"queryLabel" : "search by gene name",
 	"maximumNumberOfResultsRequested" : 10,
-	"queryResultLevel" :  "yes-no",
 	"submitter": {,
 		"name" : "John Genome",
 		"email" : "johh@genome.org",
@@ -49,8 +48,9 @@ The `query` can be represented by,
   },
   "query": {
     "queryOperator": "ALL",
-    "components": [ "genomicFeature"
-    			 .. ]
+    "components": [
+    	
+    ]
   }
 }
 
