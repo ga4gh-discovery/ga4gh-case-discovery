@@ -50,12 +50,21 @@ The `query` can be represented by,
     "queryOperator": "ALL",
     "components": [
     	 {
-	 "ontology":<ontology of term. Example: HGNC>,
-	 "id":<id>,
-	 "label":<label>
+	 "ontology":"ENSEMBL",
+	 "id":"ENSG00000155657",
+	 "label":"TTN"
  	}
     ]
   }
 }
+
+```
+
+
+The `reply` would be,
+
+```
+
+
 
 ```
