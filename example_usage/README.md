@@ -49,7 +49,11 @@ The `query` can be represented by,
   "query": {
     "queryOperator": "ALL",
     "components": [
-    	
+    	 {
+	 "ontology":<ontology of term. Example: HGNC>,
+	 "id":<id>,
+	 "label":<label>
+ 	}
     ]
   }
 }
