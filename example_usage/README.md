@@ -4,20 +4,17 @@ These examples were gathered from the Discovery WS driver project community and 
 
 These are still in progress..more to come!
 
-## Use case example 1: Trio Analysis	
+## Use case example 1: Query on if a case exists with a given gene
 ```
 
 	Query:
-		Filter variants by AF (population and in-house databases) based on inheritance models (de novo dominant AF<0.001, autosomal recessive AF<002: compound heterozygous [het in each parent or in one parent and de novo on second allele], homozygous; possibly heterozygous AF<0.001*), high and medium impact variants, variant present in known human disease gene		
+		Do you have an entry with this gene?		
 	
 	Answer format:
-		Subset of variants for phenotype-genotype assessment	
-	
-	Context:
-		Private VCF	
-	
+		yes | no	
+
 	Submitter: 
-		Lisa Ewans (via Marcel Dinger @ Garvan)		
+		Nara Sobreira (GeneMatcher, Johns Hopkins)		
 																					
 ```
 
@@ -36,7 +33,7 @@ The `query` can be represented by,
   
   "queryMetadata" : {
 	"queryId" : 1,
-	"queryLabel" : "search by allele frequencies",
+	"queryLabel" : "search by gene name",
 	"maximumNumberOfResultsRequested" : 10,
 	"queryResultLevel" :  "Records",
 	"submitter": {,
