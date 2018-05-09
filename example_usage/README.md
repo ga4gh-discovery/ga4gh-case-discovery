@@ -47,14 +47,30 @@ The `query` can be represented by,
 	}
   },
   "query": {
-    "queryOperator": "ALL",
     "components": [
     	 {
+	 "id":"A"
 	 "ontology":"ENSEMBL",
 	 "id":"ENSG00000155657",
 	 "label":"TTN"
+ 	},
+	{
+	 "id":"B"
+	 "ontology":"ENSEMBL",
+	 "id":"ENSG00000155657",
+	 "label":"APOE"
+ 	},
+	{
+	 "id":"C"
+	 "ontology":"ENSEMBL",
+	 "id":"ENSG00000155657",
+	 "label":"NDKF"
  	}
     ]
+  }
+  "logic":{
+  	"AND": [A,B]
+	"OR":[C]
   }
 }
 
