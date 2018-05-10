@@ -124,13 +124,15 @@ this is work in progress....
 * Of these, the `variant` structure would be: 
 	```
 		{
-		"id":<"id>,
+		"type": "variant",
+		"id":"",
 		"assembly": "",
 		"referenceName": "",
 		"start":"",
 		"end": "",
-		"referenceBases": ",
-		"alternateBases": ""
+		"referenceBases": "",
+		"alternateBases": "",
+		"description": ""
 		}
 	```
 
@@ -138,7 +140,7 @@ this is work in progress....
 	
 	```
 		{
-		 "type": < gene | feature | ..>,
+		 "type": < gene | feature | zygosity | ..>,
 		 "ontology": <name of ontology used example: HPO will be supported initially >,
 		 "id": <id based on the ontology>,
 		 "description": <human readable description>
