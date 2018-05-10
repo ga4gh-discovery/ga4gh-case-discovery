@@ -60,8 +60,11 @@ this is work in progress....
 	}
   },
   "query": {
-    "queryOperator": <will be applied to all of the components. Initially will be only: AND | OR >,
-    "components": [ "genomicFeature" | "feature" | .. ]
+    "queryOperator": { 
+    	"ALL":[ <a list of components that ALL have to be `true` in results> ],
+	"ANY":[ <a list of components of which ANY can to be `true` in results> ],
+    }, 
+    "components": [ will be different types of components. ex: gene | feature | variant | .. ]
   }
 }
 ```
@@ -87,112 +90,64 @@ this is work in progress....
 
 * The query structure has an `queryOperator` field, and a `components` field
 
-* The `queryOperator` is `ALL` and `ANY` and is applied to all `components`.
+* The `queryOperator` is a structure that applies boolean logic to individual `components`. Initially will only support `ALL` and `ANY`.
 
-* `queryOperator`  `ALL` implies: All the components have to be `TRUE` in results.
+* `queryOperator`  field `ALL` list implies: ALL the component IDs in the list have to be `TRUE` in results.
 
-* `queryOperator`  `ANY` implies: ANY of the components can to be `TRUE` in results. This `ANY` is similar to a `OR`
+* `queryOperator`  `ANY` implies: ANY of the component IDs in the list can be `TRUE` in results. This `ANY` is similar to a `OR`
 
-* `components` initially supported are:  `genomicFeature` (genotype related), `feature` (phenotype related).
+* `components` will be of different types descriptions of genotypes of phenotypes that can be used to find results using standard ontologies.
 
 * Each `component` has,
-	* A `type` to specify the domain (for example genotype, phenotype,..)
-	* A domain specific (for example genotype would be different from phenootypes) query criteria. We will initially support `genomicFeature` and `feature` types.
-	* A list of `filters` to apply to domain specific general query
-	* An `filterOperator` to apply to filters. Initially these will be `ALL` (all filters have to be `TRUE` or `ANY` (where any of the filters can be `TRUE` in to be added to results)
-	* For example,
+	* A `type` to specify the domain (for example 'gene', 'feature', 'variant', etc,..)
+	* A `id` that will allow it to have boolean logic applied to it in the `queryOperator` field.
+	* A domain specific (for example genotype would be different from phenootypes) query criteria. 
+
+
+
+## Specifications for the `components` structure
+
+* Initially supported components will be,
+	` 
+	  gene 
+	  annotation
+	  alleleFrequency
+	  consequence
+	  deleteriousnessPrediction
+	  variant
+	  zygosity
+	  transcript
+	  inheritanceMode
+	  feature
+	  `
+	
+* Of these, the `variant` structure would be: 
+	```
+		{
+		"id":<"id>,
+		"assembly": "",
+		"referenceName": "",
+		"start":"",
+		"end": "",
+		"referenceBases": ",
+		"alternateBases": ""
+		}
+	```
+
+* The others,
 	
 	```
 		{
-		 "type": < genomicFeature | feature | ..>,
+		 "type": < gene | feature | ..>,
 		 "ontology": <name of ontology used example: HPO will be supported initially >,
 		 "id": <id based on the ontology>,
-		 "filterOperator": < ALL | ANY >,
-		 "filters": [ < a list of applicable filters > ],
+		 "decription": <human readable description>
 		}
 	```
 
 
-## Specification for the `genomicFeature` structure
-
-* `genomicFeature` query type will initially only be `inheritanceMode ` with filters to refine results further.
-
-* `inheritanceMode ` can have the following `filters`
-
-	` annotation | alleleFrequency | consequence | deleteriousnessPrediction | variant | zygosity | transcript `
-	
-
-## Specification for the `feature` structure
-
-* A `feature` field is a list of feature and filters to apply to that feature, combinations relevant to phenotypes
-
-	```
-		{
-		 "type": < feature >,
-		 "ontology": <name of ontology used example: HPO will be supported initially >,
-		 "id": <id based on the ontology>,
-		 "filterOperator": < ALL | ANY >,
-		 "filters": [ < a list of applicable filters > ],
-		}
-	```
-
-### Supported `filterOperator`
-
-* Will be applied to whole list of filters
-
-```
-"filterOperator": <"ALL" | "ANY" | "LT" | "GT">
-```
 
 
-### Specification for the `filters` structure
 
- * A filter has the following structure
- 
- ```
-{
-"ontology": <name of ontology/source used example: HPO or HGNC or ENSG etc>,
-"annotation": <type example: annotation or gene>,
-"terms" : [ <a list of terms. This could HPO, gene IDs etc. Each has a "id" and "label" field>]
-}
- ```
-
-### Specification for the `term` structure
-
-* `gene`: the `id` must be an exact match
-	```
-	{
-	"ontology":<ontology of term. Example: HGNC>,
-	"id":<id>,
-	"label":<label>
-	}
-	```
-* `zygosity`
-	```
-	{
-	"ontology":<ontology of term. Example: SO code>,
-	"id":<id>,
-	"label":<label>
-	}
-	```
-* `consequence`
-	```
-	{
-	"ontology":<ontology of term. Example: SO code>,
-	"id":<id>,
-	"label":<label>
-	}
-	```
-* `variant`: 
-```
-	{
-	"assembly": "",
-	"referenceName": "",
-	"start":"",
-	"end": "",
-	"referenceBases": ",
-	"alternateBases": ""
-	}
-```
 	
 
