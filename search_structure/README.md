@@ -141,7 +141,7 @@ this is work in progress....
 		 "type": < gene | feature | ..>,
 		 "ontology": <name of ontology used example: HPO will be supported initially >,
 		 "id": <id based on the ontology>,
-		 "decription": <human readable description>
+		 "description": <human readable description>
 		}
 	```
 
