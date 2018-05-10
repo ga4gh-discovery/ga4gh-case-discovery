@@ -108,17 +108,16 @@ this is work in progress....
 ## Specifications for the `components` structure
 
 * Initially supported components will be,
-	` 
-	  gene 
-	  annotation
-	  alleleFrequency
-	  consequence
-	  deleteriousnessPrediction
-	  variant
-	  zygosity
-	  transcript
-	  inheritanceMode
-	  feature
+  * gene 
+  * annotation
+  * alleleFrequency
+  * consequence
+  * deleteriousnessPrediction
+  * variant
+  * zygosity
+  * transcript
+  * inheritanceMode
+  * feature
 	  `
 	
 * Of these, the `variant` structure would be: 
