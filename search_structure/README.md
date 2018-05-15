@@ -100,7 +100,7 @@ this is work in progress....
 
 * Each `component` has,
 	* A `type` to specify the domain (for example 'gene', 'feature', 'variant', etc,..)
-	* A `id` that will allow it to have boolean logic applied to it in the `queryOperator` field.
+	* A `component_id` that will allow it to have boolean logic applied to it in the `queryOperator` field.
 	* A domain specific (for example genotype would be different from phenootypes) query criteria. 
 
 
@@ -124,6 +124,7 @@ this is work in progress....
 	
 	```
 		{
+		 "component_id": < unique ID for this component >,
 		 "type": < gene | feature | zygosity | ..>,
 		 "ontology": <name of ontology used example: HPO | ENSEMBL | HGNC, hgnc.c | hgnc.p>,
 		 "id": <id based on the ontology>,
