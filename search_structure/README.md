@@ -120,27 +120,12 @@ this is work in progress....
   * feature
 	  `
 	
-* Of these, the `variant` structure would be: 
-	```
-		{
-		"type": "variant",
-		"id":"",
-		"assembly": "",
-		"referenceName": "",
-		"start":"",
-		"end": "",
-		"referenceBases": "",
-		"alternateBases": "",
-		"description": ""
-		}
-	```
-
-* The others,
+* The structure of component would be,
 	
 	```
 		{
 		 "type": < gene | feature | zygosity | ..>,
-		 "ontology": <name of ontology used example: HPO will be supported initially >,
+		 "ontology": <name of ontology used example: HPO | ENSEMBL | HGNC, hgnc.c | hgnc.p>,
 		 "id": <id based on the ontology>,
 		 "description": <human readable description>
 		}
