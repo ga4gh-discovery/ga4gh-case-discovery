@@ -47,9 +47,12 @@ The `query` can be represented by,
 	}
   },
   "query": {
-    "queryOperator": "ALL",
+    "queryOperator": {
+    	"ALL":["A"]
+    }
     "components": [
     	 {
+	 "component_id": "A",
 	 "ontology":"ENSEMBL",
 	 "id":"ENSG00000155657",
 	 "label":"TTN"
