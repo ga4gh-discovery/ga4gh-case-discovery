@@ -135,7 +135,7 @@ The `query` can be represented by,
     "components": [
     	 {
 	 "component_id": "A",
-	 "ontology":"ENSEMBL",
+	 "ontology":"ensembl",
 	 "id":"ENSG00000161217",
 	 "description":"PCYT1A"
  	},
