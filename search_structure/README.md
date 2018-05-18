@@ -126,7 +126,7 @@ this is work in progress....
 		{
 		 "component_id": < unique ID for this component >,
 		 "type": < gene | feature | zygosity | ..>,
-		 "ontology": <name of ontology used example: HPO | ENSEMBL | HGNC, hgnc.c | hgnc.p>,
+		 "ontology": <name of ontology used example: hpo | ensembl | hgnc >,
 		 "id": <id based on the ontology>,
 		 "description": <human readable description>
 		}
