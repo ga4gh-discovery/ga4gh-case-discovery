@@ -173,3 +173,21 @@ construction in progress..
 }
 
 ```
+
+
+
+
+## Use case example 3: LT boolean
+```
+
+	Query:
+		Do you have nonsense, homozygous variants with MAF <0.5%?		
+	
+	Answer format:
+		yes | no
+
+	Submitter: 
+		Nara Sobreira (GeneMatcher, Johns Hopkins)		
+																					
+```
+
