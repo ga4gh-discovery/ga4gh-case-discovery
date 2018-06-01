@@ -41,3 +41,17 @@ this is work in progress...
    }
 }
 ```
+
+
+
+
+## Result component types
+
+```
+{
+  "type":"url",
+  "value: <url>
+  ....
+  ....
+}
+```
