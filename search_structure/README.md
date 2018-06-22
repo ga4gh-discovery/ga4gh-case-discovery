@@ -141,45 +141,54 @@ this is work in progress....
 }
 ```
 
-### Specification for the `meta` structure
+### Specification for the `meta` structure (required)
 
-* This is a required section which contains metadata about the request.
-
-
-### Specification for the `meta`/`request` structure
-
-* This is a required section which contains the list of components included in the request along with the version number of each of these components.
-
-* (What if there are components here which are not in the search? And vice-versa? What if the version is missing?)
+* This section which contains metadata about the request.
 
 
-### Specification for the `requires` structure
+### Specification for the `meta`/`request` structure (required)
 
-* This is a required section which contains any requirements for the search.
+* This section which contains the list of components included in the request along with the version number of each of these components.
 
-
-### Specification for the `requires`/`response` structure
-
-* This is a required section which contains the list of components required in the response along with minimal version for each of the components.
+* Having a component listed here does not mean it is required in the `components` section, however it is required to have a version number for a component if it is present in the `components` section.
 
 
-### Specification for the `components` structure (see `meta`/`request`/`components` above)
+### Specification for the `requires` structure (required)
 
-* This contains a list of the components of the search
-
-
-### Specification for the `components`/`queryIdentification` structure
-
-* The query identification and query label.
-
-* The query identification should be unique for tracking purposes.
-
-* (The query identification will be needed if we want to have some sort of callback for long running searches)
+* This section which contains any requirements for the search.
 
 
-### Specification for the `components`/`disclaimer` structure
+### Specification for the `requires`/`response` structure (required)
 
-* The legal disclaimers, and terms.
+* This section which contains the list of components required in the response along with minimal version for each of the components.
+
+* Initially supported components will be:
+  * exists
+  * count
+  * phenopackets
+  * mme
+  * cloud-dos
+  * any GA4GH patient data model
+
+
+### Specification for the `components` structure (required, see `meta`/`request`/`components` above)
+
+* This section which contains a list of the components for the search.
+
+
+### Specification for the `components`/`queryIdentification` structure (required)
+
+* This section which contains the query identification (required) and query label (optional) for the search.
+
+* The query identification is required to be a unique identifier for the search it is associated with for:
+  * Tracking the search for logging.
+  * Tracking the search should the search required a callback if it will run for an extended period of time.
+  * (The idea of supporting callbacks was raised in MME 1.x and dismissed as too onerous)
+
+
+### Specification for the `components`/`disclaimer` structure (optional)
+
+* The legal disclaimers and terms of use.
 
 
 ### Specification for the `components``patientDescription` structure (optional)
@@ -193,17 +202,17 @@ this is work in progress....
 * (This needs work)
 
 
-### Specification for the `components`/`submitter` structure
+### Specification for the `components`/`submitter` structure (optional)
 
 * The submitter for this search.
 
 
-### Specification for the `components`/`contact` structure
+### Specification for the `components`/`contact` structure  (optional)
 
 * The contact for this search if different from the submitter.
 
 
-### Specification for the `components`/`search` structure
+### Specification for the `components`/`search` structure (required)
 
 * The search components for this search.
 
@@ -228,9 +237,15 @@ this is work in progress....
 * (Does version numbering resolve down to the search components? This is not defined in the `meta` section...).
 
 
-### Specification for the `-or`/`-and` structure
+### Specification for the `-or`/`-and` structure (optional)
 
 * The section specifies how the search components are combined as a boolean search.
+
+
+
+
+
+
 
 
 
