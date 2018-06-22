@@ -162,6 +162,14 @@ this is work in progress....
 
 * This section which contains the list of components required in the response along with minimal version for each of the components.
 
+* Initially supported components will be,
+  * exists
+  * count
+  * phenopackets
+  * mme
+  * cloud-dos
+  * any GA4GH patient data model
+
 
 ### Specification for the `components` structure (required, see `meta`/`request`/`components` above)
 
