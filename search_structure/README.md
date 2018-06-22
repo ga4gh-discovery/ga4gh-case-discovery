@@ -12,103 +12,207 @@ this is work in progress....
 
 ```
 {
-  "target-api": <semantic version of API  this query is formatted for>,
-  "disclaimer" : {
-  	"version": "<semantic version>",
-  	"text": "Disclaimer text...",
-  	"terms" : "Terms text..."
-  },
-  "patientDescription" : {
-	 “provenance”:{	
-			“methods”:[
-				  {
-					“name”:< name of method used to generate this patient data as string>,
-					“version”:<semantic version of method used to generate data>,
-					“documentation”:<string pointing to github | publication | other>,
-				    },
-				],
-			“data”:[
-				{
-					“name”:<name of dataset that was used in this patient data as a string>,
-					“version”:<semantic version of data used>,
-					“institution”:<institution data is hosted on>	
-				},
-				]
-	  },
-	"ontology" : <supported types are: phenoPackets | mme | beacon | fhir >,
-	"version" : <semantic version of ontology>,
-	"contentType" : <content type of ontology, for example: "Content-Type: application/vnd.ga4gh.matchmaker.v1.0+json">, 
-	"patient": < description of patient in ontology specified >
-  },
-  "queryMetadata" : {
-	"queryId" : <identifier>,
-	"queryLabel" : <identifier>,
-	"maximumNumberOfResultsRequested" : <limits number of results returned; is be superseded by host limits>,
-	"submitter": {
-	    "id" : < id > (optional),
-		"name" : < First [Middle] Last >,
-		"email" : < email >,
-		"institution" : < name of institution > , 
-		"urls" : < URLs > (optional)
-	},
-	"contact" : {
-		"id" : < ContactPersonID > (optional),
-		"name" : < First [Middle] Last >,
-		"email" : <email>,
-		"institution" : < name of institution >, 
-		"urls" : < URLs > (optional)
-	}
-  },
-  "query": {
-    "queryOperator": { 
-    	"ALL":[ <a list of components that ALL have to be `true` in results> ],
-	"ANY":[ <a list of components of which ANY can to be `true` in results> ],
-    }, 
-    "components": [ will be different types of components. ex: gene | feature | variant | .. ]
-  }
+    "meta": {
+        "request": {
+            "components": {
+                "queryIdentification": "1.0.0",
+                "disclaimer": "1.0.0",
+                "patientDescription": "1.0.0",
+                "submitter": "1.0.0",
+                "contact": "1.0.0",
+                "search": "1.0.0",
+                "-and": "1.0.0",
+                "-or": "1.0.0"
+            }
+        }
+    },
+
+    "requires": {
+        "response": {
+            "components": [{
+                "exists": "^1",
+                "count": "^1"
+            }]
+        }
+    },
+
+    "components": {
+
+        "queryIdentification" : {
+            "queryID" : "<identifier>",
+            "queryLabel" : "<identifier>"
+        },
+
+        "disclaimer" : {
+            "text": "Disclaimer text...",
+            "terms" : "Terms text..."
+        },
+
+        "patientDescription" : {
+            "provenance":{
+                "methods":[{
+                    "name": "< name of method used to generate this patient data as string>",
+                    "version": "<semantic version of method used to generate data>",
+                    "documentation": "<string pointing to github | publication | other>"
+                }],
+                "data":[{
+                    "name": "<name of dataset that was used in this patient data as a string>",
+                    "version": "<semantic version of data used>",
+                    "institution": "<institution data is hosted on>"
+                }]
+            },
+            "ontology" : "<supported types are: phenoPackets | mme | beacon | fhir>",
+            "version" : "<semantic version of ontology>",
+            "contentType" : "<content type of ontology, for example: 'Content-Type: application/vnd.ga4gh.matchmaker.v1.0+json'">",
+            "patient": "<description of patient in ontology specified>"
+        },
+        "submitter": {
+            "id" : "< id > (optional)",
+            "name" : "< First [Middle] Last >",
+            "email" : "< email >",
+            "institution" : "< name of institution >",
+            "urls" : "< URLs > (optional)"
+        },
+
+        "contact" : {
+            "id" : "< ContactPersonID > (optional)",
+            "name" : "< First [Middle] Last >",
+            "email" : "<email>",
+            "institution" : "< name of institution >",
+            "urls" : "< URLs > (optional)"
+        },
+
+        "search": [
+            {
+                "componentID": "< unique ID for this component >",
+                "type": "gene",
+                "source": "HGNC",
+                "id": "FOOBAR",
+                "description": "<human readable description>"
+            },
+            {
+                "componentID": "< unique ID for this component >",
+                "type": "gene",
+                "source": "Ensembl",
+                "id": "ENSG00000000",
+                "operator": "EQ",
+                "description": "<human readable description>"
+            },
+            {
+                "componentID": "< unique ID for this component >",
+                "type": "variant",
+                "referenceName": "13",
+                "start": 32936732,
+                "referenceBases": "G",
+                "alternateBases": "C",
+                "assemblyId": "GRCh37",
+                "description": "<human readable description>"
+            },
+            {
+                "componentID": "< unique ID for this component >",
+                "type": "feature",
+                "source": "HPO",
+                "id": "HP:0003577",
+                "description": "<human readable description>"
+            },
+            {
+                "componentID":" < unique ID for this component >",
+                "type": "alleleFrequency",
+                "source": "ExAC",
+                "population": "ALL",
+                "operator": "LT",
+                "value": 0.01,
+                "description": "<human readable description>"
+            }
+        ],
+
+        "-or": [
+            {
+                "-and": {
+                    "componentID": [
+                        "A",
+                        "B"
+                    ]
+                },
+                "componentID": "C"
+            }
+        ]
+    }
 }
 ```
 
-### Specification for the `disclaimer` structure
+### Specification for the `meta` structure
 
-* The legal disclaimers, their versions, from querier
+* This is a required section which contains metadata about the request.
 
-### Specification for the `patientDescription` structure (optional)
+
+### Specification for the `meta`/`request` structure
+
+* This is a required section which contains the list of components included in the request along with the version number of each of these components.
+
+* (What if there are components here which are not in the search? And vice-versa? What if the version is missing?)
+
+
+### Specification for the `requires` structure
+
+* This is a required section which contains any requirements for the search.
+
+
+### Specification for the `requires`/`response` structure
+
+* This is a required section which contains the list of components required in the response along with minimal version for each of the components.
+
+
+### Specification for the `components` structure (see `meta`/`request`/`components` above)
+
+* This contains a list of the components of the search
+
+
+### Specification for the `components`/`queryIdentification` structure
+
+* The query identification and query label.
+
+* The query identification should be unique for tracking purposes.
+
+* (The query identification will be needed if we want to have some sort of callback for long running searches)
+
+
+### Specification for the `components`/`disclaimer` structure
+
+* The legal disclaimers, and terms.
+
+
+### Specification for the `components``patientDescription` structure (optional)
 
 * This is an optional section to support usage in networks such as the Matchmaker Exchange that require a backing patient to be offered with the query.
 
 * `provenance` is an optional section that is in-place to support the documentation of `methods` and `data` that were used to generate the patient data that is being offered.
 
-* The structure used to describe the patient can be of multiple multiple ontologies or networks such as MME, Beacon, and extensible to others as needed. 
+* The structure used to describe the patient can be of multiple multiple ontologies or networks such as MME, Beacon, and extensible to others as needed.
 
-### Specification for the `queryMetadata` structure
-
-* This define details of the query and the fields are self-explanatory and `required`
+* (This needs work)
 
 
-### Specification for the `query` structure
+### Specification for the `components`/`submitter` structure
 
-* The query structure has an `queryOperator` field, and a `components` field
-
-* The `queryOperator` is a structure that applies boolean logic to individual `components`. Initially will only support `ALL` and `ANY`.
-
-* `queryOperator`  field `ALL` list implies: ALL the component IDs in the list have to be `TRUE` in results.
-
-* `queryOperator`  `ANY` implies: ANY of the component IDs in the list can be `TRUE` in results. This `ANY` is similar to a `OR`
-
-* `components` will be of different types descriptions of genotypes of phenotypes that can be used to find results using standard ontologies.
-
-* Each `component` has,
-	* A `type` to specify the domain (for example 'gene', 'feature', 'variant', etc,..)
-	* A `component_id` that will allow it to have boolean logic applied to it in the `queryOperator` field.
-	* A domain specific (for example genotype would be different from phenootypes) query criteria. 
+* The submitter for this search.
 
 
+### Specification for the `components`/`contact` structure
 
-## Specifications for the `components` structure
+* The contact for this search if different from the submitter.
+
+
+### Specification for the `components`/`search` structure
+
+* The search components for this search.
+
+* Each search component will have a unique component ID (unique within the scope of this search request).
+
+* Each search component will have a type which determines what other fields are present. The search component illustrate a sample of components and it not meant to be exhausting.
 
 * Initially supported components will be,
-  * gene 
+  * gene
   * annotation
   * alleleFrequency
   * consequence
@@ -118,23 +222,16 @@ this is work in progress....
   * transcript
   * inheritanceMode
   * feature
-	  `
-	
-* The structure of component would be,
-	
-	```
-		{
-		 "component_id": < unique ID for this component >,
-		 "type": < gene | feature | zygosity | ..>,
-		 "ontology": <name of ontology used example: hpo | ensembl | hgnc >,
-		 "id": <id based on the ontology>,
-		 "description": <human readable description>
-		}
-	```
+
+* (Each search component needs to be specified, the idea is these can be extended over times).
+
+* (Does version numbering resolve down to the search components? This is not defined in the `meta` section...).
+
+
+### Specification for the `-or`/`-and` structure
+
+* The section specifies how the search components are combined as a boolean search.
 
 
 
-
-
-	
 
