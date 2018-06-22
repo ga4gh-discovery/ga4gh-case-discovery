@@ -6,52 +6,87 @@ this is work in progress...
 
 ```
 {
-  "reply": {
-    “provenance”:{
-		“api”:{
-			“version”:<what version of API generated this>,
-		}	
-		“methods”:[
-			  {
-				“name”:<method name as string>,
-				“version”:<semantic version of method used to generate data>,
-				“documentation”:<string pointing to github | publication | other>,
-			    },
-			],
-		“data”:[
-			{
-				“name”:<name of dataset>,
-				“version”:<semantic version of data used>,
-				“institution”:<institution data is hosted on>	
-			},
-			]
-  	},
-   "disclaimer" : {
-		"version": "<semantic version>"
-		"text": "Disclaimer text...",
-		"terms" : : "Terms text...",
- 	 },
-   "results":{
-   	"exists": <true | false>,
-	"count": <numeric>,
-	"records": [{
-		"ontology": < phenopackets | mme | cloud-dos | any GA4GH patient data model >,
-		"result": <result in one of the above ontologies>
-    	},]
-   }
+    "meta": {
+        "response": {
+            "collectionComponents": {
+                "queryIdentification": "1.0.0",
+                "disclaimer": "1.0.0",
+                "exists": "1.0.0",
+                "count": "1.0.0"
+            }
+        },
+
+        "request": {
+            "componentsUsed": [ "< componentID >", "< componentID >"]
+        },
+
+        "provenance": {
+            "???": "???"
+        }
+    },
+    "collectionComponents": {
+
+        "queryIdentification" : {
+            "queryID" : "<identifier>"
+        },
+
+        "disclaimer" : {
+            "text": "Disclaimer text...",
+            "terms" : "Terms text..."
+        },
+
+        "exists": {
+            "assertion": true
+        },
+        "count": 23
+    }
 }
-```
 
 
+### Specification for the `meta` structure (required)
+
+* This section which contains metadata about the request.
 
 
-## Result component types
+### Specification for the `meta`/`response` structure (required)
 
-```
-{
-  "type":"url",
-  "value: <url>
-  ....
-  ....
-}
-```
+* This section which contains the list of collection components included in the response along with the version number of each of these collection components.
+
+* Having a collection component listed here does not mean it is required in the `collectionComponents` section, however it is required to have a version number for a collection component if it is present in the `collectionComponents` section.
+
+
+### Specification for the `meta`/`request` structure (optional)
+
+* This section list the component IDs of the components used to fulfill the search request.
+
+
+### Specification for the `meta`/`provenance` structure (optional)
+
+* ???
+
+
+### Specification for the `collectionComponents` structure (required)
+
+* This section which contains a list of the collection components for the response.
+
+
+### Specification for the `collectionComponents`/`queryIdentification` structure (required)
+
+* This section which contains the query identification that was submitted with the search request (required).
+
+
+### Specification for the `collectionComponents`/`disclaimer` structure (optional)
+
+* The legal disclaimers and terms of use.
+
+
+### Specification for the `collectionComponents`/`*` structure (optional)
+
+* Initially supported components will be:
+  * exists
+  * count
+  * phenopackets
+  * mme
+  * cloud-dos
+  * any GA4GH patient data model
+
