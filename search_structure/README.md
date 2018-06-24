@@ -163,7 +163,7 @@ This is work in progress....
 * Having a component listed here does not mean it is required in the `components` section, however it is required to have a version number for a component if it is present in the `components` section.
 
 * Questions:
- * Need to reconcile this with version number in the URL
+  * Need to reconcile this with version number in the URL
 
 
 ### Specification for the `requires` structure (required)
@@ -176,7 +176,7 @@ This is work in progress....
 * Contains the list of components required in the response along with minimal version for each of the components.
 
 * Questions:
- * Do we want to support callbacks in searches, tell/allow the host to run the search offline and return the results at a later date?
+  * Do we want to support callbacks in searches, tell/allow the host to run the search offline and return the results at a later date?
 
 
 ### Specification for the `components` structure (required, see `meta`/`request`/`components` above)
@@ -272,5 +272,3 @@ This is work in progress....
 ### Specification for the `-or`/`-and` structure (optional)
 
 * The section specifies how the search components are combined as a boolean search.
-
-
