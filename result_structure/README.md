@@ -102,7 +102,7 @@ This is work in progress...
 
 ### Specification for the `collectionComponents`/`*` structure (optional)
 
-* Initially supported components will be:
+* Initially supported collection components will be:
   * exists
   * counts
   * records
@@ -114,6 +114,7 @@ This is work in progress...
   * any GA4GH patient data model
 
 * Questions:
+  * Do we want to be able to return arbitrary collection components, for example _mme_ was requested but we only return _exists_?
   * Do we want to require support for a minimal list of components?
   * What is the process for adding components?
   * Do we want to support defined sets components for certain communities (MME)?
