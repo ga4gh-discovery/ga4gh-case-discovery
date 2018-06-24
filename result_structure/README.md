@@ -119,4 +119,3 @@ This is work in progress...
   * What is the process for adding components?
   * Do we want to support defined sets components for certain communities (MME)?
   * Do we allow custom components?
-
