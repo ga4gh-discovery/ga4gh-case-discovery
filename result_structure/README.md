@@ -12,7 +12,8 @@ This is work in progress...
                 "queryIdentification": "1.0.0",
                 "disclaimer": "1.0.0",
                 "exists": "1.0.0",
-                "counts": "1.0.0"
+                "counts": "1.0.0",
+                "records": "1.0.0"
             }
         },
 
@@ -41,8 +42,12 @@ This is work in progress...
 
         "counts": {
             "found": 23,
-            "returned": 23
-        }
+            "returned": 10
+        },
+
+        "records": [
+
+        ]
     }
 }
 ```
@@ -100,17 +105,17 @@ This is work in progress...
 * Initially supported components will be:
   * exists
   * counts
+  * records
+
+* Initially supported `records` will be:
   * phenopackets
   * mme
   * cloud-dos
   * any GA4GH patient data model
 
 * Questions:
-  * Do we want a results count limit?
-  * Do we want to support offsets in retrievals (start and limit)?
   * Do we want to require support for a minimal list of components?
   * What is the process for adding components?
   * Do we want to support defined sets components for certain communities (MME)?
   * Do we allow custom components?
-
 
