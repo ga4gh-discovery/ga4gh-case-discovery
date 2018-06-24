@@ -4,11 +4,16 @@ This document describes a search request
 
 This is work in progress....
 
+
 ### Structure
 
 `HTTP POST` request to `<base_remote_url>/search`, with an `application/json` body with the following format:
 
-### Specification for query at a high level
+* Questions:
+ * Need to reconcile this with version number in the URL
+
+
+### Specification for query at a high level/
 
 ```
 {
@@ -31,7 +36,11 @@ This is work in progress....
         "response": {
             "components": [{
                 "exists": "^1",
-                "counts": "^1"
+                "counts": "^1",
+                "records": {
+                    "type": "mme",
+                    "version": "^1"
+                }
             }]
         }
     },
@@ -39,91 +48,91 @@ This is work in progress....
     "components": {
 
         "queryIdentification" : {
-            "queryID" : "<identifier>",
-            "queryLabel" : "<identifier>"
+            "queryID" : "< unique ID >",
+            "queryLabel" : "< human readable description >"
         },
 
         "disclaimer" : {
-            "text": "Disclaimer text...",
-            "terms" : "Terms text..."
+            "text": "< disclaimer text >",
+            "terms" : "< terms text >"
         },
 
         "patientDescription" : {
             "provenance":{
                 "methods":[{
-                    "name": "< name of method used to generate this patient data as string>",
-                    "version": "<semantic version of method used to generate data>",
-                    "documentation": "<string pointing to github | publication | other>"
+                    "name": "< name of method used to generate this patient data as a string >",
+                    "version": "< semantic version of method used to generate data >",
+                    "documentation": "< string pointing to github | publication | other >"
                 }],
                 "data":[{
-                    "name": "<name of dataset that was used in this patient data as a string>",
-                    "version": "<semantic version of data used>",
-                    "institution": "<institution data is hosted on>"
+                    "name": "< name of dataset that was used in this patient data as a string >",
+                    "version": "< semantic version of data used >",
+                    "institution": "< institution data is hosted on >"
                 }]
             },
-            "ontology" : "<supported types are: phenoPackets | mme | beacon | fhir>",
-            "version" : "<semantic version of ontology>",
-            "contentType" : "<content type of ontology, for example: 'Content-Type: application/vnd.ga4gh.matchmaker.v1.0+json'">",
-            "patient": "<description of patient in ontology specified>"
+            "ontology" : " <supported types are: phenoPackets | mme | beacon | fhir >",
+            "version" : "< semantic version of ontology >",
+            "contentType" : "< content type of ontology, for example: 'Content-Type: application/vnd.ga4gh.matchmaker.v1.0+json'" >",
+            "patient": "< description of patient in ontology specified >"
         },
 
         "submitter": {
-            "id" : "< id > (optional)",
-            "name" : "< First [Middle] Last >",
+            "id" : "< unique ID >",
+            "name" : "< first [middle] last >",
             "email" : "< email >",
             "institution" : "< name of institution >",
-            "urls" : "< URLs > (optional)"
+            "urls" : "< URLs >"
         },
 
         "contact" : {
-            "id" : "< ContactPersonID > (optional)",
-            "name" : "< First [Middle] Last >",
-            "email" : "<email>",
+            "id" : "< unique ID >",
+            "name" : "< first [middle] last >",
+            "email" : "< email >",
             "institution" : "< name of institution >",
-            "urls" : "< URLs > (optional)"
+            "urls" : "< URLs >"
         },
 
         "search": [
             {
-                "componentID": "< unique ID for this component >",
+                "componentID": "< unique ID for this component within the scope of this request >",
                 "type": "gene",
                 "source": "HGNC",
-                "id": "FOOBAR",
-                "description": "<human readable description>"
+                "id": "FGFR3",
+                "description": "< human readable description >"
             },
             {
-                "componentID": "< unique ID for this component >",
+                "componentID": "< unique ID for this component within the scope of this request >",
                 "type": "gene",
                 "source": "Ensembl",
                 "id": "ENSG00000000",
                 "operator": "EQ",
-                "description": "<human readable description>"
+                "description": "< human readable description >"
             },
             {
-                "componentID": "< unique ID for this component >",
+                "componentID": "< unique ID for this component within the scope of this request >",
                 "type": "variant",
                 "referenceName": "13",
                 "start": 32936732,
                 "referenceBases": "G",
                 "alternateBases": "C",
                 "assemblyId": "GRCh37",
-                "description": "<human readable description>"
+                "description": "< human readable description >"
             },
             {
-                "componentID": "< unique ID for this component >",
+                "componentID": "< unique ID for this component within the scope of this request >",
                 "type": "feature",
                 "source": "HPO",
                 "id": "HP:0003577",
-                "description": "<human readable description>"
+                "description": "< human readable description >"
             },
             {
-                "componentID":" < unique ID for this component >",
+                "componentID":" < unique ID for this component within the scope of this request >",
                 "type": "alleleFrequency",
                 "source": "ExAC",
                 "population": "ALL",
                 "operator": "LT",
                 "value": 0.01,
-                "description": "<human readable description>"
+                "description": "< human readable description >"
             }
         ],
 
@@ -131,11 +140,11 @@ This is work in progress....
             {
                 "-and": {
                     "componentID": [
-                        "A",
-                        "B"
+                        "< unique ID >,
+                        "< unique ID >"
                     ]
                 },
-                "componentID": "C"
+                "componentID": "< unique ID >"
             }
         ]
     }
@@ -177,6 +186,8 @@ This is work in progress....
 * Initially supported components will be:
   * exists
   * counts
+
+* The `records` contains the record type requested:
   * phenopackets
   * mme
   * cloud-dos
