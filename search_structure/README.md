@@ -66,6 +66,7 @@ this is work in progress....
             "contentType" : "<content type of ontology, for example: 'Content-Type: application/vnd.ga4gh.matchmaker.v1.0+json'">",
             "patient": "<description of patient in ontology specified>"
         },
+
         "submitter": {
             "id" : "< id > (optional)",
             "name" : "< First [Middle] Last >",
@@ -152,6 +153,9 @@ this is work in progress....
 
 * Having a component listed here does not mean it is required in the `components` section, however it is required to have a version number for a component if it is present in the `components` section.
 
+* Questions:
+ * Need to reconcile this with version number in the URL
+
 
 ### Specification for the `requires` structure (required)
 
@@ -162,6 +166,14 @@ this is work in progress....
 
 * This section which contains the list of components required in the response along with minimal version for each of the components.
 
+* Questions:
+ * Do we want to support callbacks in searches, tell/allow the host to run the search offline and return the results at a later date?
+
+
+### Specification for the `components` structure (required, see `meta`/`request`/`components` above)
+
+* This section which contains a list of the components for the search.
+
 * Initially supported components will be:
   * exists
   * count
@@ -170,10 +182,13 @@ this is work in progress....
   * cloud-dos
   * any GA4GH patient data model
 
-
-### Specification for the `components` structure (required, see `meta`/`request`/`components` above)
-
-* This section which contains a list of the components for the search.
+* Questions:
+  * Do we want a results count limit?
+  * Do we want to support offsets in retrievals (start and limit)?
+  * Do we want to require support for a minimal list of components?
+  * What is the process for adding components?
+  * Do we want to support defined sets components for certain communities (MME)?
+  * Do we allow custom components?
 
 
 ### Specification for the `components`/`queryIdentification` structure (required)
@@ -182,8 +197,9 @@ this is work in progress....
 
 * The query identification is required to be a unique identifier for the search it is associated with for:
   * Tracking the search for logging.
-  * Tracking the search should the search required a callback if it will run for an extended period of time.
-  * (The idea of supporting callbacks was raised in MME 1.x and dismissed as too onerous)
+
+* Questions:
+  * Do we want to support callbacks in searches, tell/allow the host to run the search offline and return the results at a later date?
 
 
 ### Specification for the `components`/`disclaimer` structure (optional)
@@ -199,7 +215,8 @@ this is work in progress....
 
 * The structure used to describe the patient can be of multiple multiple ontologies or networks such as MME, Beacon, and extensible to others as needed.
 
-* (This needs work)
+* Questions:
+  * This needs work.
 
 
 ### Specification for the `components`/`submitter` structure (optional)
@@ -220,7 +237,7 @@ this is work in progress....
 
 * Each search component will have a type which determines what other fields are present. The search component illustrate a sample of components and it not meant to be exhausting.
 
-* Initially supported components will be,
+* Initially supported components will be:,
   * gene
   * annotation
   * alleleFrequency
@@ -232,21 +249,15 @@ this is work in progress....
   * inheritanceMode
   * feature
 
-* (Each search component needs to be specified, the idea is these can be extended over times).
-
-* (Does version numbering resolve down to the search components? This is not defined in the `meta` section...).
+* Questions:
+  * Each search component needs to be specified.
+  * Do we want to require support for a minimal list of search components?
+  * What is the process for adding search components?
+  * Do we want to support defined sets search components for certain communities (MME)?
+  * Do we allow custom search components?
+  * Version numbering as defined above does not resolve to the search components, maybe it should?
 
 
 ### Specification for the `-or`/`-and` structure (optional)
 
 * The section specifies how the search components are combined as a boolean search.
-
-
-
-
-
-
-
-
-
-
