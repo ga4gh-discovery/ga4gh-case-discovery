@@ -2,7 +2,7 @@
 
 This document describes a result that is returned from a search request
 
-this is work in progress...
+This is work in progress...
 
 ```
 {
@@ -12,7 +12,7 @@ this is work in progress...
                 "queryIdentification": "1.0.0",
                 "disclaimer": "1.0.0",
                 "exists": "1.0.0",
-                "count": "1.0.0"
+                "counts": "1.0.0"
             }
         },
 
@@ -38,41 +38,56 @@ this is work in progress...
         "exists": {
             "assertion": true
         },
-        "count": 23
+
+        "counts": {
+            "found": 23,
+            "returned": 23
+        }
     }
 }
+```
 
 
 ### Specification for the `meta` structure (required)
 
-* This section which contains metadata about the request.
+* Contains metadata about the request.
 
 
 ### Specification for the `meta`/`response` structure (required)
 
-* This section which contains the list of collection components included in the response along with the version number of each of these collection components.
+* Contains the list of collection components included in the response along with the version number of each of these collection components.
 
 * Having a collection component listed here does not mean it is required in the `collectionComponents` section, however it is required to have a version number for a collection component if it is present in the `collectionComponents` section.
+
+* Questions:
+  * Do we want to call this `collectionComponents` or `components`?
 
 
 ### Specification for the `meta`/`request` structure (optional)
 
 * This section list the component IDs of the components used to fulfill the search request.
 
+* Questions:
+  * Do we want to add information on how the search was run?
+    * Were boolean operators used?
+    * How many results were found by each component ID (roll into `counts`)?
+
 
 ### Specification for the `meta`/`provenance` structure (optional)
 
-* ???
+* Questions:
+  * What is `provenance`?
+  * Does `provenance` belong here or in `collectionComponents`?
 
 
 ### Specification for the `collectionComponents` structure (required)
 
-* This section which contains a list of the collection components for the response.
+* This section contains a list of the collection components for the response.
 
 
 ### Specification for the `collectionComponents`/`queryIdentification` structure (required)
 
-* This section which contains the query identification that was submitted with the search request (required).
+* Contains the query identification that was submitted with the search request (required).
 
 
 ### Specification for the `collectionComponents`/`disclaimer` structure (optional)
@@ -84,9 +99,18 @@ this is work in progress...
 
 * Initially supported components will be:
   * exists
-  * count
+  * counts
   * phenopackets
   * mme
   * cloud-dos
   * any GA4GH patient data model
+
+* Questions:
+  * Do we want a results count limit?
+  * Do we want to support offsets in retrievals (start and limit)?
+  * Do we want to require support for a minimal list of components?
+  * What is the process for adding components?
+  * Do we want to support defined sets components for certain communities (MME)?
+  * Do we allow custom components?
+
 
