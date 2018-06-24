@@ -2,7 +2,7 @@
 
 This document describes a search request
 
-this is work in progress....
+This is work in progress....
 
 ### Structure
 
@@ -31,7 +31,7 @@ this is work in progress....
         "response": {
             "components": [{
                 "exists": "^1",
-                "count": "^1"
+                "counts": "^1"
             }]
         }
     },
@@ -144,12 +144,12 @@ this is work in progress....
 
 ### Specification for the `meta` structure (required)
 
-* This section which contains metadata about the request.
+* Contains metadata about the request.
 
 
 ### Specification for the `meta`/`request` structure (required)
 
-* This section which contains the list of components included in the request along with the version number of each of these components.
+* Contains the list of components included in the request along with the version number of each of these components.
 
 * Having a component listed here does not mean it is required in the `components` section, however it is required to have a version number for a component if it is present in the `components` section.
 
@@ -159,12 +159,12 @@ this is work in progress....
 
 ### Specification for the `requires` structure (required)
 
-* This section which contains any requirements for the search.
+* Contains any requirements for the search.
 
 
 ### Specification for the `requires`/`response` structure (required)
 
-* This section which contains the list of components required in the response along with minimal version for each of the components.
+* Contains the list of components required in the response along with minimal version for each of the components.
 
 * Questions:
  * Do we want to support callbacks in searches, tell/allow the host to run the search offline and return the results at a later date?
@@ -172,11 +172,11 @@ this is work in progress....
 
 ### Specification for the `components` structure (required, see `meta`/`request`/`components` above)
 
-* This section which contains a list of the components for the search.
+* Contains a list of the components for the search.
 
 * Initially supported components will be:
   * exists
-  * count
+  * counts
   * phenopackets
   * mme
   * cloud-dos
@@ -193,7 +193,7 @@ this is work in progress....
 
 ### Specification for the `components`/`queryIdentification` structure (required)
 
-* This section which contains the query identification (required) and query label (optional) for the search.
+* Contains the query identification (required) and query label (optional) for the search.
 
 * The query identification is required to be a unique identifier for the search it is associated with for:
   * Tracking the search for logging.
@@ -237,7 +237,7 @@ this is work in progress....
 
 * Each search component will have a type which determines what other fields are present. The search component illustrate a sample of components and it not meant to be exhausting.
 
-* Initially supported components will be:,
+* Initially supported components will be:
   * gene
   * annotation
   * alleleFrequency
