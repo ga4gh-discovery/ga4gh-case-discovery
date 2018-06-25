@@ -163,20 +163,8 @@ This is work in progress....
 * Having a component listed here does not mean it is required in the `components` section, however a component is required to have a version number if it is present in the `components` section.
 
 * Questions:
-  * Need to reconcile this with version number in the URL, since version numbers can be different for different components the version number in the URL should be removed.
-  * Version numbers are for components which is fine except for the search items in the `search` components, those would probably need to be versioned.
-
-```
-{
-    "meta": {
-        "request": {
-            "components": {
-                "search": "1.0.0",
-            }
-        }
-    }
-}
-```
+  * Need to reconcile this with version number in the URL, does that have any meaning any more?
+  * Version numbers are for components which is fine except for the search items in the `search` components, those would probably need to be versioned, for example:
 
 ```
 {
@@ -206,6 +194,7 @@ This is work in progress....
 * Questions:
   * Do we want to support callbacks in searches, tell/allow the `host` to run the search offline and return the results at a later date?
   * Do we want to allow the `host` to arbitrarily run the search offline and return the results at a later date?
+  * Do we want to specify scoring here?
 
 
 ### Specification for the `components` structure (required, see `meta`/`request`/`components` above)
@@ -223,14 +212,14 @@ This is work in progress....
   * any GA4GH patient data model
 
 * Questions:
-  * Do we want a records count limit?
-  * Do we want to support offsets in record retrievals (start and limit)?
-  * Do we want to require support for a minimal list of components?
+  * Do we want to be able to set a limit to the numbers of records returned?
+  * Do we want to support offsets in record returns (start and limit)?
+  * Do we want to require support for a minimal set of components?
   * Do we want to support multiple record types in a request?
   * What is the process for defining new record types?
   * Do we want to support defined sets of components/records for certain communities (MME)?
   * Do we allow _private_ components?
-  * Why is `components` an array of objects?
+  * Why is `components` an array of objects if there is only one object?
 
 
 ### Specification for the `components`/`queryIdentification` structure (required)
@@ -241,11 +230,15 @@ This is work in progress....
 
 * Questions:
   * See question about callbacks in `requires`/`response` above.
+  * Do we want to constrain the format of the query identifier?
 
 
 ### Specification for the `components`/`disclaimer` structure (optional)
 
 * The legal disclaimers and terms of use.
+
+* Questions:
+  * Do we want to mandate what happens to these?
 
 
 ### Specification for the `components``patientDescription` structure (optional)
@@ -264,10 +257,16 @@ This is work in progress....
 
 * The submitter for this search.
 
+* Questions:
+  * This feels very MME centric.
+
 
 ### Specification for the `components`/`contact` structure  (optional)
 
 * The contact for this search if different from the submitter.
+
+* Questions:
+  * This feels very MME centric.
 
 
 ### Specification for the `components`/`search` structure (required)
@@ -296,9 +295,8 @@ This is work in progress....
   * What is the process for adding search components?
   * Do we want to support defined sets search components for certain communities (MME)?
   * Do we allow custom search components?
-  * Version numbering as defined above does not resolve to the search components, maybe it should?
-  * `Operator` needs to be defined
-    * EQ, NEQ, LT, LTE, GT, GTE
+  * Version numbering as defined above does not resolve to the search components, see above?
+  * `Operator` needs to be defined, eg. EQ, NEQ, LT, LTE, GT, GTE.
   * Need to figure out `sources` vs. `id` and CURIEs (I think Chris Mungall was maintaining a list of CURIEs) ?
 
 
