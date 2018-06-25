@@ -2,56 +2,138 @@
 
 This document describes a result that is returned from a search request
 
-this is work in progress...
+This is work in progress...
 
 ```
 {
-  "reply": {
-    “provenance”:{
-		“api”:{
-			“version”:<what version of API generated this>,
-		}	
-		“methods”:[
-			  {
-				“name”:<method name as string>,
-				“version”:<semantic version of method used to generate data>,
-				“documentation”:<string pointing to github | publication | other>,
-			    },
-			],
-		“data”:[
-			{
-				“name”:<name of dataset>,
-				“version”:<semantic version of data used>,
-				“institution”:<institution data is hosted on>	
-			},
-			]
-  	},
-   "disclaimer" : {
-		"version": "<semantic version>"
-		"text": "Disclaimer text...",
-		"terms" : : "Terms text...",
- 	 },
-   "results":{
-   	"exists": <true | false>,
-	"count": <numeric>,
-	"records": [{
-		"ontology": < phenopackets | mme | cloud-dos | any GA4GH patient data model >,
-		"result": <result in one of the above ontologies>
-    	},]
-   }
+    "meta": {
+        "response": {
+            "collectionComponents": {
+                "queryIdentification": "1.0.0",
+                "disclaimer": "1.0.0",
+                "exists": "1.0.0",
+                "counts": "1.0.0",
+                "records": "1.0.0"
+            }
+        },
+
+        "request": {
+            "componentsUsed": [ "< componentID >", "< componentID >"]
+        },
+
+        "provenance": {
+            "???": "???"
+        }
+    },
+    "collectionComponents": {
+
+        "queryIdentification" : {
+            "queryID" : "<identifier>"
+        },
+
+        "disclaimer" : {
+            "text": "Disclaimer text...",
+            "terms" : "Terms text..."
+        },
+
+        "exists": {
+            "assertion": true
+        },
+
+        "counts": {
+            "found": 23,
+            "returned": 10
+        },
+
+        "records": [
+
+        ]
+    }
+}
+```
+
+
+### Specification for the `meta` structure (required)
+
+* Contains metadata about the request.
+
+
+### Specification for the `meta`/`response` structure (required)
+
+* Contains the list of collection components included in the response along with the version number of each of these collection components.
+
+* Having a collection component listed here does not mean it is required in the `collectionComponents` section, however it is required to have a version number for a collection component if it is present in the `collectionComponents` section.
+
+* Questions:
+  * Do we want to call this `collectionComponents` or `components`?
+  * Version numbers are for components which is fine except for the records items in the `records` components, those would probably need to be versioned, for example:
+
+```
+{
+    "meta": {
+        "request": {
+            "collectionComponents": {
+                "records": {
+                    "mme": "1.0.0"
+                },
+            }
+        }
+    }
 }
 ```
 
 
 
+### Specification for the `meta`/`request` structure (optional)
 
-## Result component types
+* This section list the component IDs of the components used to fulfill the search request.
 
-```
-{
-  "type":"url",
-  "value: <url>
-  ....
-  ....
-}
-```
+* Questions:
+  * Do we want to add information on how the search was run?
+    * Were boolean operators used?
+    * How many results were found by each component ID (roll into `counts`)?
+
+
+### Specification for the `meta`/`provenance` structure (optional)
+
+* Questions:
+  * What is `provenance`?
+  * Does `provenance` belong here or in `collectionComponents`?
+
+
+### Specification for the `collectionComponents` structure (required)
+
+* This section contains a list of the collection components for the response.
+
+
+### Specification for the `collectionComponents`/`queryIdentification` structure (required)
+
+* Contains the query identification that was submitted with the search request (required).
+
+
+### Specification for the `collectionComponents`/`disclaimer` structure (optional)
+
+* The legal disclaimers and terms of use.
+
+
+### Specification for the `collectionComponents`/`*` structure (optional)
+
+* Initially supported collection components will be:
+  * exists
+  * counts
+  * records
+
+* Initially supported `records` will be:
+  * phenopackets
+  * mme
+  * cloud-dos
+  * any GA4GH patient data model
+
+* Questions:
+  * Do we want to be able to return arbitrary collection components, for example _mme_ was requested but we only return _exists_?
+  * Do we want to require support for a minimal list of components?
+  * What is the process for adding components?
+  * Do we want to support defined sets components for certain communities (MME)?
+  * Do we allow custom components?
+  * Do we represent scoring/relevancy?
+
