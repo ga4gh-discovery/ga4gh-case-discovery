@@ -66,6 +66,22 @@ This is work in progress...
 
 * Questions:
   * Do we want to call this `collectionComponents` or `components`?
+  * Version numbers are for components which is fine except for the records items in the `records` components, those would probably need to be versioned, for example:
+
+```
+{
+    "meta": {
+        "request": {
+            "collectionComponents": {
+                "records": {
+                    "mme": "1.0.0"
+                },
+            }
+        }
+    }
+}
+```
+
 
 
 ### Specification for the `meta`/`request` structure (optional)
