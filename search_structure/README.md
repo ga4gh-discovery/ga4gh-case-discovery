@@ -160,11 +160,39 @@ This is work in progress....
 
 * Contains the list of components included in the request along with the version number of each of these components.
 
-* Having a component listed here does not mean it is required in the `components` section, however it is required to have a version number for a component if it is present in the `components` section.
+* Having a component listed here does not mean it is required in the `components` section, however a component is required to have a version number if it is present in the `components` section.
 
 * Questions:
-  * Need to reconcile this with version number in the URL
+  * Need to reconcile this with version number in the URL, since version numbers can be different for different components the version number in the URL should be removed.
+  * Version numbers are for components which is fine except for the search items in the `search` components, those would probably need to be versioned.
 
+```
+{
+    "meta": {
+        "request": {
+            "components": {
+                "search": "1.0.0",
+            }
+        }
+    }
+}
+```
+
+```
+{
+    "meta": {
+        "request": {
+            "components": {
+                "search": {
+                    "gene": "1.0.0",
+                    "type": "1.0.0",
+                    "feature": "1.0.0"
+                },
+            }
+        }
+    }
+}
+```
 
 ### Specification for the `requires` structure (required)
 
@@ -263,12 +291,15 @@ This is work in progress....
   * feature
 
 * Questions:
-  * Each search component needs to be specified.
+  * Each search component needs to be specified (I think Orion Buske has some good information for that)
   * Do we want to require support for a minimal list of search components?
   * What is the process for adding search components?
   * Do we want to support defined sets search components for certain communities (MME)?
   * Do we allow custom search components?
   * Version numbering as defined above does not resolve to the search components, maybe it should?
+  * `Operator` needs to be defined
+    * EQ, NEQ, LT, LTE, GT, GTE
+  * Need to figure out `sources` vs. `id` and CURIEs (I think Chris Mungall was maintaining a list of CURIEs) ?
 
 
 ### Specification for the `-or`/`-and` structure (optional)
