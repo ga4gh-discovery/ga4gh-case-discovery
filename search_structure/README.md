@@ -206,6 +206,30 @@ This is work in progress....
   * counts
 
 * The `records` contains the record type requested:
+=======
+
+* This section which contains metadata about the request.
+
+
+### Specification for the `meta`/`request` structure (required)
+
+* This section which contains the list of components included in the request along with the version number of each of these components.
+
+* Having a component listed here does not mean it is required in the `components` section, however it is required to have a version number for a component if it is present in the `components` section.
+
+
+### Specification for the `requires` structure (required)
+
+* This section which contains any requirements for the search.
+
+
+### Specification for the `requires`/`response` structure (required)
+
+* This section which contains the list of components required in the response along with minimal version for each of the components.
+
+* Initially supported components will be,
+  * exists
+  * count
   * phenopackets
   * mme
   * cloud-dos
@@ -249,16 +273,12 @@ This is work in progress....
 
 * The structure used to describe the patient can be of multiple multiple ontologies or networks such as MME, Beacon, and extensible to others as needed.
 
-* Questions:
-  * This needs work.
+* (This needs work)
 
 
 ### Specification for the `components`/`submitter` structure (optional)
 
 * The submitter for this search.
-
-* Questions:
-  * This feels very MME centric.
 
 
 ### Specification for the `components`/`contact` structure  (optional)
