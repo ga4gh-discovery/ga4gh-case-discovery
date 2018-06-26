@@ -66,7 +66,7 @@ This is work in progress...
 
 * Questions:
   * Do we want to call this `collectionComponents` or `components`?
-  * Version numbers are for components which is fine except for the records items in the `records` components, those would probably need to be versioned, for example:
+  * Version numbers are for components,  but not the records items in the `records` components,do we need those to be versioned as well? For example:
 
 ```
 {
@@ -81,7 +81,6 @@ This is work in progress...
     }
 }
 ```
-
 
 
 ### Specification for the `meta`/`request` structure (optional)
@@ -115,6 +114,10 @@ This is work in progress...
 
 * The legal disclaimers and terms of use.
 
+* Questions:
+  * Do we want to mandate how these are handled by the `host` and the `querier`?
+  * The motivation for the above question is to define the boundary between protocol and policy?
+
 
 ### Specification for the `collectionComponents`/`*` structure (optional)
 
@@ -130,10 +133,10 @@ This is work in progress...
   * any GA4GH patient data model
 
 * Questions:
-  * Do we want to be able to return arbitrary collection components, for example _mme_ was requested but we only return _exists_?
+  * Do we want to be able to return arbitrary collection components, for example _mme_ was requested but we only support _exists_?
   * Do we want to require support for a minimal list of components?
-  * What is the process for adding components?
-  * Do we want to support defined sets components for certain communities (MME)?
-  * Do we allow custom components?
-  * Do we represent scoring/relevancy?
+  * What is the process for defining new component/record types?
+  * Do we want to support defined sets of components/records for certain communities (MME)?
+  * Do we allow _private_ components?
+  * Do we represent scoring?
 
