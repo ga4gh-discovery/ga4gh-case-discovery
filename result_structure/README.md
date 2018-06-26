@@ -1,8 +1,11 @@
-## Result of a search request
+## Response to a search request
 
-This document describes a result that is returned from a search request
+This document describes a response that is returned from a search request
 
-This is work in progress...
+Ideas/inspiration _"stolen"_ from [@Relequestual's](https://github.com/Relequestual) [GA4GH Search API Proposal - Components](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86)  and [@Buske's](https://github.com/Buske) [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md).
+
+
+### Specification for response at a high level.
 
 ```
 {
