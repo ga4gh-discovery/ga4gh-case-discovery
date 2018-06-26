@@ -225,7 +225,7 @@ This is work in progress....
   * Do we want to support offsets in record returns (start and limit)?
   * Do we want to require support for a minimal set of components?
   * Do we want to support multiple record types in a request?
-  * What is the process for defining new record types?
+  * What is the process for defining new component/record types?
   * Do we want to support defined sets of components/records for certain communities (MME)?
   * Do we allow _private_ components?
   * Why is `components` an array of objects if there is only one object?
