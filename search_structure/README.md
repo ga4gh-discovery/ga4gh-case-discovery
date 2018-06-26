@@ -2,9 +2,7 @@
 
 This document describes a search request
 
-This is work in progress....
-
-Ideas/inspiration _stolen_ from @Relequestual's [GA4GH Search API Proposal - Components](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86)  and @Buske's [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md).
+Ideas/inspiration _stolen_ from [@Relequestual's](https://github.com/Relequestual) [GA4GH Search API Proposal - Components](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86)  and [@Buske's](https://github.com/Buske) [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md).
 
 
 ### Structure
@@ -15,7 +13,7 @@ Ideas/inspiration _stolen_ from @Relequestual's [GA4GH Search API Proposal - Com
   * Need to reconcile this with version number in the URL
 
 
-### Specification for query at a high level.
+### Specification for search request at a high level.
 
 ```
 {
@@ -310,7 +308,7 @@ Ideas/inspiration _stolen_ from @Relequestual's [GA4GH Search API Proposal - Com
   * Version numbering as defined above does not resolve to the search components, see above?
   * `Operator` needs to be defined, eg. EQ, NEQ, LT, LTE, GT, GTE.
   * Need to figure out `sources` vs. `id` and CURIEs (I think Chris Mungall was maintaining a list of CURIEs) ?
-  * There is plenty of good stuff to _steal_ from @Buske's [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md)..
+  * There is plenty of good stuff to _steal_ from [@Buske's](https://github.com/Buske) [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md)..
 
 
 ### Specification for the `-or`/`-and` structure (optional)
