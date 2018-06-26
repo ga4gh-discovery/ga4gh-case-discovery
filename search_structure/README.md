@@ -308,8 +308,14 @@ This is work in progress....
   * Version numbering as defined above does not resolve to the search components, see above?
   * `Operator` needs to be defined, eg. EQ, NEQ, LT, LTE, GT, GTE.
   * Need to figure out `sources` vs. `id` and CURIEs (I think Chris Mungall was maintaining a list of CURIEs) ?
+  * There is plenty of good stuff to _steal_ from [Orion's mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md).
 
 
 ### Specification for the `-or`/`-and` structure (optional)
 
 * The section specifies how the search components are combined as a boolean search.
+
+* Questions:
+  * Is this required if specified, ie if the `host` cannot handle boolean searches?
+
+
