@@ -9,9 +9,6 @@ Ideas/inspiration _"stolen"_ from [@Relequestual's](https://github.com/Relequest
 
 `HTTP POST` request to `<base_remote_url>/search`, with an `application/json` body with the following format:
 
-* Questions:
-  * Need to reconcile this with version number in the URL
-
 
 ### Specification for search request at a high level.
 
@@ -164,24 +161,6 @@ Ideas/inspiration _"stolen"_ from [@Relequestual's](https://github.com/Relequest
 
 * Version numbers will follow [semantic versioning](https://semver.org).
 
-* Questions:
-  * Version numbers resolve to components, but not the search items in the `search` components, do we need those to be versioned as well? For example:
-
-```
-{
-    "meta": {
-        "request": {
-            "components": {
-                "search": {
-                    "gene": "1.0.0",
-                    "type": "1.0.0",
-                    "feature": "1.0.0"
-                },
-            }
-        }
-    }
-}
-```
 
 ### Specification for the `requires` structure (required)
 
