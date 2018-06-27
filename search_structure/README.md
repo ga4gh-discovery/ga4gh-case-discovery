@@ -165,7 +165,6 @@ Ideas/inspiration _"stolen"_ from [@Relequestual's](https://github.com/Relequest
 * Version numbers will follow [semantic versioning](https://semver.org).
 
 * Questions:
-  * Need to reconcile this with version number in the URL, does that have any meaning any more?
   * Version numbers resolve to components, but not the search items in the `search` components, do we need those to be versioned as well? For example:
 
 ```
