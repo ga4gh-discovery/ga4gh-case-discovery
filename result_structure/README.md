@@ -1,8 +1,11 @@
-## Result of a search request
+## Response to a search request
 
-This document describes a result that is returned from a search request
+This document describes a response that is returned from a search request
 
-This is work in progress...
+Ideas/inspiration _"stolen"_ from [@Relequestual's](https://github.com/Relequestual) [GA4GH Search API Proposal - Components](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86)  and [@Buske's](https://github.com/Buske) [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md).
+
+
+### Specification for response at a high level.
 
 ```
 {
@@ -64,41 +67,13 @@ This is work in progress...
 
 * Having a collection component listed here does not mean it is required in the `collectionComponents` section, however it is required to have a version number for a collection component if it is present in the `collectionComponents` section.
 
-* Questions:
-  * Do we want to call this `collectionComponents` or `components`?
-  * Version numbers are for components which is fine except for the records items in the `records` components, those would probably need to be versioned, for example:
-
-```
-{
-    "meta": {
-        "request": {
-            "collectionComponents": {
-                "records": {
-                    "mme": "1.0.0"
-                },
-            }
-        }
-    }
-}
-```
-
-
 
 ### Specification for the `meta`/`request` structure (optional)
 
 * This section list the component IDs of the components used to fulfill the search request.
 
-* Questions:
-  * Do we want to add information on how the search was run?
-    * Were boolean operators used?
-    * How many results were found by each component ID (roll into `counts`)?
-
 
 ### Specification for the `meta`/`provenance` structure (optional)
-
-* Questions:
-  * What is `provenance`?
-  * Does `provenance` belong here or in `collectionComponents`?
 
 
 ### Specification for the `collectionComponents` structure (required)
@@ -128,12 +103,4 @@ This is work in progress...
   * mme
   * cloud-dos
   * any GA4GH patient data model
-
-* Questions:
-  * Do we want to be able to return arbitrary collection components, for example _mme_ was requested but we only return _exists_?
-  * Do we want to require support for a minimal list of components?
-  * What is the process for adding components?
-  * Do we want to support defined sets components for certain communities (MME)?
-  * Do we allow custom components?
-  * Do we represent scoring/relevancy?
 
