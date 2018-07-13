@@ -1,0 +1,11 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/collection_components
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  This schema contains all the components which represent information about a collection of records.
+  This is information which is reduced from the collection of results from the search form a client,
+  and include such things as "exists" and "count", and may include other aggregate information such as
+  a list of all genes.
+anyOf:
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/collection/exists
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/collection/count

@@ -1,0 +1,52 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/response
+"$schema": http://json-schema.org/draft-07/schema#
+definitions:
+  component-version:
+    description: An object where a key is the component name and the value specifies the version that was provided
+    type: object
+    additionalProperties:
+      "$ref": http://ga4gh.org/schemas/discovery/search/definitionspost#definitions/semver
+type: object
+requires:
+  - records
+properties:
+  meta:
+    description: Contains metadata about the response
+    type: object
+    requires:
+      - response
+    properties:
+      response:
+        description: Contains metadata relating to the response
+        type: object
+        properties:
+          components:
+            "$ref": "#/definitions/component-version"
+          collectionComponents:
+            "$ref": "#/definitions/component-version"
+      request:
+        description: Contains metadata relating to the request from the client
+        type: object
+        properties:
+          componentsUsed:
+            description: An array of the components that were used from the request
+            type: array
+            items:
+              type: string
+      components:
+        type: object
+        additionalProperties:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/response_meta_components
+  collectionComponents:
+    "$ref": http://ga4gh.org/schemas/discovery/search/components/collection_components
+  records:
+    type: array
+      type: object
+      requires:
+        - components
+      properties:
+        meta:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta_componentspost"
+        components:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_componentspost"

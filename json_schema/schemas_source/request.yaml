@@ -1,0 +1,46 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/request
+"$schema": http://json-schema.org/draft-07/schema#
+type: object
+requires:
+  - query
+properties:
+  meta:
+    description: Contains metadata
+    type: object
+    requires:
+      - request
+    properties:
+      request:
+        description: Contains metadata relating to the request
+        type: object
+        properties:
+          components:
+            description: An object where a key is the component name and the value specifies the version that was provided
+            type: object
+            additionalProperties:
+              "$ref": http://ga4gh.org/schemas/discovery/search/definitionspost#definitions/semver
+      components:
+        type: object
+        additionalProperties:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/request_meta_components
+  requires:
+    type: object
+    properties:
+      response:
+        type: object
+        requires:
+          - components
+        properties:
+          components:
+            type: object
+            description: An object where a key is the component name, and the value specifies the version (or version range) that is required
+            additionalProperties:
+              "$ref": http://ga4gh.org/schemas/discovery/search/definitionspost#definitions/semver-xrange
+  query:
+    type: object
+    requires:
+      - components
+    properties:
+      components:
+        "$ref": http://ga4gh.org/schemas/discovery/search/components/search_componentspost"
