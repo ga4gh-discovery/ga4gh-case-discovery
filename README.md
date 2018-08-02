@@ -13,6 +13,13 @@ This generalized standard was inspired, adapted, and built up from existing work
 * The merging of concepts, content, and building of first draft by Harindra Arachchi @harindra-a
 * The Matchmaker Exchange APIs [@github](https://github.com/ga4gh/mme-apis/blob/master/search-api.md)
 
+# Preface
+
+The Matchmaker Exchange (MME) API defined a JSON Structure representing a patient, which was used to perform a "query by example" as a federated request across a network of servers (or nodes). 
+
+While the MME network was designed to allow for easy federated case matching, due to the complexity of the problem, it is limited by design to allow each server to determine what best constitutes a match. This functionality is useful for databases of siloed cases, but it doesn't allow for broader, specifically targeted searching of cases, which can fulfil many more clinical and scientific use cases.
+
+A new standard for case discovery, the Search API. A robust and flexible approach, considering databases which contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for query and response.
 
 # Concept
 
