@@ -31,14 +31,14 @@ Ideas/inspiration _"stolen"_ from [@Relequestual's](https://github.com/Relequest
 
     "requires": {
         "response": {
-            "components": [{
+            "components": {
                 "exists": "^1",
                 "counts": "^1",
                 "records": {
                     "type": "mme",
                     "version": "^1"
                 }
-            }]
+            }
         }
     },
 
