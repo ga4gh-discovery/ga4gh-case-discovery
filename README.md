@@ -43,14 +43,25 @@ This specification is expected to support:
 * The host can decide to support the incoming search request. We will define specific standard HTTP responses to clarify when they do not.
 * Details for authentication and authorization will be in header fields. We envision a GA4GH decentralized (as-needed) broker based system that is being developed for this in the future. Till it is ready, we see a simple token exchange model (as MME does) or open (as Beacon) does to get things started.
 
+# API Version
 
-## API Version
+The API version will follow the rules set out by [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
-Where `<api-version>` takes the form `vX`, where `X` is a major version. Minor versions are cross-compatible. The target semantic version will be specified within the `question` to help the host identify the target of the `question`. The URL of the host must specify the major version that it supports. 
+    Given a version number MAJOR.MINOR.PATCH, increment the:
 
-For example:
+    MAJOR version when you make incompatible API changes,
+    MINOR version when you add functionality in a backwards-compatible manner, and
+    PATCH version when you make backwards-compatible bug fixes.
 
-`https://yournode.org/v1/search`
+    Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
+
+The MAJOR version MUST be included in the URL exposed by servers for the API, in the format of `vX`, where `X` is a major version. 
+
+The version of the API is linked to the request and response structure, and not any individual components used with the request and response, which have their own associated semantic version number.
+
+An example API URL: `https://yournode.org/v1/search`
+
+
 
 
 ## Content type
