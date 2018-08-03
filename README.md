@@ -17,24 +17,44 @@ This generalized standard was inspired, adapted, and built up from existing work
 
 # Concept
 
-We define the two parties involved as the `host` and the `querier`. 
+We define the two actors involved as the `server` and the `client`, following HTTP semantics.
 
-1. The querier would pose a question regarding a patient to the host. We will define this as the `question`
-2. The `question` will contain an `optional` patient data structure. While the Matchmaker Exchange (MME) requires a backing patient to be offered with any query, other networks may not. Therefore in order to make the standard general, we propose this value be `optional` and have the host decide whether to support that specific question. When they do not support, they will return a HTTP message such as `Not supported (status code: 512)`
-3. The host uses the `query` section to find a set of results to return. We will define the structure it returns as the `result`
-4. Within the `query` section there is a `components` section and an `operator` section that is applied to all the components.
-5. `components` are used as the search criteria. Each `component` has one or more associated `filters` that apply specific rules to limit/sieve the search results of that specific `component` further
-6. The object of the `operator` section is to designate whether `ALL` or `ANY` of the components to use in the query.
-7. Within the top level `queryMetadata` structure, along with query details for tracking, there is field named `maximumNumberOfResultsRequested` that allows the querier to specify a limit on the number of results returned. This value can be superseded by any limit the host is able to support
-8. The return results maybe scored, and/or sorted, by some host-internal mechanism, as expected from a typical database query, but it is not expected or guaranteed.
+A server is a database or system which contains any number of cases and associated case data, which it is willing to perform searches on, and return data on.
 
+A client is a system which makes search requests to a server (or many servers in a federated request) on behalf of a user and displays any results to the user, or based on instructions as part of a workflow (like a pipeline).
 
-# OVERVIEW
+Unlike the MME API, there's no requirement for a client to make requests to a server on the basis of an existing patient record, allowing a user to construct any query they wish.
 
-**Submit patient search request:**
-`HTTP POST` to remote server: `<base_remote_url>/<api-version>/search`
-For example: `https://yournode.org/v1/search`
+## Expected process
 
+1. The client poses a question regarding a patient to the server. We define this as the `query`
+
+    The query contains a collection of components which define specific aspects of the query. They query may also optionally specify that it requires specific types of data in the response for the response to be useful.
+
+2. The server uses the query components provided to perform a search on its data
+
+3. The server returns as much or as little of the data or metadata as it is able.
+    
+    The response may include as little as an assertion that some records exist for the query criteria, much in the same way Beacon works, or it may provide rich and full variant and phenotypic data for each case that fulfils the query criteria.
+
+## Request and Response overview
+
+The request a client makes to a server is over an HTTP POST, where the query is define in a JSON payload.
+
+The main elements of the JSON query payload are `components`, `operators`, and `meta`.
+
+The main elements of the JSON response payload are `records` and `meta`. An array of `records` will each contain any number of `components` which represent case data.
+
+In both cases, the `meta` object is related to the query and response itself, and not any of the query or subject data.
+
+The `components` that can be used in the query and response differ, although some are useable in both.
+
+The `operators` may be used to define a single operator for all components (`AND` / `OR`), or define a more complex boolean logic query using components.
+
+More details for the Request and the Response structure and meaning are provided on the respective pages.
+
+JSON Schemas will be provided as a normative reference for the request and response.
+OpenAPI specifications will be provided, but may be omitted for the initial release.
 
 ## Security
 
