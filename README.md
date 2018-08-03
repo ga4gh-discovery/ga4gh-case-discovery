@@ -74,14 +74,13 @@ For example:
 `https://yournode.org/v1/search`
 
 
-## Content type
+# Content type
 
-Content type is expected to be `application/json`
+The Content Type for a Request must be `application/json`.
 
-For example:
+The Content Type for a Response should be `application/json`, although it should be expected that in  the case of errors, the server may be prevented from returning JSON content.
 
-`Content-Type: application/json`
-
+The HTTP status code should be checked before attempting to process content. Severs may include error information in a JSON payload with a non `200` HTTP status code, but the structure of this is not defined.
 
 ## Content
 
