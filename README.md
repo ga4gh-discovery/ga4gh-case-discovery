@@ -61,8 +61,13 @@ The version of the API is linked to the request and response structure, and not 
 
 An example API URL: `https://yournode.org/v1/search`
 
+## Expectations
 
+A request may specify which API version response they require (if any) in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string (The Major version MUST match) using the `Expect` header of the request. The server must either respond with a backwards compatible version of the response, or respond with HTTP Status Code `417 Expectation Failed`.
 
+If a request does not specify a required response version, the responding server must respond with the latest version they support of the major version defined in the API URL.
+
+Note: Patch versions are backwards and forwards compatible, while Minor versions are only backwards compatible.
 
 ## Content type
 
