@@ -88,6 +88,19 @@ For example:
 * [The structure of the `question` document](search_structure/README.md)
 * [The structure of the `result` document](result_structure/README.md)
 
+# Reserved keys and extensions
+
+The API reserves for its use, JSON object keys which begin with an underscore "_" or a dash "-".
+
+The API defined structure allows for clients or servers to define their own proprietary extensions as they see fit, by prefixing JSON object keys with an underscore "_".
+
+A server may wish to reveal additional information about a record or summary information about the collection of records which are not defined by a component. A new component proprietary component can be included by prefixing the given component name with an underscore: `_mySpecialComponent`.
+
+A client and a server may have a special relationship where they want to allow additional information to be searched on, which doesn't require any authentication. The maintainers of the client and the server may agree on new components, but must prefix the component names with underscores.
+
+It is not necessary to also prefix all the fields of a proprietary component with an underscore, as it must be assumed that any JSON data that is a descendant of a key which is prefixed with an underscore is also nonstandard.
+
+It is recommended a JSON Schema be supplied for a proprietary component to formally define the expectations, which may later be added to a repository of official GA4GH components, should the component be seen as useful by the community.
 
 ## Example usage
 
