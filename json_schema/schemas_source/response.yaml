@@ -18,7 +18,7 @@ properties:
       - response
     properties:
       response:
-        description: Contains metadata relating to the response
+        description: Details on the component versions used in the response
         type: object
         properties:
           components:

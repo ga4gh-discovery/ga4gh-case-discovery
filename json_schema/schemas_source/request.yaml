@@ -19,7 +19,7 @@ properties:
             description: An object where a key is the component name and the value specifies the version that was provided
             type: object
             additionalProperties:
-              "$ref": http://ga4gh.org/schemas/discovery/search/definitionspost#definitions/semver
+              "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
       components:
         type: object
         additionalProperties:
@@ -36,7 +36,7 @@ properties:
             type: object
             description: An object where a key is the component name, and the value specifies the version (or version range) that is required
             additionalProperties:
-              "$ref": http://ga4gh.org/schemas/discovery/search/definitionspost#definitions/semver-xrange
+              "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver-xrange
   query:
     type: object
     requires:
