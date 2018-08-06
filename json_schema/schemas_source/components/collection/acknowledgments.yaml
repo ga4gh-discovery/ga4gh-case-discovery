@@ -1,0 +1,19 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/collection/acknowledgments
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  This component contains the terms and conditions of viewing and or using the data and related information.
+  All of the string fields in this component should NOT include HTML, and should be treated as plain text.
+type: object
+requires:
+  - terms
+properties:
+  terms:
+    description: The terms and conditions attached to the provided data by the server.
+    type: string
+  disclaimer:
+    description: A disclaimer associated with the provided data by the server.
+    type: String
+  reference:
+    description: Reference text associated with the provided data by the server.
+    type: String

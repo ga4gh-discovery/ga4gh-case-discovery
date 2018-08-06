@@ -9,3 +9,4 @@ description: |
 anyOf:
   - "$ref": http://ga4gh.org/schemas/discovery/search/components/collection/exists
   - "$ref": http://ga4gh.org/schemas/discovery/search/components/collection/count
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/collection/acknowledgments
