@@ -1,0 +1,46 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/boolean_logic
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  Boolean logic "AND" and "OR" may be used to define the way in which components should be combined.
+  Omitting the `logic` key is the same as defining "AND" for all components in the query.
+  The value of `logic` must be an object, which must contain either the boolean logic operator key "-AND" or "-OR".
+  The value of a boolean logic key must be an array, where the items in the array must be either
+    - a JSON Pointer string, or
+    - an object, which contains single boolean logic operator key, which follows the same rules as above.
+
+  This is a recursive structure to allow for creating complex queries using boolean logic.
+
+  A JSON Pointer (RFC6901) is a string which identifies a specific value within a JSON document.
+  The JSON Pointer strings reference components, and must be prefixed with `/query/components`.
+  The root of the document is the current document for this purpose.
+  Support for boolean logic operators are optional.
+definitions:
+  boolean_operator:
+    type: object
+    oneOf:
+      -
+        properties:
+          -AND:
+            "$ref": "#/definitions/boolean_or_pointer"
+        additionalProperties: false
+      -
+        properties:
+          -OR:
+            "$ref": "#/definitions/boolean_or_pointer"
+        additionalProperties: false
+  json_pointer:
+    type: string
+    pattern: "\/query\/components"
+  boolean_or_pointer:
+    type: array
+    items:
+      oneOf:
+        -
+          "$ref": "#/definitions/boolean_operator"
+        -
+          "$ref": "#/definitions/json_pointer"
+
+oneOf:
+  - "$ref": "#/definitions/boolean_operator"
+

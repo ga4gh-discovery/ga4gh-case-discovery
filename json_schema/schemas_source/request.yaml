@@ -53,3 +53,5 @@ properties:
           type: array
           items:
             "$ref": http://ga4gh.org/schemas/discovery/search/components/search_components
+  logic:
+    "$ref": http://ga4gh.org/schemas/discovery/search/boolean_logic
