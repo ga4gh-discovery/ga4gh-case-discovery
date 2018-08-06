@@ -6,7 +6,7 @@ definitions:
     description: An object where a key is the component name and the value specifies the version that was provided
     type: object
     additionalProperties:
-      "$ref": http://ga4gh.org/schemas/discovery/search/definitionspost#definitions/semver
+      "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
 type: object
 requires:
   - records
@@ -60,6 +60,6 @@ properties:
         - components
       properties:
         meta:
-          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta_componentspost"
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta_components
         components:
-          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_componentspost"
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_components

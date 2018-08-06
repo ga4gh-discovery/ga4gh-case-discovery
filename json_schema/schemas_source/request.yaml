@@ -50,4 +50,4 @@ properties:
       components:
         type: object
         additionalProperties:
-          "$ref": http://ga4gh.org/schemas/discovery/search/components/search_componentspost"
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/search_components
