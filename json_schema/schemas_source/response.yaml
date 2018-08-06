@@ -26,9 +26,8 @@ properties:
           collectionComponents:
             "$ref": "#/definitions/component-version"
           apiVersion:
-            allOf:
-              - description: The full version of the API that is being used for the response.
-              - "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
+            description: The full version of the API that is being used for the response.
+            "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
       request:
         description: Contains metadata relating to the request from the client
         type: object
