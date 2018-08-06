@@ -1,0 +1,18 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/request_meta/queryIdentification
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  This component contains a unique identifier for the query provided by the client.
+  This ID may or may not be time bound, and may be only related to the JSON payload or combination of other information the only the client knows,
+  for example the user creating the query.
+type: object
+requires:
+  - queryID
+properties:
+  queryID:
+    description: An identifier for the query.
+    type: string
+    maxLength: 2000
+  queryLabel:
+    description: A more verbose name for the query.
+    type: string
