@@ -42,6 +42,7 @@ properties:
     "$ref": http://ga4gh.org/schemas/discovery/search/components/collection_components
   records:
     type: array
+    items:
       type: object
       requires:
         - components
