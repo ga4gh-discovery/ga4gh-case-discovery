@@ -26,9 +26,7 @@ properties:
           - description: The full version of the API being used for the request.
           - "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
       components:
-        type: object
-        additionalProperties:
-          "$ref": http://ga4gh.org/schemas/discovery/search/components/request_meta_components
+        "$ref": http://ga4gh.org/schemas/discovery/search/components/request_meta_components
   requires:
     type: object
     properties:
@@ -48,10 +46,6 @@ properties:
       - components
     properties:
       components:
-        type: object
-        additionalProperties:
-          type: array
-          items:
-            "$ref": http://ga4gh.org/schemas/discovery/search/components/search_components
+        "$ref": http://ga4gh.org/schemas/discovery/search/components/search_components
   logic:
     "$ref": http://ga4gh.org/schemas/discovery/search/boolean_logic

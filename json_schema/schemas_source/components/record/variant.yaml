@@ -7,10 +7,12 @@ description: |
   Should this be zero based exclusive like the Matchmaker Exchange and Beacon defintions, or something else?
   Should this support types of variants other than sequence variants?
 type: object
+requires:
+  - variant
 properties:
   variant:
     type: array
-    minItems: 1
+    minItems: 0
     items:
       type: object
       properties:
