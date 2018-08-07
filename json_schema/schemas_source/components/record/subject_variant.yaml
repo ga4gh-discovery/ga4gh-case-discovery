@@ -49,6 +49,6 @@ properties:
         assemblyId:
           description: The assembly of this variant.
           type: string
-          pattern: ^NCBI36|GRCh\\d{2}(\\.p\\d{1,2})*?$
+          pattern: ^NCBI36|GRCh\d{2}(\.p\d{1,2})*?$
           examples:
           - GRCh37

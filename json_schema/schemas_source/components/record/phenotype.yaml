@@ -18,7 +18,7 @@ properties:
         id:
           description: An HPO term identfier which is a descendant of HP:0000118 "Phenotypic abnormality"
           type: string
-          pattern: "^HP:\\d{1,7}$"
+          pattern: ^HP:\d{1,7}$
         observed:
           description: |
             Defines if the feature has been explicitly observed (`yes`) or explicitly not observed (`no`).
@@ -31,4 +31,4 @@ properties:
         ageOfOnset:
           description: An HPO id of a term that represents a descendant of HP:0003674 "Clinical Course / Onset" or alternatives thereof.
           type: string
-          pattern: "^HP:\\d{1,7}$"
+          pattern: ^HP:\d{1,7}$
