@@ -8,3 +8,4 @@ description: |
   clinician's details.
 anyOf:
   - "$ref": http://ga4gh.org/schemas/discovery/search/components/record/subject_variant
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/record/phenotype
