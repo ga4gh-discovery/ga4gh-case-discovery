@@ -4,16 +4,36 @@
 description: |
   This component contains the terms and conditions of viewing and or using the data and related information.
   All of the string fields in this component should NOT include HTML, and should be treated as plain text.
+definitions:
+  acknowledgments:
+    type: object
+    requires:
+      - terms
+    properties:
+      terms:
+        description: The terms and conditions attached to the provided data by the server.
+        type: string
+      disclaimer:
+        description: A disclaimer associated with the provided data by the server.
+        type: String
+      reference:
+        description: Reference text associated with the provided data by the server.
+        type: String
+      id:
+        description: An ID given to this set of acknowledgments should a server want to include multiple sets of acknowledgments to be referenced
+        type: string
 type: object
 requires:
-  - terms
+  - acknowledgments
 properties:
-  terms:
-    description: The terms and conditions attached to the provided data by the server.
-    type: string
-  disclaimer:
-    description: A disclaimer associated with the provided data by the server.
-    type: String
-  reference:
-    description: Reference text associated with the provided data by the server.
-    type: String
+  acknowledgments:
+    type:
+      - object
+      - array
+    oneOf:
+      -
+        "$ref": "#/definitions/acknowledgments"
+      -
+        items:
+          "$ref": "#/definitions/acknowledgments"
+        minItems: 1
