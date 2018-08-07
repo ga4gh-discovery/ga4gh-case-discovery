@@ -5,10 +5,11 @@ description: |
   This component represents the number of record that were found for a given search request from a server.
 type: object
 requires:
-  - assertion
+  - count
 properties:
-  assertion:
-    type: boolean
+  count:
+    type: number
     examples:
-      - true
-      - false
+      - 0
+      - 1
+      - 1000
