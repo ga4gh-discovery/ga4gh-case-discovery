@@ -1,0 +1,12 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/record_components
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  This schema contains all the components which represent a record's actual data.
+  If a record is a patient, this would be components which represent any information directly about them,
+  for example, variants, phenotypes, assessments etc. This should not include metadata, like the patients
+  clinician's details.
+anyOf:
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/record/subject_variant
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/record/phenotype
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/record/gene

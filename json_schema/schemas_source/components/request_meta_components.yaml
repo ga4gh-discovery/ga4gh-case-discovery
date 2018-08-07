@@ -1,0 +1,7 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/request_meta_components
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  This schema contains all the components which represent meta information about a request.
+anyOf:
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/request_meta/queryIdentification

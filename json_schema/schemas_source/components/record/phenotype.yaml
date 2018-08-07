@@ -1,0 +1,34 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/record/phenotype
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  The component which represents an individuals phenotypes, encoded in terms defined by the Human Phenotype Ontology.
+type: object
+requires:
+  - phenotypes
+properties:
+  phenotypes:
+    type: array
+    minItems: 0
+    items:
+      type: object
+      requires:
+        - id
+      properties:
+        id:
+          description: An HPO term identfier which is a descendant of HP:0000118 "Phenotypic abnormality"
+          type: string
+          pattern: ^HP:\d{1,7}$
+        observed:
+          description: |
+            Defines if the feature has been explicitly observed (`yes`) or explicitly not observed (`no`).
+            Omission of this optional field assumes the feature has been explicitly observed.
+            There may be instances where explicitly asserting a phenotype could be useful.
+          enum:
+          - 'yes'
+          - 'no'
+          - unknown
+        ageOfOnset:
+          description: An HPO id of a term that represents a descendant of HP:0003674 "Clinical Course / Onset" or alternatives thereof.
+          type: string
+          pattern: ^HP:\d{1,7}$

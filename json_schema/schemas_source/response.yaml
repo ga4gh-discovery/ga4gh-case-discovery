@@ -1,0 +1,63 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/response
+"$schema": http://json-schema.org/draft-07/schema#
+definitions:
+  component-version:
+    description: An object where a key is the component name and the value specifies the version that was provided
+    type: object
+    additionalProperties:
+      "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
+type: object
+requires:
+  - records
+properties:
+  meta:
+    description: Contains metadata about the response
+    type: object
+    requires:
+      - response
+    properties:
+      response:
+        description: Details on the component versions used in the response
+        type: object
+        properties:
+          components:
+            "$ref": "#/definitions/component-version"
+          collectionComponents:
+            "$ref": "#/definitions/component-version"
+          apiVersion:
+            description: The full version of the API that is being used for the response.
+            "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
+      request:
+        description: Contains metadata relating to the request from the client
+        type: object
+        properties:
+          apiVersion:
+            description: The API version that was given and what it was used as, if different
+            type: object
+            properties:
+              given:
+                "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
+              usedAs:
+                "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
+          componentsUsed:
+            description: An array of the components that were used from the request
+            type: array
+            items:
+              type: string
+      components:
+        "$ref": http://ga4gh.org/schemas/discovery/search/components/response_meta_components
+  collectionComponents:
+    "$ref": http://ga4gh.org/schemas/discovery/search/components/collection_components
+  records:
+    type: array
+    minItems: 0
+    items:
+      type: object
+      requires:
+        - components
+      properties:
+        meta:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta_components
+        components:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_components

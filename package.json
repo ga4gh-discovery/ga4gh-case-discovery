@@ -1,0 +1,18 @@
+{
+  "name": "ga4gh_search_schemas",
+  "version": "0.1.0",
+  "description": "The schemas for the GA4GH Discovery Search API",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean-json-source": "find ./json_schema/schemas_source -name \\*.json -type f -delete",
+    "clean-json": "find ./json_schema/schemas -name \\*.json -type f -delete",
+    "yaml2json": "./node_modules/yamljs/bin/yaml2json ./json_schema/schemas_source -spr",
+    "postyaml2json": "cd ./json_schema/schemas_source && find . -name \\*.json -type f | xargs cp --parents -t ./../schemas && npm run clean-json-source"
+  },
+  "author": "Ben Hutton",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "ajv": "^6.5.2",
+    "yamljs": "^0.3.0"
+  }
+}
