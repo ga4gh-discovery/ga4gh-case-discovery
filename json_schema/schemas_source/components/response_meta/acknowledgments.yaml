@@ -1,5 +1,5 @@
 ---
-"$id": http://ga4gh.org/schemas/discovery/search/components/collection/acknowledgments
+"$id": http://ga4gh.org/schemas/discovery/search/components/response_meta/acknowledgments
 "$schema": http://json-schema.org/draft-07/schema#
 description: |
   This component contains the terms and conditions of viewing and or using the data and related information.
