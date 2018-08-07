@@ -46,13 +46,9 @@ properties:
             items:
               type: string
       components:
-        type: object
-        additionalProperties:
-          "$ref": http://ga4gh.org/schemas/discovery/search/components/response_meta_components
+        "$ref": http://ga4gh.org/schemas/discovery/search/components/response_meta_components
   collectionComponents:
-    type: object
-    additionalProperties:
-      "$ref": http://ga4gh.org/schemas/discovery/search/components/collection_components
+    "$ref": http://ga4gh.org/schemas/discovery/search/components/collection_components
   records:
     type: array
     items:
@@ -61,10 +57,6 @@ properties:
         - components
       properties:
         meta:
-          type: object
-          additionalProperties:
-            "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta_components
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta_components
         components:
-          type: array
-          items:
-            "$ref": http://ga4gh.org/schemas/discovery/search/components/record_components
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_components
