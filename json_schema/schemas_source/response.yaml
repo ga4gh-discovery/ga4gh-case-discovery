@@ -51,6 +51,7 @@ properties:
     "$ref": http://ga4gh.org/schemas/discovery/search/components/collection_components
   records:
     type: array
+    minItems: 0
     items:
       type: object
       requires:
