@@ -7,4 +7,4 @@ description: |
   for example, variants, phenotypes, assessments etc. This should not include metadata, like the patients
   clinician's details.
 anyOf:
-  - "$ref": http://ga4gh.org/schemas/discovery/search/components/record/variant
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/record/subject_variant

@@ -1,16 +1,16 @@
 ---
-"$id": http://ga4gh.org/schemas/discovery/search/components/record/variant
+"$id": http://ga4gh.org/schemas/discovery/search/components/record/subject_variant
 "$schema": http://json-schema.org/draft-07/schema#
 description: |
-  The component which represents an individual variant.
+  The component which represents an individual variants that are seen in a subject.
   This is currently a draft, awaiting further discussion and thought into specific fields.
   Should this be zero based exclusive like the Matchmaker Exchange and Beacon defintions, or something else?
   Should this support types of variants other than sequence variants?
 type: object
 requires:
-  - variant
+  - subject_variant
 properties:
-  variant:
+  subject_variant:
     type: array
     minItems: 0
     items:
