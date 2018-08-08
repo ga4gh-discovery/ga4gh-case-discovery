@@ -4,7 +4,7 @@
 description: |
   The component which represents an individuals phenotypes, encoded in terms defined by the Human Phenotype Ontology.
 type: object
-requires:
+required:
   - phenotypes
 properties:
   phenotypes:
@@ -12,7 +12,7 @@ properties:
     minItems: 0
     items:
       type: object
-      requires:
+      required:
         - id
       properties:
         id:

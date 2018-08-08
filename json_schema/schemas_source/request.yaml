@@ -2,13 +2,13 @@
 "$id": http://ga4gh.org/schemas/discovery/search/request
 "$schema": http://json-schema.org/draft-07/schema#
 type: object
-requires:
+required:
   - query
 properties:
   meta:
     description: Contains metadata
     type: object
-    requires:
+    required:
       - request
       - apiVersion
     properties:
@@ -31,7 +31,7 @@ properties:
     properties:
       response:
         type: object
-        requires:
+        required:
           - components
         properties:
           components:
@@ -41,7 +41,7 @@ properties:
               "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver-xrange
   query:
     type: object
-    requires:
+    required:
       - components
     properties:
       components:

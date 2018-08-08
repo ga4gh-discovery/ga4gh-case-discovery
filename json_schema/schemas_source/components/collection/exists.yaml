@@ -4,7 +4,7 @@
 description: |
   This component represents an assertion on if a record exists for a given search request from a server.
 type: object
-requires:
+required:
   - assertion
 properties:
   assertion:

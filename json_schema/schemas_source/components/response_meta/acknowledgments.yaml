@@ -7,7 +7,7 @@ description: |
 definitions:
   acknowledgments:
     type: object
-    requires:
+    required:
       - terms
     properties:
       terms:
@@ -23,7 +23,7 @@ definitions:
         description: An ID given to this set of acknowledgments should a server want to include multiple sets of acknowledgments to be referenced
         type: string
 type: object
-requires:
+required:
   - acknowledgments
 properties:
   acknowledgments:

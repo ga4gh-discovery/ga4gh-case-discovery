@@ -7,7 +7,7 @@ description: |
   Should this be zero based exclusive like the Matchmaker Exchange and Beacon defintions, or something else?
   Should this support types of variants other than sequence variants?
 type: object
-requires:
+required:
   - subject_variant
 properties:
   subject_variant:

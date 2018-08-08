@@ -4,7 +4,7 @@
 description: |
   The component which represents a gene which is flagged as a gene of interest or a candidate gene.
 type: object
-requires:
+required:
   - gene
 properties:
   subject_variant:
@@ -12,7 +12,7 @@ properties:
     minItems: 0
     items:
       type: object
-      requires:
+      required:
         - ensemblID
       properties:
         ensemblID:

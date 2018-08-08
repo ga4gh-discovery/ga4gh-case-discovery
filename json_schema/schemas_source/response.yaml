@@ -8,13 +8,13 @@ definitions:
     additionalProperties:
       "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
 type: object
-requires:
+required:
   - records
 properties:
   meta:
     description: Contains metadata about the response
     type: object
-    requires:
+    required:
       - response
     properties:
       response:
@@ -54,7 +54,7 @@ properties:
     minItems: 0
     items:
       type: object
-      requires:
+      required:
         - components
       properties:
         meta:
