@@ -102,8 +102,11 @@ The HTTP status code should be checked before attempting to process content. Sev
 
 ## Content
 
-* [The structure of the `question` document](search_structure/README.md)
-* [The structure of the `result` document](result_structure/README.md)
+The HTTP POST request body and the response body should both be JSON.
+See the following documents for details on the format.
+
+* [The structure of the `search`](search_structure/README.md)
+* [The structure of the `result`](result_structure/README.md)
 
 # Reserved keys and extensions
 
