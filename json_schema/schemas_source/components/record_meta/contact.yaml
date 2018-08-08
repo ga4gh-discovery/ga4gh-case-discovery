@@ -1,0 +1,51 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/record_meta/contact
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  This component contains contact information associated with the record.
+type: object
+required:
+  - contact
+properties:
+  contact:
+    type: array
+    items:
+      type: object
+      required:
+        - fullName
+        - role
+      properties:
+        id:
+          type: string
+          description: A unique ID relating to the person defined by the server database
+          examples:
+            - "12345"
+            - 2e931e41aae16253e1290dd93ffb971e
+            - mydb_000_000_123
+        role:
+          type: string
+          description: A string that describes the persons relationship with the associated record.
+          examples:
+            - Clinician
+            - Patient
+            - Submitter
+        fullName:
+          type: string
+          description: The full name of the contact person
+          examples:
+            - John Dow
+        email:
+          type: string
+          description: The email address of the contact person
+          examples:
+            - foo@bar.com
+        institution:
+          type: string
+          description: The institution of the contact person
+          examples:
+            - Wellcome Sanger Institute
+        url:
+          type: string
+          description: A URL associated with the contact person
+          examples:
+            - http://institute.com/people/john_dow

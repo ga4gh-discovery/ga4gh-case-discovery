@@ -4,7 +4,7 @@
 description: |
   This component represents the number of record that were found for a given search request from a server.
 type: object
-requires:
+required:
   - count
 properties:
   count:

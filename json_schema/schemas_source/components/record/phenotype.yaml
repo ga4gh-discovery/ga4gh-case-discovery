@@ -4,7 +4,7 @@
 description: |
   The component which represents an individuals phenotypes, encoded in terms defined by the Human Phenotype Ontology.
 type: object
-requires:
+required:
   - phenotypes
 properties:
   phenotypes:
@@ -12,13 +12,16 @@ properties:
     minItems: 0
     items:
       type: object
-      requires:
+      required:
         - id
       properties:
         id:
           description: An HPO term identfier which is a descendant of HP:0000118 "Phenotypic abnormality"
           type: string
           pattern: ^HP:\d{1,7}$
+        label:
+          description: The human readable name for the HPO term used
+          type: string
         observed:
           description: |
             Defines if the feature has been explicitly observed (`yes`) or explicitly not observed (`no`).

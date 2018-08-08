@@ -1,0 +1,31 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/record_meta/links
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  This component contains links associated with the record.
+type: object
+required:
+  - links
+properties:
+  contact:
+    type: array
+    items:
+      type: object
+      required:
+        - url
+        - name
+      properties:
+        name:
+          type: string
+          description: A name given for the URL. Intended to be human readable only. No defined names are set.
+          examples:
+            - Subject record
+            - VCF Files
+            - Contact depositor
+            - Request full access
+        url:
+          type: string
+          description: The URL for the given link name
+          examples:
+            - http://institute.com/record_database/record/123
+            - "mailto:depositor@institute.com?subject=record%20123"

@@ -1,1 +1,9 @@
-{}
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/record_meta_components
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  This schema contains all the components which represent meta information about a record.
+  All
+anyOf:
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta/contact
+  - "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta/links

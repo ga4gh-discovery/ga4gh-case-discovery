@@ -7,12 +7,12 @@ description: |
   for example the user creating the query.
 
 type: object
-requires:
+required:
   - queryIdentification
 properties:
   queryIdentification:
     type: object
-    requires:
+    required:
       - queryID
     properties:
       queryID:
