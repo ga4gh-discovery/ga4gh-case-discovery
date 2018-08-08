@@ -53,6 +53,33 @@ More details for the Request and the Response structure and meaning are provided
 JSON Schemas will be provided as a normative reference for the request and response.
 OpenAPI specifications will be provided, but may be omitted for the initial release.
 
+## Components
+
+The API defines six different types of components.
+- Record
+- Collection
+- Search
+- Request Meta
+- Response Meta
+- Record Meta
+
+All components are optional.
+
+Record components can represent record data which has been deposited to the server for searching.
+
+Collection components can represent summary information about records returned from a search.
+
+Search components can represent criteria for filtering records. All "Record components" are currently also Search components.
+
+Request Meta components can represent information about the request made by the client to the server, such as what record components it requires in response for records.
+
+Response Meta components can represent information about what the server did with the query in order to return the results.
+
+Record Meta components can represent data associated to a record but not actually part of the record data, for example the contact information for a subjects responsible clinician.
+
+
+Individual components are defined in individual JSON Schema files in YAML format, and combined using JSON Scheam referencing to construct the request and response JSON Scheam.
+
 # Security
 
 This specification is expected to support:
