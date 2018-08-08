@@ -110,9 +110,9 @@ See the following documents for details on the format.
 
 # Reserved keys and extensions
 
-The API reserves for its use, JSON object keys which begin with an underscore "_" or a dash "-".
+The API reserves for its use, JSON object keys which begin with an underscore "\_" or a dash "-".
 
-The API defined structure allows for clients or servers to define their own proprietary extensions as they see fit, by prefixing JSON object keys with an underscore "_".
+The API defined structure allows for clients or servers to define their own proprietary extensions as they see fit, by prefixing JSON object keys with an underscore "\_".
 
 A server may wish to reveal additional information about a record or summary information about the collection of records which are not defined by a component. A new component proprietary component can be included by prefixing the given component name with an underscore: `_mySpecialComponent`.
 
