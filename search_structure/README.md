@@ -2,7 +2,6 @@
 
 This document describes a search request
 
-Ideas/inspiration _"stolen"_ from [@Relequestual's](https://github.com/Relequestual) [GA4GH Search API Proposal - Components](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86)  and [@Buske's](https://github.com/Buske) [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md).
 
 
 ### Structure
@@ -243,4 +242,10 @@ Ideas/inspiration _"stolen"_ from [@Relequestual's](https://github.com/Relequest
 
 * The section specifies how the search components are combined as a boolean search.
 
+
+# Acknowledgments
+
+Ideas/inspiration from:
+ - [@Relequestual's](https://github.com/Relequestual) [GA4GH Search API Proposal - Components](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86) 
+ - [@Buske's](https://github.com/Buske) [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md)
 
