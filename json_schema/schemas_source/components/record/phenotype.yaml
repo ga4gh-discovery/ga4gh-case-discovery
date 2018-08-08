@@ -19,6 +19,9 @@ properties:
           description: An HPO term identfier which is a descendant of HP:0000118 "Phenotypic abnormality"
           type: string
           pattern: ^HP:\d{1,7}$
+        label:
+          description: The human readable name for the HPO term used
+          type: string
         observed:
           description: |
             Defines if the feature has been explicitly observed (`yes`) or explicitly not observed (`no`).
