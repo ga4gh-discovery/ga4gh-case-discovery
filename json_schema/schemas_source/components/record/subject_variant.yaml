@@ -8,7 +8,7 @@ description: |
   Should this support types of variants other than sequence variants?
 type: object
 required:
-  - subject_variant
+  - subjectVariant
 properties:
   subject_variant:
     type: array

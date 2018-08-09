@@ -1,5 +1,5 @@
 ---
-"$id": http://ga4gh.org/schemas/discovery/search/components/request_meta/queryIdentification
+"$id": http://ga4gh.org/schemas/discovery/search/components/request_meta/query_identification
 "$schema": http://json-schema.org/draft-07/schema#
 description: |
   This component contains a unique identifier for the query provided by the client.
