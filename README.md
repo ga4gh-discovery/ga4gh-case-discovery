@@ -77,8 +77,13 @@ Response Meta components can represent information about what the server did wit
 
 Record Meta components can represent data associated to a record but not actually part of the record data, for example the contact information for a subjects responsible clinician.
 
+## Content of components
 
 Individual components are defined in individual JSON Schema files in YAML format, and combined using JSON Scheam referencing to construct the request and response JSON Scheam.
+
+It is recommended that request and response payloads are validated using these schemas to confirm compliance.
+The YAML files may be convered into JSON files using the npm run script provided.
+Further details on this are provided in the [json_schema](/ga4gh-discovery/ga4gh-discovery-search/json_schema) folder README.md.
 
 # Security
 
