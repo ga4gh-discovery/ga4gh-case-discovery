@@ -146,8 +146,44 @@ If no specific version is required, simply "x" or "\*" represents "any version".
 
 The `logic` object allows the client to specify more complex boolean query logic.
 
----WIP---
+Omitting the `logic` key is the same as defining "AND" for all components in the query.
 
+Support for boolean logic oporators is recommended. If a server chooses not to implement boolean logic, the server must respond to any request containing boolean logic with HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
+
+The value of `logic` must be an object, which must contain either the boolean logic operator key "-AND" or "-OR".
+The value of a boolean logic key must be an array, where the items in the array must be either
+    - a JSON Pointer string, or
+    - an object, which contains single boolean logic operator key, which follows the same rules as above.
+
+This is a recursive structure to allow for creating complex queries using boolean logic.
+
+A JSON Pointer according to [RFC6901](https://tools.ietf.org/html/rfc6901) is a string which identifies a specific value within a JSON document.
+While JSON Pointer allows for complex pointers, this specification only requires the use of basic pointers, which must reference a query component.
+
+An example:
+
+```javascript
+{
+  "-AND": [                             // The boolan operator "AND"
+    "/query/components/gene/0",         // References the first gene component
+    {
+      "-OR": [                          // The boolean operator "OR"
+        "/query/components/gene/1",     // References the second gene component
+        "/query/components/gene/2"      // References the third gene component
+      ]
+    }
+  ]
+}
+```
+
+In the above example, the query logic is `"gene/0 AND (gene/1 OR gene/2)"`.
+
+There is no defined limit to the complexity of the query that be constructed.
+As such, implementers may want to create recursive functions, which should be able define and detect a recursion depth limit.
+Should a client make a request which triggers a recursion limit defined by the server, the server must return with HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
+
+
+The user interface required to construct any query, including complex boolean logic, is outside the scope of this specification.
 
 # Acknowledgments
 
