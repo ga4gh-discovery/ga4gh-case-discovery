@@ -10,7 +10,7 @@ A search request is an HTTP POST request from a client to a server.
 An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json` body with the following format.
 
 
-## Minimal exampel JSON body - Simplest query
+## Minimal exampel JSON body - A simple query
 
 
 ```javascript
@@ -34,12 +34,10 @@ An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json`
 }
 ```
 
-This is possibly the most simple search request the search API is capable of expressing.
-
-The request payload will be refurred to as "the instance".
+This is a simple search request in the search API format.
 
 
-The JSON instance is an object, and is required to have a `meta` and `query` object.
+The JSON instance (or payload) is an object, and is required to have a `meta` and `query` object.
 
 ### Meta object
 
@@ -104,10 +102,10 @@ The `query` object is required.
                     "start": 32936732,
                     "referenceBases": "G",
                     "alternateBases": "C",
-                    "assemblyId": "GRCh37"
+                    "assemblyID": "GRCh37"
                 }],
             "phenotype": [{
-                    "id": "HP_0000765",
+                    "id": "HP:0000765",
                     "observation": "no",
                     "label": "Abnormality of the thorax"
                 }]
