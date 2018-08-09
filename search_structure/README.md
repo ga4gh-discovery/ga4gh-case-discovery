@@ -7,7 +7,7 @@ This document describes a search request made by a client to a server.
 
 A search request is an HTTP POST request from a client to a server.
 
-An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json` body with the following format:
+An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json` body with the following format.
 
 
 ## Minimal exampel JSON body - Simplest query
