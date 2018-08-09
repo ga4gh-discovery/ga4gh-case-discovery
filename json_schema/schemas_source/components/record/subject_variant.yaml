@@ -15,6 +15,10 @@ properties:
     minItems: 0
     items:
       type: object
+      required:
+        - assemblyID
+        - referenceName
+        - start
       properties:
         referenceName:
           description: The chromosome where this variant is located. Both number and string are acceptable.

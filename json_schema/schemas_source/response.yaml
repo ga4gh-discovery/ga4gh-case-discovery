@@ -9,6 +9,7 @@ definitions:
       "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
 type: object
 required:
+  - meta
   - records
 properties:
   meta:
@@ -20,6 +21,8 @@ properties:
       response:
         description: Details on the component versions used in the response
         type: object
+        required:
+          - apiVersion
         properties:
           components:
             "$ref": "#/definitions/component-version"
