@@ -31,7 +31,7 @@ definitions:
         additionalProperties: false
   json_pointer:
     type: string
-    pattern: /query/components
+    pattern: ^/query/components
   boolean_or_pointer:
     type: array
     items:
