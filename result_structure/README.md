@@ -1,106 +1,152 @@
-## Response to a search request
+# Search Response
 
-This document describes a response that is returned from a search request
-
-Ideas/inspiration _"stolen"_ from [@Relequestual's](https://github.com/Relequestual) [GA4GH Search API Proposal - Components](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86)  and [@Buske's](https://github.com/Buske) [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md).
+This document describes a search response by a server in response to a search request from a client.
 
 
-### Specification for response at a high level.
+# Format
 
-```
+The search response to a valid search request which the server is able to process, must include a `application/json` body with the following format.
+
+
+## Minimal exampel JSON body - A simple response
+
+```javascript
 {
     "meta": {
         "response": {
+            "apiVersion": "1.0.0",
             "collectionComponents": {
-                "queryIdentification": "1.0.0",
-                "disclaimer": "1.0.0",
                 "exists": "1.0.0",
-                "counts": "1.0.0",
-                "records": "1.0.0"
+                "count": "1.0.0"
             }
         },
-
         "request": {
-            "componentsUsed": [ "< componentID >", "< componentID >"]
+            "apiVersion": {
+                "given": "1.0.0",
+                "usedAs": "1.0.0"
+            },
+            "componentsUsed": [
+                "gene"
+            ]
         },
-
-        "provenance": {
-            "???": "???"
+        "components": {
+            "acknowledgments": {
+                "terms": "You must not attempt to reidentify people associated with these records. Any resulting paper must acknowledge our work."
+            }
         }
     },
     "collectionComponents": {
-
-        "queryIdentification" : {
-            "queryID" : "<identifier>"
-        },
-
-        "disclaimer" : {
-            "text": "Disclaimer text...",
-            "terms" : "Terms text..."
-        },
-
         "exists": {
             "assertion": true
         },
-
-        "counts": {
-            "found": 23,
-            "returned": 10
-        },
-
-        "records": [
-
-        ]
-    }
+        "count": 10
+    },
+    "records": []
 }
 ```
 
-
-### Specification for the `meta` structure (required)
-
-* Contains metadata about the request.
+This is a simple search request in the search API format.
 
 
-### Specification for the `meta`/`response` structure (required)
+The JSON instance (or payload) is an object, and is required to have a `meta` and `records` properties.
 
-* Contains the list of collection components included in the response along with the version number of each of these collection components.
+### Meta object
 
-* Having a collection component listed here does not mean it is required in the `collectionComponents` section, however it is required to have a version number for a collection component if it is present in the `collectionComponents` section.
+The `meta` object allows the server to tell the client information about the response it is giving, and how it determined the results.
+
+The `meta` object contains a `response`, `request`, and `components` object.
+
+The `meta` object is required.
+
+#### `response`
+
+The `response` object must include an `apiVersion` string, which specifies the API version used in the response.
+The `response` object in the example also contains a `collectionComponents` object, which details the collection components used in the response.
+
+The `response` object is required.
+
+#### `request`
+
+The `request` object contains an `apiVersion` and `componentsUsed` property.
+
+The `apiVersion` value is an object that allows the server to communicate to the client that it was provided with one specific API version, and used it as a different version.
+
+The `componentsUsed` value is an array which contains the list of component types the server has used to find the results.
+This includes components in the `query` and any `meta` components used, if any.
+
+#### `components`
+
+The `components` object (within the the `meta` object) must only contain response meta components.
+
+The `acknowledgments` response meta component has only one required property which is `terms`. The remainng properties are defined in the JSON Schema file for this component.
 
 
-### Specification for the `meta`/`request` structure (optional)
+### `collectionComponents`
 
-* This section list the component IDs of the components used to fulfill the search request.
+The `collectionComponents` object contains summary or statistical information about the results.
+Collection components may include information about results which are not returned as records in the response.
 
+In the above example, there are no individual records returned, however the collection components used communicate that records exist for the search, and the number of records. This is similar to the Beacon response.
 
-### Specification for the `meta`/`provenance` structure (optional)
+The `collectionComponents` object must only contain collection components.
 
+### `records`
 
-### Specification for the `collectionComponents` structure (required)
+The `records` property is an array of objects, where each object represents an individaul record, made up of record components. 
 
-* This section contains a list of the collection components for the response.
-
-
-### Specification for the `collectionComponents`/`queryIdentification` structure (required)
-
-* Contains the query identification that was submitted with the search request (required).
-
-
-### Specification for the `collectionComponents`/`disclaimer` structure (optional)
-
-* The legal disclaimers and terms of use.
+In the above example, there are no records returned for the search.
+Here is an example of a `records` array with some components.
 
 
-### Specification for the `collectionComponents`/`*` structure (optional)
+```javascript
+...
+"records:": [
+    "gene": [{
+            "ensemblID": "ENSG00000139618",
+            "hgncName": "BRCA2"
+        }],
+    "subjectVariant": [{
+            "referenceName": "13",
+            "start": 32936732,
+            "end": 32936822
+            "assemblyID": "GRCh37"
+        }],
+    "phenotype": [{
+            "id": "HP:0000765",
+            "observation": "yes",
+            "label": "Abnormality of the thorax"
+        }]
+]
+...
+```
 
-* Initially supported collection components will be:
-  * exists
-  * counts
-  * records
+Three components are used in the above example, `gene`, `subjectVariant`, and `phenotype`.
 
-* Initially supported `records` will be:
-  * phenopackets
-  * mme
-  * cloud-dos
-  * any GA4GH patient data model
+The details in this document on specific components is not exhaustive. The JSON Schema YAML files should be referenced for the full component specification.
 
+#### `gene`
+
+The `gene` component uses `ensemblID` as the primary identifier, which must be an Ensembl Gene ID.
+
+#### `subjectVariant`
+
+The `subjectVariant` component contains a variant that has been seen in an individual subject.
+
+Required properties are `assemblyID`, `referenceName`, and `start`.
+
+#### `phenotype`
+
+The `phenotype` component contains phenotypic assertions.
+
+The only required property for a `phenotype` component is `id`, which is an HPO identifier string.
+
+Omitting `observation` is the same as setting it to `"yes"`, so in this case it is redundant.
+
+The `label` property is a string which contains a human readable name of the phenotype.
+
+
+# Acknowledgments
+
+Ideas/inspiration from:
+ - [@Relequestual's](https://github.com/Relequestual) [GA4GH Search API Proposal - Components](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86) 
+ - [@Buske's](https://github.com/Buske) [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md)

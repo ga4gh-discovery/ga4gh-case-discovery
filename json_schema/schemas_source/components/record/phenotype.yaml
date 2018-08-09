@@ -25,7 +25,7 @@ properties:
         observed:
           description: |
             Defines if the feature has been explicitly observed (`yes`) or explicitly not observed (`no`).
-            Omission of this optional field assumes the feature has been explicitly observed.
+            Omission of this optional property is the same as its value to "yes".
             There may be instances where explicitly asserting a phenotype could be useful.
           enum:
           - 'yes'

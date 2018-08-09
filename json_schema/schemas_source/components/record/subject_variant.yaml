@@ -8,13 +8,17 @@ description: |
   Should this support types of variants other than sequence variants?
 type: object
 required:
-  - subject_variant
+  - subjectVariant
 properties:
   subject_variant:
     type: array
     minItems: 0
     items:
       type: object
+      required:
+        - assemblyID
+        - referenceName
+        - start
       properties:
         referenceName:
           description: The chromosome where this variant is located. Both number and string are acceptable.
@@ -46,7 +50,7 @@ properties:
           pattern: ^([ATCGN.]+)$
           examples:
           - C
-        assemblyId:
+        assemblyID:
           description: The assembly of this variant.
           type: string
           pattern: ^NCBI36|GRCh\d{2}(\.p\d{1,2})*?$

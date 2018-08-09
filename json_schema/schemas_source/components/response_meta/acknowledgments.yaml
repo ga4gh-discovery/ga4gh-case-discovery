@@ -3,7 +3,7 @@
 "$schema": http://json-schema.org/draft-07/schema#
 description: |
   This component contains the terms and conditions of viewing and or using the data and related information.
-  All of the string fields in this component should NOT include HTML, and should be treated as plain text.
+  All of the string values in this component must not include HTML, and should be treated as plain text.
 definitions:
   acknowledgments:
     type: object
