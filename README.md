@@ -22,6 +22,13 @@ A client is a system which makes search requests to a server (or many servers in
 
 Unlike the MME API, there's no requirement for a client to make requests to a server on the basis of an existing patient record, allowing a user to construct any query they wish.
 
+# Releases
+
+The master branch represents a work in progess and not necessarily any individual release state.
+For releases, please see the [Relesaes page](https://github.com/ga4gh-discovery/ga4gh-discovery-search/releases).
+
+Clicking on the tag icon for a release will show the repository on Github at the selected release state, which will make it easier to view should you not wish to download release file bundles.
+
 ## Expected process
 
 1. The client poses a question regarding a patient to the server. We define this as the `query`

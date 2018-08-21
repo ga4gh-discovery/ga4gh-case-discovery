@@ -12,36 +12,36 @@ The search response to a valid search request which the server is able to proces
 
 ```javascript
 {
-    "meta": {
-        "response": {
-            "apiVersion": "1.0.0",
-            "collectionComponents": {
-                "exists": "1.0.0",
-                "count": "1.0.0"
-            }
-        },
-        "request": {
-            "apiVersion": {
-                "given": "1.0.0",
-                "usedAs": "1.0.0"
-            },
-            "componentsUsed": [
-                "gene"
-            ]
-        },
-        "components": {
-            "acknowledgments": {
-                "terms": "You must not attempt to reidentify people associated with these records. Any resulting paper must acknowledge our work."
-            }
-        }
+  "meta": {
+    "response": {
+      "apiVersion": "1.0.0",
+      "collectionComponents": {
+        "exists": "1.0.0",
+        "count": "1.0.0"
+      }
     },
-    "collectionComponents": {
-        "exists": {
-            "assertion": true
-        },
-        "count": 10
+    "request": {
+      "apiVersion": {
+        "given": "1.0.0",
+        "usedAs": "1.0.0"
+      },
+      "componentsUsed": [
+        "gene"
+      ]
     },
-    "records": []
+    "components": {
+      "acknowledgments": {
+        "terms": "You must not attempt to reidentify people associated with these records. Any resulting paper must acknowledge our work."
+      }
+    }
+  },
+  "collectionComponents": {
+    "exists": {
+      "assertion": true
+    },
+    "count": 10
+  },
+  "records": []
 }
 ```
 
@@ -92,32 +92,59 @@ The `collectionComponents` object must only contain collection components.
 
 ### `records`
 
-The `records` property is an array of objects, where each object represents an individaul record, made up of record components. 
+The `records` property is an array of objects, where each object represents an individaul record, made up of record components and optional result meta components. 
 
 In the above example, there are no records returned for the search.
 Here is an example of a `records` array with some components.
 
 
 ```javascript
-...
-"records:": [
-    "gene": [{
-            "ensemblID": "ENSG00000139618",
-            "hgncName": "BRCA2"
-        }],
-    "subjectVariant": [{
-            "referenceName": "13",
-            "start": 32936732,
-            "end": 32936822
-            "assemblyID": "GRCh37"
-        }],
-    "phenotype": [{
-            "id": "HP:0000765",
-            "observation": "yes",
-            "label": "Abnormality of the thorax"
-        }]
-]
-...
+{
+  ...
+  "records:": [
+    {
+      "meta": {
+        "links": [
+          {
+            "url": "https://database.com/patients/12345",
+            "name": "Patient Record"
+          }
+        ],
+        "contact": [
+          {
+            "fullName": "Foo Bar",
+            "role": "Clinician",
+            "email": "foo@institute.com",
+            "instition": "Institute",
+            "url": "https://institute.com/people/foobar"
+          }
+        ]
+      },
+      "gene": [
+        {
+          "ensemblID": "ENSG00000139618",
+          "hgncName": "BRCA2"
+        }
+      ],
+      "subjectVariant": [
+        {
+          "referenceName": "13",
+          "start": 32936732,
+          "end": 32936822,
+          "assemblyID": "GRCh37"
+        }
+      ],
+      "phenotype": [
+        {
+          "id": "HP:0000765",
+          "observation": "yes",
+          "label": "Abnormality of the thorax"
+        }
+      ]
+    }
+  ]
+  ...
+}
 ```
 
 Three components are used in the above example, `gene`, `subjectVariant`, and `phenotype`.
