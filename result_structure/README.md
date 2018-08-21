@@ -99,25 +99,52 @@ Here is an example of a `records` array with some components.
 
 
 ```javascript
-...
-"records:": [
-    "gene": [{
-            "ensemblID": "ENSG00000139618",
-            "hgncName": "BRCA2"
-        }],
-    "subjectVariant": [{
-            "referenceName": "13",
-            "start": 32936732,
-            "end": 32936822
-            "assemblyID": "GRCh37"
-        }],
-    "phenotype": [{
-            "id": "HP:0000765",
-            "observation": "yes",
-            "label": "Abnormality of the thorax"
-        }]
-]
-...
+{
+  ...
+  "records:": [
+    {
+      "meta": {
+        "links": [
+          {
+            "url": "https://database.com/patients/12345",
+            "name": "Patient Record"
+          }
+        ],
+        "contact": [
+          {
+            "fullName": "Foo Bar",
+            "role": "Clinician",
+            "email": "foo@institute.com",
+            "instition": "Institute",
+            "url": "https://institute.com/people/foobar"
+          }
+        ]
+      },
+      "gene": [
+        {
+          "ensemblID": "ENSG00000139618",
+          "hgncName": "BRCA2"
+        }
+      ],
+      "subjectVariant": [
+        {
+          "referenceName": "13",
+          "start": 32936732,
+          "end": 32936822,
+          "assemblyID": "GRCh37"
+        }
+      ],
+      "phenotype": [
+        {
+          "id": "HP:0000765",
+          "observation": "yes",
+          "label": "Abnormality of the thorax"
+        }
+      ]
+    }
+  ]
+  ...
+}
 ```
 
 Three components are used in the above example, `gene`, `subjectVariant`, and `phenotype`.
