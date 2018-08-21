@@ -12,36 +12,36 @@ The search response to a valid search request which the server is able to proces
 
 ```javascript
 {
-    "meta": {
-        "response": {
-            "apiVersion": "1.0.0",
-            "collectionComponents": {
-                "exists": "1.0.0",
-                "count": "1.0.0"
-            }
-        },
-        "request": {
-            "apiVersion": {
-                "given": "1.0.0",
-                "usedAs": "1.0.0"
-            },
-            "componentsUsed": [
-                "gene"
-            ]
-        },
-        "components": {
-            "acknowledgments": {
-                "terms": "You must not attempt to reidentify people associated with these records. Any resulting paper must acknowledge our work."
-            }
-        }
+  "meta": {
+    "response": {
+      "apiVersion": "1.0.0",
+      "collectionComponents": {
+        "exists": "1.0.0",
+        "count": "1.0.0"
+      }
     },
-    "collectionComponents": {
-        "exists": {
-            "assertion": true
-        },
-        "count": 10
+    "request": {
+      "apiVersion": {
+        "given": "1.0.0",
+        "usedAs": "1.0.0"
+      },
+      "componentsUsed": [
+        "gene"
+      ]
     },
-    "records": []
+    "components": {
+      "acknowledgments": {
+        "terms": "You must not attempt to reidentify people associated with these records. Any resulting paper must acknowledge our work."
+      }
+    }
+  },
+  "collectionComponents": {
+    "exists": {
+      "assertion": true
+    },
+    "count": 10
+  },
+  "records": []
 }
 ```
 
