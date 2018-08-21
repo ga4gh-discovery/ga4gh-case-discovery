@@ -92,7 +92,7 @@ The `collectionComponents` object must only contain collection components.
 
 ### `records`
 
-The `records` property is an array of objects, where each object represents an individaul record, made up of record components. 
+The `records` property is an array of objects, where each object represents an individaul record, made up of record components and optional result meta components. 
 
 In the above example, there are no records returned for the search.
 Here is an example of a `records` array with some components.
