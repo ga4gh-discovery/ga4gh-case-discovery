@@ -15,9 +15,11 @@ The search response to a valid search request which the server is able to proces
   "meta": {
     "response": {
       "apiVersion": "1.0.0",
-      "collectionComponents": {
+      "components": {
+        "collection": {
         "exists": "1.0.0",
         "count": "1.0.0"
+        }
       }
     },
     "request": {
@@ -57,6 +59,10 @@ The `meta` object allows the server to tell the client information about the res
 The `meta` object contains a `response`, `request`, and `components` object.
 
 The `meta` object is required.
+
+The `response` object in the `meta` object provides version information about the components used in the response.
+Each key is one of the component types found in a response (`record`, `recordMeta`, `collection`, or `responseMeta`).
+The values of these keys are objecets where the keys are component names and the values are the component data.
 
 #### `response`
 

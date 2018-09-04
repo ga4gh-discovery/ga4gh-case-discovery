@@ -7,6 +7,20 @@ definitions:
     type: object
     additionalProperties:
       "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
+  components-in-response:
+    description: An object which has component types that can be used in a response
+    type: object
+    propertyNames:
+      enum:
+        - record
+        - recordMeta
+        - collection
+        - responseMeta
+    additionalProperties:
+      "$ref": "#/definitions/component-version"
+    "$comment": |
+      `propertyNames` makes sure that all the properties of this object have one of the allowed names.
+      Combining this with `additionalProperties` which uses a reference means all property values have the same validation constraint
 type: object
 required:
   - meta
@@ -25,9 +39,7 @@ properties:
           - apiVersion
         properties:
           components:
-            "$ref": "#/definitions/component-version"
-          collectionComponents:
-            "$ref": "#/definitions/component-version"
+            "$ref": "#/definitions/components-in-response"
           apiVersion:
             description: The full version of the API that is being used for the response.
             "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver

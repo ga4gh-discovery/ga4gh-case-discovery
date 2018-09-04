@@ -1,6 +1,24 @@
 ---
 "$id": http://ga4gh.org/schemas/discovery/search/request
 "$schema": http://json-schema.org/draft-07/schema#
+definitions:
+  component-version:
+    description: An object where a key is the component name and the value specifies the version that was provided
+    type: object
+    additionalProperties:
+      "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
+  components-in-request:
+    description: An object which has component types that can be used in a request
+    type: object
+    propertyNames:
+      enum:
+        - search
+        - requestMeta
+    additionalProperties:
+      "$ref": "#/definitions/component-version"
+    "$comment": |
+      `propertyNames` makes sure that all the properties of this object have one of the allowed names.
+      Combining this with `additionalProperties` which uses a reference means all property values have the same validation constraint
 type: object
 required:
   - query
@@ -18,14 +36,12 @@ properties:
         type: object
         properties:
           components:
-            description: An object where a key is the component name and the value specifies the version that was provided
-            type: object
-            additionalProperties:
-              "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
+            "$ref": "#/definitions/components-in-request"
       apiVersion:
         description: The full version of the API being used in the request.
         "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
       components:
+        description: Request meta components
         "$ref": http://ga4gh.org/schemas/discovery/search/components/request_meta_components
   requires:
     type: object
@@ -46,6 +62,7 @@ properties:
       - components
     properties:
       components:
+        description: Search components
         "$ref": http://ga4gh.org/schemas/discovery/search/components/search_components
   logic:
     "$ref": http://ga4gh.org/schemas/discovery/search/boolean_logic
