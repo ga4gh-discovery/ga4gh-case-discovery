@@ -15,25 +15,25 @@ An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json`
 
 ```javascript
 {
-    "meta": {
-        "request": {
-            "components": {
-                "search": {
-                    "gene": "1.0.0"
-                }
-            }
-        },
-        "apiVersion": "1.0.0"
-    },
-    "query": {
-        "components": {
-            "gene": [
-                {
-                    "ensemblID": "ENSG00000139618"
-                }
-            ]
+  "meta": {
+    "request": {
+      "components": {
+        "search": {
+          "gene": "1.0.0"
         }
+      }
+    },
+    "apiVersion": "1.0.0"
+  },
+  "query": {
+    "components": {
+      "gene": [
+        {
+          "ensemblID": "ENSG00000139618"
+        }
+      ]
     }
+  }
 }
 ```
 
@@ -66,64 +66,64 @@ The `query` object is required.
 
 ```javascript
 {
-    "meta": {
-        "request": {
-            "components": {
-                "search": {
-                    "gene": "1.0.0",
-                    "subjectVariant": "1.0.0",
-                    "phenotype": "1.0.0"
-                },
-                "requestMeta": {
-                  "queryIdentification": "1.0.0"
-                }
-            }
+  "meta": {
+    "request": {
+      "components": {
+        "search": {
+          "gene": "1.0.0",
+          "subjectVariant": "1.0.0",
+          "phenotype": "1.0.0"
         },
-        "apiVersion": "1.0.0",
-        "components": {
-            "queryIdentification" : {
-                "queryID" : "abc123",
-                "queryLabel" : "Search from client X for user on [date]"
-            }
+        "requestMeta": {
+          "queryIdentification": "1.0.0"
         }
+      }
     },
-
-    "requires": {
-        "response": {
-            "components": {
-                "exists": "1",
-                "count": "1"
-            }
-        }
-    },
-
-    "query": {
-        "components": {
-            "gene": [{
-                    "ensemblID": "ENSG00000139618",
-                    "hgncName": "BRCA2"
-                }],
-            "subjectVariant": [{
-                    "referenceName": "13",
-                    "start": 32936732,
-                    "referenceBases": "G",
-                    "alternateBases": "C",
-                    "assemblyID": "GRCh37"
-                }],
-            "phenotype": [{
-                    "id": "HP:0000765",
-                    "observation": "no",
-                    "label": "Abnormality of the thorax"
-                }]
-        }
-    },
-    "logic": {
-        "-AND": [
-            "/query/components/gene/0",
-            "/query/components/subjectVariant/0",
-            "/query/components/phenotype/0"
-        ]
+    "apiVersion": "1.0.0",
+    "components": {
+      "queryIdentification" : {
+        "queryID" : "abc123",
+        "queryLabel" : "Search from client X for user on [date]"
+      }
     }
+  },
+
+  "requires": {
+    "response": {
+      "components": {
+        "exists": "1",
+        "count": "1"
+      }
+    }
+  },
+
+  "query": {
+    "components": {
+      "gene": [{
+          "ensemblID": "ENSG00000139618",
+          "hgncName": "BRCA2"
+        }],
+      "subjectVariant": [{
+          "referenceName": "13",
+          "start": 32936732,
+          "referenceBases": "G",
+          "alternateBases": "C",
+          "assemblyID": "GRCh37"
+        }],
+      "phenotype": [{
+          "id": "HP:0000765",
+          "observation": "no",
+          "label": "Abnormality of the thorax"
+      }]
+    }
+  },
+  "logic": {
+    "-AND": [
+      "/query/components/gene/0",
+      "/query/components/subjectVariant/0",
+      "/query/components/phenotype/0"
+    ]
+  }
 }
 ```
 
