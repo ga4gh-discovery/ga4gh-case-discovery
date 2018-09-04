@@ -24,9 +24,13 @@ properties:
         required:
           - apiVersion
         properties:
-          components:
+          recordComponents:
+            "$ref": "#/definitions/component-version"
+          recordMetaComponents:
             "$ref": "#/definitions/component-version"
           collectionComponents:
+            "$ref": "#/definitions/component-version"
+          responseMetaComponents:
             "$ref": "#/definitions/component-version"
           apiVersion:
             description: The full version of the API that is being used for the response.

@@ -1,6 +1,12 @@
 ---
 "$id": http://ga4gh.org/schemas/discovery/search/request
 "$schema": http://json-schema.org/draft-07/schema#
+definitions:
+  component-version:
+    description: An object where a key is the component name and the value specifies the version that was provided
+    type: object
+    additionalProperties:
+      "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
 type: object
 required:
   - query
@@ -17,15 +23,15 @@ properties:
         description: Contains metadata relating to the request
         type: object
         properties:
-          components:
-            description: An object where a key is the component name and the value specifies the version that was provided
-            type: object
-            additionalProperties:
-              "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
+          searchComponents:
+            "$ref": "#/definitions/component-version"
+          requestMetaComponents:
+            "$ref": "#/definitions/component-version"
       apiVersion:
         description: The full version of the API being used in the request.
         "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
       components:
+        description: Request meta components
         "$ref": http://ga4gh.org/schemas/discovery/search/components/request_meta_components
   requires:
     type: object
@@ -46,6 +52,7 @@ properties:
       - components
     properties:
       components:
+        description: Search components
         "$ref": http://ga4gh.org/schemas/discovery/search/components/search_components
   logic:
     "$ref": http://ga4gh.org/schemas/discovery/search/boolean_logic
