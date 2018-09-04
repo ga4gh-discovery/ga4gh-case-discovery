@@ -18,17 +18,20 @@ An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json`
     "meta": {
         "request": {
             "components": {
-                "gene": "1.0.0",
+                "search": {
+                    "gene": "1.0.0"
+                }
             }
         },
         "apiVersion": "1.0.0"
     },
-
     "query": {
         "components": {
-            "gene": [{
-                    "ensemblID": "ENSG00000139618",
-                }],
+            "gene": [
+                {
+                    "ensemblID": "ENSG00000139618"
+                }
+            ]
         }
     }
 }
@@ -45,8 +48,7 @@ The `meta` object allows the client to tell the server information about the req
 
 The `apiVersion` property defines a string which represents the Search API version format being used.
 
-The `request` object contains a `components` object, where each key represents a component name, where the value is the version of the component used in the request.
-This includes components in the `query` and any `meta` components used, if any.
+The `request` object contains a `components` object. This is further explained in the more advanced query below.
 
 The `meta` object is required.
 
@@ -67,10 +69,14 @@ The `query` object is required.
     "meta": {
         "request": {
             "components": {
-                "gene": "1.0.0",
-                "subjectVariant": "1.0.0",
-                "phenotype": "1.0.0",
-                "queryIdentification": "1.0.0"
+                "search": {
+                    "gene": "1.0.0",
+                    "subjectVariant": "1.0.0",
+                    "phenotype": "1.0.0"
+                },
+                "requestMeta": {
+                  "queryIdentification": "1.0.0"
+                }
             }
         },
         "apiVersion": "1.0.0",
@@ -129,6 +135,9 @@ The `meta` object includes a `components` object, where the keys are component n
 These are Request Meta components, and allow the client to express things to the server about the request.
 In this example, the client has idenitifed this query by an ID which the server may reference.
 
+The `request` object in the `meta` object provides version information about the components used in the request.
+Each key is one of the component types found in a request (`search` or `requestMeta`).
+The values of these keys are objecets where the keys are component names and the values are the component data.
 
 ### Requires object
 
