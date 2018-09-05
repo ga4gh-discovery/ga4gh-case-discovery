@@ -51,7 +51,7 @@ properties:
             "$ref": "#/definitions/components-in-request"
       apiVersion:
         description: The full version of the API being used in the request.
-        "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
+        "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
       components:
         description: Request meta components
         "$ref": http://ga4gh.org/schemas/discovery/search/components/request_meta_components
