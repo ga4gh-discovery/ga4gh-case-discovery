@@ -42,7 +42,7 @@ properties:
             "$ref": "#/definitions/components-in-response"
           apiVersion:
             description: The full version of the API that is being used for the response.
-            "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
+            "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
       request:
         description: Contains metadata relating to the request from the client
         type: object
@@ -52,9 +52,9 @@ properties:
             type: object
             properties:
               given:
-                "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
+                "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
               usedAs:
-                "$ref": http://ga4gh.org/schemas/discovery/search/definitionst#definitions/semver
+                "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
           componentsUsed:
             description: An array of the components that were used from the request
             type: array
