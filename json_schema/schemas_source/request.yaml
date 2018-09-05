@@ -19,6 +19,18 @@ definitions:
     "$comment": |
       `propertyNames` makes sure that all the properties of this object have one of the allowed names.
       Combining this with `additionalProperties` which uses a reference means all property values have the same validation constraint
+  components-in-response:
+    description: An object which has component types that can be used in a response, where the values are semver xragnes
+    "$comment": This is different to `components-in-response` definition in the response schema because the values are xranges
+    type: object
+    propertyNames:
+      enum:
+        - record
+        - recordMeta
+        - collection
+        - responseMeta
+    additionalProperties:
+      "$ref": "http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver-xrange"
 type: object
 required:
   - query
@@ -52,10 +64,7 @@ properties:
           - components
         properties:
           components:
-            type: object
-            description: An object where a key is the component name, and the value specifies the version (or version range) that is required
-            additionalProperties:
-              "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver-xrange
+            "$ref": "#/definitions/components-in-response"
   query:
     type: object
     required:
