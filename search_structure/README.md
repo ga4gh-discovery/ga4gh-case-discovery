@@ -10,7 +10,7 @@ A search request is an HTTP POST request from a client to a server.
 An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json` body with the following format.
 
 
-## Minimal exampel JSON body - A simple query
+## Minimal example JSON body - A simple query
 
 
 ```javascript
@@ -91,8 +91,10 @@ The `query` object is required.
   "requires": {
     "response": {
       "components": {
-        "exists": "1",
-        "count": "1"
+        "collection": {
+          "exists": "1",
+          "count": "1"
+        }
       }
     }
   },
