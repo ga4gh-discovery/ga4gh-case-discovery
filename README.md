@@ -10,55 +10,56 @@ The [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) defined a
 
 While the MME network was designed to allow for easy federated case matching, due to the complexity of the problem, it is limited by design to allow each server to determine what best constitutes a match. This functionality is useful for databases of siloed cases, but it doesn't allow for broader, specifically targeted searching of cases, which can fulfil many more clinical and scientific use cases.
 
-A new standard for case discovery, the Search API. A robust and flexible approach, considering databases which contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for query and response.
+The Search API is a new standard for case discover. It is robust and flexible approach, considering databases that contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for search and response.
 
 # Concept
 
-We define the two actors involved as the `server` and the `client`, following HTTP semantics.
+We define the two actors involved as the `client` and the `server`, following HTTP semantics.
 
-A server is a database or system which contains any number of cases and associated case data, which it is willing to perform searches on, and return data on.
+A `client` is a system which makes `search` requests to a `server` (or many servers in a distributed request) on behalf of a user and displays any `results` to the user, or as part of a workflow (such as a pipeline).
 
-A client is a system which makes search requests to a server (or many servers in a federated request) on behalf of a user and displays any results to the user, or based on instructions as part of a workflow (like a pipeline).
+A `server` is a database or system which contains any number of cases and associated case data on which it can perform searches and from which it can return `results`.
 
-Unlike the MME API, there's no requirement for a client to make requests to a server on the basis of an existing patient record, allowing a user to construct any query they wish.
+Unlike the MME API, there's no requirement for a `client` to make `search` requests to a `server` on the basis of an existing patient record, allowing a user to construct any search they wish.
 
 # Releases
 
 The master branch represents a work in progess and not necessarily any individual release state.
-For releases, please see the [Relesaes page](https://github.com/ga4gh-discovery/ga4gh-discovery-search/releases).
+For releases, please see the [Releases page](https://github.com/ga4gh-discovery/ga4gh-discovery-search/releases).
 
 Clicking on the tag icon for a release will show the repository on Github at the selected release state, which will make it easier to view should you not wish to download release file bundles.
 
 ## Expected process
 
-1. The client poses a question regarding a patient to the server. We define this as the `query`
+1. The `client` poses a question regarding a patient to the `server`, this is defined as the `search`
 
-    The query contains a collection of components which define specific aspects of the query. They query may also optionally specify that it requires specific types of data in the response for the response to be useful.
+    The `search` contains a collection of components which define specific aspects of the search. The `search` may also optionally specify that it requires specific types of data in the `results` for the response to be useful.
 
-2. The server uses the query components provided to perform a search on its data
+2. The `server` uses the search components provided to perform a search on its data
 
-3. The server returns as much or as little of the data or metadata as it is able.
+3. The `server` returns as much or as little of the data or metadata as it is able.
     
-    The response may include as little as an assertion that some records exist for the query criteria, much in the same way Beacon works, or it may provide rich and full variant and phenotypic data for each case that fulfils the query criteria.
+    The `results` may include as little as an assertion that some records exist for the query criteria, much in the same way Beacon works, or it may provide rich and full variant and phenotypic data for each case that fulfils the search criteria.
 
-## Request and Response overview
+## Search and Results overview
 
-The request a client makes to a server is over an HTTP POST, where the query is define in a JSON payload.
+The `client` makes a `search` request to a `server` as an HTTP POST, where the `search` is defined as a JSON payload.
 
-The main elements of the JSON query payload are `meta`, `query`, `requires`, and `logic`.
+The main elements of the JSON search payload are `meta`, `query`, `requires`, and `logic`.
 
-The main elements of the JSON response payload are `meta`, `collectionComponents` and `records`. An array of `records` will each contain any number of `components` which represent case data.
+The `server` respond to the `client` with `results`, where the `results` are defined as a JSON payload
 
-In both cases, the `meta` object is related to the query and response itself, and not any of the query or subject data.
+The main elements of the JSON `results` payload are `meta`, `collectionComponents` and `records`. An array of `records` will each contain any number of `components` which represent case data.
 
-The `components` that can be used in the query and response differ, although some are useable in both.
+In both cases, the `meta` object is related to the `search` and `results`, and not any of the `query` and `records` data.
+
+The `components` that can be used in the `query` and `records` differ, although some are useable in both.
 
 The `logic` may be used to define a single operator for all components (`AND` / `OR`), or define a more complex boolean logic query using components.
 
-More details for the Request and the Response structure and meaning are provided on the respective pages.
+More details for the [Search](search_structure/README.md) and the [Results](results_structure/README.md) structures are provided on the respective pages.
 
-JSON Schemas is be provided as a normative reference for the request and response.
-OpenAPI specifications will be provided, but may be omitted for the initial release.
+JSON Schemas is be provided as a normative reference for the `search` and `results`. OpenAPI specifications will be provided, but may be omitted for the initial release.
 
 ## Components
 
