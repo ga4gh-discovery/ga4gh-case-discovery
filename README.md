@@ -49,7 +49,7 @@ The main elements of the JSON search payload are `meta`, `query`, `requires`, an
 
 The `server` respond to the `client` with `results`, where the `results` are defined as a JSON payload
 
-The main elements of the JSON `results` payload are `meta`, `collectionComponents` and `records`. An array of `records` will each contain any number of `components` which represent case data.
+The main elements of the JSON `results` payload are `meta`, `collectionComponents` and `records`. An array of `records` each contain any number of `components` which represent case data.
 
 In both cases, the `meta` object is related to the `search` and `results`, and not any of the `query` and `records` data.
 
@@ -73,25 +73,27 @@ The API defines six different types of components.
 
 All components are optional.
 
-Request Meta components can represent information about the request made by the client to the server, such as what record components it requires in response for records.
+Request Meta components can represent information about the `search` request made by the client to the server, such as what record components are required in the `records` specified in the `results`.
 
 Query components can represent criteria for filtering records. All "Record components" are currently also Query components.
 
-Response Meta components can represent information about what the server did with the query in order to return the results.
+Response Meta components can represent information about what the server did with the search in order to return the results.
 
 Collection components can represent summary information about records returned from a search.
 
 Record components can represent record data which has been deposited to the server for searching.
 
-Record Meta components can represent data associated to a record but not actually part of the record data, for example the contact information for a subjects responsible clinician.
+Record Meta components can represent data associated to a record but not actually part of the record data, for example the contact information for the clinician responsible for the case, and/or links to that case.
 
 ## Content of components
 
-Individual components are defined in individual JSON Schema files in YAML format, and combined using JSON Schema referencing to construct the request and response JSON Schema.
+Individual components are defined in individual JSON Schema files in YAML format, and combined using JSON Schema references to construct the search and results JSON Schema.
 
-It is recommended that request and response payloads are validated using these schemas to confirm compliance.
+It is recommended that search and results payloads are validated using these schemas to confirm compliance.
 The YAML files may be converted into JSON files using the npm run script provided.
 Further details on this are provided in the [json_schema](/ga4gh-discovery/ga4gh-discovery-search/json_schema) folder README.md.
+
+It is expected that more components will be defined over time as the standard develops.
 
 # Security
 
@@ -118,15 +120,15 @@ The API version will follow the rules set out by [Semantic Versioning 2.0.0](htt
 
     Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
-The MAJOR version MUST be included in the URL exposed by servers for the API, in the format of `vX`, where `X` is a major version. 
+The MAJOR version MAY be included in the URL exposed by servers for the API, in the format of `vX`, where `X` is a major version, however this should not be relied on to assess `search` and `result` versions.
 
-The version of the API is linked to the request and response structure, and not any individual components used with the request and response, which have their own associated semantic version number.
+The version of the API is linked to the search and results structure, and not any individual components used with the request and response, which have their own associated semantic version number.
 
 An example API URL: `https://yournode.org/v1/search`
 
 ## Expectations
 
-A request may specify which API version response they require (if any) in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string (The Major version MUST match) using a header of `X-GA4GH-Discovery-Expect` with the request. The server must either respond with a backwards compatible version of the response, or respond with HTTP Status Code `400`, with a text body detailing the unsupported version request, which should include which versions are supported.
+A search may specify which API version results they require (if any) in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string (The Major version MUST match) using a header of `X-GA4GH-Discovery-Expect` with the request. The server must either respond with a backwards compatible version of the response, or respond with HTTP Status Code `400`, with a text body detailing the unsupported version request, which should include which versions are supported.
 
 If a request does not specify a required response version, the responding server must respond with the latest version they support of the major version defined in the API URL.
 
