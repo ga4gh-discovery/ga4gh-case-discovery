@@ -59,7 +59,7 @@ The `logic` may be used to define a single operator for all components (`AND` / 
 
 More details for the [Search](search_structure/README.md) and the [Results](results_structure/README.md) structures are provided on the respective pages.
 
-JSON Schemas is be provided as a normative reference for the `search` and `results`. OpenAPI specifications will be provided, but may be omitted for the initial release.
+JSON Schemas is be provided as a normative reference for the [Search](search_structure/README.md) and [Results](results_structure/README.md). OpenAPI specifications will be provided, but may be omitted for the initial release.
 
 ## Components
 
