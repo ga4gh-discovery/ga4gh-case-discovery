@@ -91,7 +91,7 @@ Individual components are defined in individual JSON Schema files in YAML format
 
 It is recommended that search and results payloads are validated using these schemas to confirm compliance.
 The YAML files may be converted into JSON files using the npm run script provided.
-Further details on this are provided in the [json_schema](/ga4gh-discovery/ga4gh-discovery-search/tree/master/json_schema) folder README.md.
+Further details on this are provided in the [json_schema](/ga4gh-discovery/ga4gh-discovery-search/tree/master/json_schema/schemas_source) folder README.md.
 
 It is expected that more components will be defined over time as the standard develops.
 
