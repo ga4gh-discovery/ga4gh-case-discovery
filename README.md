@@ -1,12 +1,12 @@
 # GA4GH Discovery Search API
 
-A standard for a global federated data sharing network that allows the querying, and subsequent -optional- processing of the results on a cloud environment.
+A standard for a global federated data sharing network that allows the searching, and subsequent -optional- processing of the results on a cloud environment.
 
 Please note this standard is work in progress.
 
 # Preface
 
-The [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) defined a JSON Structure representing a patient, which was used to perform a "query by example" as a federated request across a network of servers (or nodes). 
+The [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) defined a JSON Structure representing a patient which was used to perform a "query by example" as a federated request across a network of servers (or nodes). 
 
 While the MME network was designed to allow for easy federated case matching, due to the complexity of the problem, it is limited by design to allow each server to determine what best constitutes a match. This functionality is useful for databases of siloed cases, but it doesn't allow for broader, specifically targeted searching of cases, which can fulfil many more clinical and scientific use cases.
 
@@ -16,7 +16,7 @@ The Search API is a new standard for case discover. It is robust and flexible ap
 
 We define the two actors involved as the `client` and the `server`, following HTTP semantics.
 
-A `client` is a system which makes `search` requests to a `server` (or many servers in a distributed request) on behalf of a user and displays any `results` to the user, or as part of a workflow (such as a pipeline).
+A `client` is a system which makes `search` requests to a `server` (or many servers in a federated request) on behalf of a user and displays any `results` to the user, or as part of a workflow (such as a pipeline).
 
 A `server` is a database or system which contains any number of cases and associated case data on which it can perform searches and from which it can return `results`.
 
