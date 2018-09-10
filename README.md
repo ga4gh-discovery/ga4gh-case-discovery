@@ -16,11 +16,11 @@ The Search API is a new standard for case discover. It is robust and flexible ap
 
 We define the two actors involved as the `client` and the `server`, following HTTP semantics.
 
-A `client` is a system which makes `search` requests to a `server` (or many servers in a federated request) on behalf of a user and displays any `results` to the user, or as part of a workflow (such as a pipeline).
+A `client` is a system which makes `search` requests to a `server` (or many servers in a federated request) on behalf of a user and displays any results to the user, or as part of a workflow (such as a pipeline).
 
 A `server` is a database or system which contains any number of cases and associated case data on which it can perform searches and from which it can return `results`.
 
-Unlike the MME API, there's no requirement for a `client` to make `search` requests to a `server` on the basis of an existing patient record, allowing a user to construct any search they wish.
+Unlike the [MME API](https://github.com/ga4gh/mme-apis), there's no requirement for a `client` to make `search` requests to a `server` on the basis of an existing patient record, allowing a user to construct any search they wish.
 
 # Releases
 
