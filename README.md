@@ -64,24 +64,24 @@ JSON Schemas is be provided as a normative reference for the [Search](search_str
 ## Components
 
 The API defines six different types of components.
-- Request Meta
+- Search Meta
 - Query
-- Response Meta
+- Results Meta
 - Collection
 - Record
 - Record Meta
 
 All components are optional.
 
-Request Meta components can represent information about the `search` request made by the client to the server, such as what record components are required in the `records` specified in the `results`.
+Search Meta components can represent information about the `search` request made by the client to the server, such as what record components are required in the `records` specified in the `results`.
 
 Query components can represent criteria for filtering records. All "Record components" are currently also Query components.
 
-Response Meta components can represent information about what the server did with the search in order to return the results.
+Results Meta components can represent information about what the server did with the `search` in order to return the `results`.
 
-Collection components can represent summary information about records returned from a search.
+Collection components can represent summary information about `records` returned from a search.
 
-Record components can represent record data which has been deposited to the server for searching.
+Record components can represent `record` data which has been deposited to the server for searching.
 
 Record Meta components can represent data associated to a record but not actually part of the record data, for example the contact information for the clinician responsible for the case, and/or links to that case.
 
