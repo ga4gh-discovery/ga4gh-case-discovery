@@ -120,31 +120,31 @@ The API version will follow the rules set out by [Semantic Versioning 2.0.0](htt
 
     Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
-The MAJOR version MAY be included in the URL exposed by servers for the API, in the format of `vX`, where `X` is a major version, however this should not be relied on to assess `search` and `result` versions.
+The MAJOR version MUST be included in the URL exposed by servers for the API, in the format of `vX`, where `X` is a major version.
 
-The version of the API is linked to the search and results structure, and not any individual components used with the request and response, which have their own associated semantic version number.
+The version of the API is linked to the `search` and `results` structure, and not any individual components used with the request and response, which have their own associated semantic version number.
 
 An example API URL: `https://yournode.org/v1/search`
 
 ## Expectations
 
-A search may specify which API version results they require (if any) in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string (The Major version MUST match) using a header of `X-GA4GH-Discovery-Expect` with the request. The server must either respond with a backwards compatible version of the response, or respond with HTTP Status Code `400`, with a text body detailing the unsupported version request, which should include which versions are supported.
+A `search` may specify which API version `results` they require (if any) in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string (The Major version MUST match) using a header of `X-GA4GH-Discovery-Expect` with the request. The server must either respond with a backwards compatible version of the `results`, or respond with HTTP Status Code `400`, with a text body detailing the unsupported version request, which should include which versions are supported.
 
-If a request does not specify a required response version, the responding server must respond with the latest version they support of the major version defined in the API URL.
+If a `search` does not specify a required `results` version, the responding server must respond with the latest version they support of the major version defined in the API URL.
 
 Note: Patch versions are backwards and forwards compatible, while Minor versions are only backwards compatible.
 
 # Content type
 
-The Content Type for a Request must be `application/json`.
+The Content Type for a `search` must be `application/json`.
 
-The Content Type for a Response should be `application/json`, although the server may not return JSON content in case of errors.
+The Content Type for `results` should be `application/json`, although the server may not return JSON content in case of errors.
 
 The HTTP status code should be checked before attempting to process content. Severs may include error information in a JSON payload with a non `200` HTTP status code, but the structure of this is not defined.
 
 ## Content
 
-The HTTP POST request body and the response body should both be JSON.
+The HTTP POST `search` body and the `results` body should both be JSON.
 See the following documents for details on the format.
 
 * [The structure of the `search`](search_structure/README.md)
