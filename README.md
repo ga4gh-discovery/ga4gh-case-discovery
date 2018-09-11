@@ -20,7 +20,7 @@ A `search` is a JSON document that contains a query and associated meta data.
 
 A `results` is a JSON document that contains the results produced by running a query and associated meta data.
 
-This specification does not define the data model of any data on the `server`, not does it define how this data is to be indexed, searched, or ranked. For example a `server` could index annotations for specific genomic coordinates, patient case data, animal models, VCF files, etc...
+This specification does not define the data model of any data on the `server`, not does it define how this data is to be indexed, searched, or ranked. For example a `server` could index annotations for specific genomic coordinates, patient cases, animal models, VCF files, phenotypes for diseases, etc...
 
 # Releases
 
