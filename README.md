@@ -12,7 +12,7 @@ The Search API is a new standard for data search. It is robust and flexible appr
 
 We define the two actors involved as the `client` and the `server`, following HTTP semantics.
 
-A `client` is a system which makes `search` requests to a `server` (or many servers in a federated request). This can be done on behalf of a user, or as part of an automated workflow/pipeline.
+A `client` is a system which makes `search` requests to a `server` (or many servers in a federated system). This can be done on behalf of a user, or as part of an automated workflow/pipeline.
 
 A `server` is a database or system which contains data on which it can perform searches and from which it can return `results`.
 
