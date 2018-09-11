@@ -8,10 +8,6 @@ Please note this standard is work in progress.
 
 The Search API is a new standard for case discovery. It is robust and flexible approach, considering databases that contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for search and response.
 
-# Glossary
-
-TDB
-
 # Concept
 
 We define the two actors involved as the `client` and the `server`, following HTTP semantics.
@@ -173,6 +169,11 @@ These example constructs are based on use-cases from the driver projects and the
 The [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) defined a JSON Structure representing a patient which was used to perform a "query by example" as a federated request across a network of servers (or nodes). 
 
 While the MME network was designed to allow for easy federated case matching, due to the complexity of the problem, it is limited by design to allow each server to determine what best constitutes a match. This functionality is useful for databases of siloed cases, but it doesn't allow for broader, specifically targeted searching of cases, which can fulfil many more clinical and scientific use cases.
+
+# Glossary
+
+TDB
+
 
 # Acknowledgments
 
