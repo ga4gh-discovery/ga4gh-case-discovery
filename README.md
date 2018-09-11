@@ -184,4 +184,4 @@ Thanks to all [contributors](https://github.com/ga4gh-discovery/ga4gh-discovery-
 
 # Matchmaker Exchange
 
-This standard is deeply informed by the [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis), both in lessons learned during development and in running this API across a number of nodes. It attempts to address and overcome all the limitations identified in the [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) and own a debt this predecessor.
+This standard is deeply informed by the [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis), both in lessons learned during development and in the operation of this API in practice.
