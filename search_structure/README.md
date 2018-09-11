@@ -36,7 +36,7 @@ An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json`
 
 This is a basic `search` request in the search API format.
 
-Required elements in a `search` request are `meta` and `query` which are both specified in the basic example above, `requires`, and `logic` are optional and not specified.
+Required objects in a `search` request are `meta` and `query` which are both specified in the basic example above, `requires`, and `logic` are optional and not specified.
 
 ### Meta object
 
