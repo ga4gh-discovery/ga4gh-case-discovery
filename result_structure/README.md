@@ -2,11 +2,9 @@
 
 This document describes a `results` response by a `server` in response to a `search` request by a `client`.
 
-
 # Format
 
 The `results` response to a valid `search` request which the `server` is able to process, must include a `application/json` body with the following format.
-
 
 ## Basic Example - Simple results
 
@@ -33,7 +31,7 @@ The `results` response to a valid `search` request which the `server` is able to
     },
     "components": {
       "acknowledgments": {
-        "terms": "You must not attempt to reidentify people associated with these records. Any resulting paper must acknowledge our work."
+        "terms": "There is no darkness, but ignorance."
       }
     }
   },
@@ -63,7 +61,7 @@ The `response` object must include an `apiVersion` string, which specifies the A
 
 The `response` object provides version information about the components used in the response.
 Each key is one of the component types found in a response (`record`, `recordMeta`, `collection`, or `responseMeta`).
-The values of these keys are objecets where the keys are component names and the values are the component data.
+The values of these keys are objects where the keys are component names and the values are the component data.
 
 The `response` object is required.
 
@@ -71,7 +69,7 @@ The `response` object is required.
 
 The `request` object contains an `apiVersion` and `componentsUsed` property.
 
-The `apiVersion` value is an object that allows the server to communicate to the `client` that it was provided with one specific API version, and used it as a different version.
+The `apiVersion` value is an object that allows the `server` to communicate to the `client` that it was provided with one specific API version, and used it as a different version.
 
 The `componentsUsed` value is an array which contains the list of component types the `server` has used to find the `results`.
 
@@ -81,24 +79,23 @@ This includes components in the `query` and any `meta` components used, if any.
 
 The `components` object (within the the `meta` object) must only contain response meta components.
 
-The `acknowledgments` response meta component has only one required property which is `terms`. The remainng properties are defined in the JSON Schema file for this component.
-
+The `acknowledgments` response meta component has only one required property which is `terms`. The remaining properties are defined in the JSON Schema file for this component.
 
 ### CollectionComponents object
 
 The `collectionComponents` object contains summary or statistical information about the results.
-Collection components may include information about results which are not returned as records in the response.
+Collection components may include information about results which are not returned as `records` in the `results` response.
 
-In the above example, there are no individual records returned, however the collection components used communicate that records exist for the search, and the number of records. This is similar to the Beacon response.
+In the above example, there are no individual `records` returned, however the collection components used communicate that records exist for the search, along with the number of records. This is similar to the Beacon response.
 
 The `collectionComponents` object must only contain collection components.
 
 ### Records object
 
-The `records` property is an array of objects, where each object represents an individaul record, made up of record components and optional result meta components. 
+The `records` property is an array of objects, where each object represents an individual record, made up of record components and optional result meta components. 
 
 In the above example, there are no records returned for the search.
-Here is an example of a `records` array with some components.
+Below is an example of a `records` array with some components.
 
 
 ```javascript
@@ -173,7 +170,6 @@ The only required property for a `phenotype` component is `id`, which is an HPO 
 Omitting `observation` is the same as setting it to `"yes"`, so in this case it is redundant.
 
 The `label` property is a string which contains a human readable name of the phenotype.
-
 
 # Acknowledgments
 
