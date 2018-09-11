@@ -1,8 +1,8 @@
 # GA4GH Discovery Search API
 
-A standard for a global federated data sharing network that allows the searching, and subsequent -optional- processing of the results on a cloud environment.
+A standard for a global federated data sharing network that allows the searching, and subsequent -optional- processing of the results in a cloud environment.
 
-Please note this standard is work in progress.
+Please note this standard is a work in progress.
 
 # Preface
 
