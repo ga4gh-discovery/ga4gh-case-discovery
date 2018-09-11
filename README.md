@@ -45,11 +45,11 @@ Clicking on the tag icon for a release will show the repository on Github at the
 
 The `client` makes a `search` request to a `server` as an HTTP POST, where the `search` is defined as a JSON payload.
 
-The main objects of the JSON `search` payload are `meta`, `query`, `requires`, and `logic`.
+The main objects of the `search` request are `meta`, `query`, `requires`, and `logic`.
 
 The `server` respond to the `client` with `results`, where the `results` are defined as a JSON payload
 
-The main objects of the JSON `results` payload are `meta`, `collectionComponents` and `records`. An array of `records` each contain any number of `components` which represent data.
+The main objects of the `results` response are `meta`, `collectionComponents` and `records`. An array of `records` each contain any number of `components` which represent data.
 
 In both cases, the `meta` object is related to the `search` and `results`, and not any of the `query` and `records` data.
 
