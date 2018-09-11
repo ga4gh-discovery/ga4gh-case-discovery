@@ -138,9 +138,9 @@ Note: Patch versions are backwards and forwards compatible, while Minor versions
 
 The Content Type for a `search` must be `application/json`.
 
-The Content Type for `results` should be `application/json`, although the server is not required to return a JSON document in case of an error.
+The Content Type for `results` must be `application/json` along with a `200` HTTP status code if there is a successful outcome. The server is not required to return a JSON document if the outcome is not successful.
 
-The HTTP status code should be checked before attempting to process content. Severs may include error information with a non `200` HTTP status code, but the structure of this is not defined.
+The HTTP status code should be checked before attempting to process the `results` response. Severs may include error information with a non `200` HTTP status code, but the structure of this is not defined.
 
 ## Content
 
@@ -149,6 +149,7 @@ See the following documents for details on the format.
 
 * [The structure of the `search`](search_structure/README.md)
 * [The structure of the `result`](result_structure/README.md)
+
 
 # Reserved keys and extensions
 
