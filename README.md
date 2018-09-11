@@ -6,11 +6,11 @@ Please note this standard is work in progress.
 
 # Preface
 
-The [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) defined a JSON Structure representing a patient which was used to perform a "query by example" as a federated request across a network of servers (or nodes). 
+The Search API is a new standard for case discovery. It is robust and flexible approach, considering databases that contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for search and response.
 
-While the MME network was designed to allow for easy federated case matching, due to the complexity of the problem, it is limited by design to allow each server to determine what best constitutes a match. This functionality is useful for databases of siloed cases, but it doesn't allow for broader, specifically targeted searching of cases, which can fulfil many more clinical and scientific use cases.
+# Glossary
 
-The Search API is a new standard for case discover. It is robust and flexible approach, considering databases that contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for search and response.
+TDB
 
 # Concept
 
@@ -168,6 +168,11 @@ It is recommended a JSON Schema be supplied for a proprietary component to forma
 
 These example constructs are based on use-cases from the driver projects and their feedback: [examples](example_usage/README.md)
 
+# Roots in Matchmaker Exchange
+
+The [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) defined a JSON Structure representing a patient which was used to perform a "query by example" as a federated request across a network of servers (or nodes). 
+
+While the MME network was designed to allow for easy federated case matching, due to the complexity of the problem, it is limited by design to allow each server to determine what best constitutes a match. This functionality is useful for databases of siloed cases, but it doesn't allow for broader, specifically targeted searching of cases, which can fulfil many more clinical and scientific use cases.
 
 # Acknowledgments
 
@@ -182,3 +187,5 @@ This generalized standard was inspired, adapted, and built up from existing work
 * The Matchmaker Exchange APIs [@github](https://github.com/ga4gh/mme-apis)
 
 Also thanks to all [contributors](https://github.com/ga4gh-discovery/ga4gh-discovery-search/graphs/contributors)
+
+
