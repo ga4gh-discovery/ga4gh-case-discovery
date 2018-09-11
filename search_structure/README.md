@@ -1,17 +1,14 @@
 # Search Request
 
-This document describes a search request made by a client to a server.
-
+This document describes a `search` request made by a `client` to a `server`.
 
 # Format
 
-A search request is an HTTP POST request from a client to a server.
+A `search` request is an HTTP POST request from a `client` to a `server`.
 
 An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json` body with the following format.
 
-
 ## Minimal example JSON body - A simple query
-
 
 ```javascript
 {
@@ -37,32 +34,30 @@ An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json`
 }
 ```
 
-This is a simple search request in the search API format.
+This is a simple `search` request in the search API format.
 
+The JSON instance (or payload) is an object whose main elements are `meta`, `query`, `requires`, and `logic`. 
 
-The JSON instance (or payload) is an object, and is required to have a `meta` and `query` object.
+Required elements are `meta` and `query`.
+
 
 ### Meta object
 
-The `meta` object allows the client to tell the server information about the request it's making.
+The `meta` object allows the client to tell the server information about the request it is making, and is required in the `search` request.
 
 The `apiVersion` property defines a string which represents the Search API version format being used.
 
 The `request` object contains a `components` object. This is further explained in the more advanced query below.
 
-The `meta` object is required.
-
 ### Query object
 
-The `query` object specifies the question the client is asking.
+The `query` object specifies the query the client is asking, and is required in the `search` request
 
 It contains a `components` object, where the keys are the component name, and the values are an array of objects which represent that component type.
+
 In the basic example, the `gene` component has one object, which represents BRCA2 in the form of an Ensembl Gene ID.
 
-The `query` object is required.
-
 ## More advanced query
-
 
 ```javascript
 {
@@ -134,8 +129,9 @@ That's a bit more JSON than the minimal example, but we're asking a more specifi
 ### Meta object
 
 The `meta` object includes a `components` object, where the keys are component names and the values are the component data.
+
 These are Request Meta components, and allow the client to express things to the server about the request.
-In this example, the client has idenitifed this query by an ID which the server may reference.
+In this example, the client has identified this query by an ID which the server may reference.
 
 The `request` object in the `meta` object provides version information about the components used in the request.
 Each key is one of the component types found in a request (`search` or `requestMeta`).
