@@ -47,13 +47,13 @@ The `client` makes a `search` request to a `server` as an HTTP POST, where the `
 
 The main objects of the `search` request are `meta`, `query`, `requires`, and `logic`.
 
-The `server` respond to the `client` with `results`, where the `results` are defined as a JSON payload
+The `server` responds to the `client` with `results`, where the `results` are defined as a JSON payload
 
 The main objects of the `results` response are `meta`, `collectionComponents` and `records`. An array of `records` each contain any number of `components` which represent data.
 
 In both cases, the `meta` object is related to the `search` and `results`, and not any of the `query` and `records` data.
 
-The `components` that can be used in the `query` and `records` differ, although some are useable in both.
+The `components` that can be used in the `query` and `records` differ, though some are useable in both.
 
 The `logic` may be used to define a single operator for all components (`AND` / `OR`), or define a more complex boolean logic query using components.
 
