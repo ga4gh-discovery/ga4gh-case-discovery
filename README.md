@@ -20,6 +20,8 @@ A `search` is a JSON document that contains a query and associated meta data.
 
 A `results` is a JSON document that contains the results produced by running a query and associated meta data.
 
+This specification does not define the data model of any data on the `server`, not does it define how this data is to be indexed, searched, or ranked. For example a `server` could index annotations for specific genomic coordinates, patient case data, animal models, VCF files, etc...
+
 # Releases
 
 The master branch represents a work in progess and not necessarily any individual release state.
@@ -71,9 +73,9 @@ The API defines six different types of components.
 
 All components are optional.
 
-Search Meta components can represent information about the `search` request made by the client to the server, such as what record components are required in the `records` specified in the `results`.
+Search Meta components can represent information about the `search` request made by the `client` to the `server`, such as what record components are required in the `records` specified in the `results` returned by the `server` to the `client`.
 
-Query components can represent criteria for filtering records. All "Record components" are currently also Query components.
+Query components can represent criteria for searching and filtering data. All "Record components" are currently also Query components. This is not expected to remain the case as components are developed in the future.
 
 Results Meta components can represent information about what the server did with the `search` in order to return the `results`.
 
@@ -91,7 +93,7 @@ It is recommended that search and results payloads are validated using these sch
 The YAML files may be converted into JSON files using the npm run script provided.
 Further details on this are provided in the [json_schema](https://github.com/ga4gh-discovery/ga4gh-discovery-search/tree/master/json_schema/schemas_source) folder README.md.
 
-It is expected that more components will be defined over time as the standard develops.
+It is expected that more components will be developed in the future as the standard evolves.
 
 # Security
 
@@ -136,9 +138,9 @@ Note: Patch versions are backwards and forwards compatible, while Minor versions
 
 The Content Type for a `search` must be `application/json`.
 
-The Content Type for `results` should be `application/json`, although the server may not return JSON content in case of errors.
+The Content Type for `results` should be `application/json`, although the server is not required to return a JSON document in case of an error.
 
-The HTTP status code should be checked before attempting to process content. Severs may include error information in a JSON payload with a non `200` HTTP status code, but the structure of this is not defined.
+The HTTP status code should be checked before attempting to process content. Severs may include error information with a non `200` HTTP status code, but the structure of this is not defined.
 
 ## Content
 
@@ -180,9 +182,6 @@ This generalized standard was inspired, adapted, and built up from existing work
 
 Thanks to all [contributors](https://github.com/ga4gh-discovery/ga4gh-discovery-search/graphs/contributors)
 
-
 # Matchmaker Exchange
 
-The [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) defined a JSON Structure representing a patient which was used to perform a "query by example" as a federated request across a network of servers (or nodes). 
-
-While the MME network was designed to allow for easy federated case matching, due to the complexity of the problem, it is limited by design to allow each server to determine what best constitutes a match. This functionality is useful for databases of siloed cases, but it doesn't allow for broader, specifically targeted searching of cases, which can fulfil many more clinical and scientific use cases.
+This standard is deeply informed by the [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis), both in lessons learned during development and in running this API across a number of nodes. It attempts to address and overcome all the limitations identified in the [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) and own a debt this predecessor.
