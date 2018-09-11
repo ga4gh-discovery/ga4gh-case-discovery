@@ -164,16 +164,15 @@ It is recommended a JSON Schema be supplied for a proprietary component to forma
 
 These example constructs are based on use-cases from the driver projects and their feedback: [examples](example_usage/README.md)
 
-# Roots in Matchmaker Exchange
-
-The [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) defined a JSON Structure representing a patient which was used to perform a "query by example" as a federated request across a network of servers (or nodes). 
-
-While the MME network was designed to allow for easy federated case matching, due to the complexity of the problem, it is limited by design to allow each server to determine what best constitutes a match. This functionality is useful for databases of siloed cases, but it doesn't allow for broader, specifically targeted searching of cases, which can fulfil many more clinical and scientific use cases.
-
 # Glossary
 
-TDB
+`server` - a system that handles `search` requests, and return a `results` response, or an error.
 
+`client` - a system that generates `search` requests.
+
+`search` - a `search` request is a JSON document that contains a query and associated meta data.
+
+`results` - a `results` response is a JSON document that contains the results produced by running a query and associated meta data.
 
 # Acknowledgments
 
@@ -187,6 +186,11 @@ This generalized standard was inspired, adapted, and built up from existing work
 * The merging of concepts, content, and building of first draft by Harindra Arachchi @harindra-a
 * The Matchmaker Exchange APIs [@github](https://github.com/ga4gh/mme-apis)
 
-Also thanks to all [contributors](https://github.com/ga4gh-discovery/ga4gh-discovery-search/graphs/contributors)
+Thanks to all [contributors](https://github.com/ga4gh-discovery/ga4gh-discovery-search/graphs/contributors)
 
 
+# Matchmaker Exchange
+
+The [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis) defined a JSON Structure representing a patient which was used to perform a "query by example" as a federated request across a network of servers (or nodes). 
+
+While the MME network was designed to allow for easy federated case matching, due to the complexity of the problem, it is limited by design to allow each server to determine what best constitutes a match. This functionality is useful for databases of siloed cases, but it doesn't allow for broader, specifically targeted searching of cases, which can fulfil many more clinical and scientific use cases.
