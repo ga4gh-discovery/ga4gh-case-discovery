@@ -6,17 +6,19 @@ Please note this standard is work in progress.
 
 # Preface
 
-The Search API is a new standard for case discovery. It is robust and flexible approach, considering databases that contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for search and response.
+The Search API is a new standard for data search. It is robust and flexible approach, considering databases that contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for search and response.
 
-# Concept
+# Concepts
 
 We define the two actors involved as the `client` and the `server`, following HTTP semantics.
 
 A `client` is a system which makes `search` requests to a `server` (or many servers in a federated request). This can be done on behalf of a user, or as part of an automated workflow/pipeline.
 
-A `server` is a database or system which contains any number of cases and associated case data on which it can perform searches and from which it can return `results`.
+A `server` is a database or system which contains data on which it can perform searches and from which it can return `results`.
 
-Unlike the [MME API](https://github.com/ga4gh/mme-apis), there's no requirement for a `client` to make `search` requests to a `server` on the basis of an existing patient record, allowing a user to construct any search they wish.
+A `search` is a JSON document that contains a query and associated meta data.
+
+A `results` is a JSON document that contains the results produced by running a query and associated meta data.
 
 # Releases
 
@@ -27,25 +29,25 @@ Clicking on the tag icon for a release will show the repository on Github at the
 
 ## Expected process
 
-1. The `client` poses a question regarding a patient to the `server`, this is defined as the `search`
+1. The `client` sends a `search` request to a `server`.
 
-    The `search` contains a collection of components which define specific aspects of the search. The `search` may also optionally specify that it requires specific types of data in the `results` for the response to be useful.
+    The `search` request contains metadata and a collection of components which define specific aspects of the query. The `search` may also optionally specify that it requires specific types of data in the `results` for the response to be useful.
 
-2. The `server` uses the search components provided to perform a search on its data
+2. The `server` uses the query components provided to perform a search on its data.
 
-3. The `server` returns as much or as little of the data or metadata as it is able.
+3. The `server` returns a `results` response with as much or as little of the data or metadata as it is able.
     
-    The `results` may include as little as an assertion that some records exist for the query criteria, much in the same way Beacon works, or it may provide rich and full variant and phenotypic data for each case that fulfils the search criteria.
+    The `results` may include as little as an assertion that some data exist for the query criteria, much in the same way Beacon works, or it may provide rich and full variant and phenotypic data that fulfils the search criteria.
 
 ## Search and Results overview
 
 The `client` makes a `search` request to a `server` as an HTTP POST, where the `search` is defined as a JSON payload.
 
-The main elements of the JSON search payload are `meta`, `query`, `requires`, and `logic`.
+The main elements of the JSON `search` payload are `meta`, `query`, `requires`, and `logic`.
 
 The `server` respond to the `client` with `results`, where the `results` are defined as a JSON payload
 
-The main elements of the JSON `results` payload are `meta`, `collectionComponents` and `records`. An array of `records` each contain any number of `components` which represent case data.
+The main elements of the JSON `results` payload are `meta`, `collectionComponents` and `records`. An array of `records` each contain any number of `components` which represent data.
 
 In both cases, the `meta` object is related to the `search` and `results`, and not any of the `query` and `records` data.
 
@@ -163,16 +165,6 @@ It is recommended a JSON Schema be supplied for a proprietary component to forma
 ## Example usage
 
 These example constructs are based on use-cases from the driver projects and their feedback: [examples](example_usage/README.md)
-
-# Glossary
-
-`server` - a system that handles `search` requests, and return a `results` response, or an error.
-
-`client` - a system that generates `search` requests.
-
-`search` - a `search` request is a JSON document that contains a query and associated meta data.
-
-`results` - a `results` response is a JSON document that contains the results produced by running a query and associated meta data.
 
 # Acknowledgments
 
