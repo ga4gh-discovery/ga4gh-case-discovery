@@ -6,13 +6,11 @@ These are still in progress..more to come!
 
 ## Example 1: Query if data exists with a variant in the given gene
 ```
+  Query:
+    Do you have an entry with this gene?
 
-	Query:
-		Do you have an entry with this gene?		
-	
-	Answer format:
-		yes | no	
-																					
+  Answer format:
+    yes | no
 ```
 
 The `search` can be represented by,
