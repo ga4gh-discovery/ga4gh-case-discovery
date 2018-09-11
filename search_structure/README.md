@@ -8,7 +8,7 @@ A `search` request is an HTTP POST request from a `client` to a `server`.
 
 An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json` body with the following format.
 
-## Minimal example JSON body - A simple query
+## Basic example - A simple search
 
 ```javascript
 {
@@ -34,30 +34,27 @@ An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json`
 }
 ```
 
-This is a simple `search` request in the search API format.
+This is a basic `search` request in the search API format.
 
-The JSON instance (or payload) is an object whose main elements are `meta`, `query`, `requires`, and `logic`. 
-
-Required elements are `meta` and `query`.
-
+Required elements in a `search` request are `meta` and `query` which are both specified in the basic example above, `requires`, and `logic` are optional and not specified.
 
 ### Meta object
 
-The `meta` object allows the client to tell the server information about the request it is making, and is required in the `search` request.
+The `meta` object allows the `client` to tell the `server` information about the `search` request it is making. Again the `meta` object is required in the `search` request.
+
+The `request` object contains a `components` object. This is used to specific component version information for the components in the `query` object.
 
 The `apiVersion` property defines a string which represents the Search API version format being used.
 
-The `request` object contains a `components` object. This is further explained in the more advanced query below.
-
 ### Query object
 
-The `query` object specifies the query the client is asking, and is required in the `search` request
+The `query` object specifies the query the client is asking, and is required in the `search` request.
 
-It contains a `components` object, where the keys are the component name, and the values are an array of objects which represent that component type.
+It contains a `components` object, where the keys are the component name, and the values are an array of objects which represent that component type. The component versions are defined in the `meta` object.
 
 In the basic example, the `gene` component has one object, which represents BRCA2 in the form of an Ensembl Gene ID.
 
-## More advanced query
+## A more advanced search
 
 ```javascript
 {
