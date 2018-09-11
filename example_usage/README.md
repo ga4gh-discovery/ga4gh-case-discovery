@@ -72,13 +72,11 @@ With minimum required values, the `results` would be,
 
 ## Example 2: Query on variant and gene
 ```
+  Query:
+    Do you have an entry on BRCA2 with 17:42929130 C > A, and without HP:0000765		
 
-	Query:
-		Do you have an entry on BRCA2 with 17:42929130 C > A, and without HP:0000765		
-	
-	Answer format:
-		yes | no
-																					
+  Answer format:
+    yes | no
 ```
 
 The `search` can be represented by,
@@ -194,13 +192,11 @@ The `results` would be,
 
 ## Example 3: Query on variant and gene
 ```
+  Query:
+    Do you have an entry on BRCA2 with 17:42929130 C > A, and without HP:0000765		
 
-	Query:
-		Do you have an entry on BRCA2 with 17:42929130 C > A, and without HP:0000765		
-	
-	Answer format:
-		records
-																					
+  Answer format:
+    records
 ```
 
 The `search` can be represented by,
@@ -446,13 +442,11 @@ The `results` would be,
 
 ## Example 4: Query on variants
 ```
+  Query:
+    Do you have an entry with ( 5:118860953 T > C OR 17:42929130 G > A ) AND 5:118792051 C > T
 
-	Query:
-		Do you have an entry with ( 5:118860953 T > C OR 17:42929130 G > A ) AND 5:118792051 C > T
-	
-	Answer format:
-		records
-																					
+  Answer format:
+    yes | no
 ```
 
 The `search` can be represented by,
@@ -484,7 +478,7 @@ The `search` can be represented by,
     "response": {
       "components": {
         "responseMeta": {
-		  "acknowledgments": "1"
+          "acknowledgments": "1"
         },
         "collection": {
           "exists": "1",
