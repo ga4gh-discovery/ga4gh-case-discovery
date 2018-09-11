@@ -150,14 +150,14 @@ The `logic` object allows the client to specify more complex boolean query logic
 
 Omitting the `logic` key is the same as defining "AND" for all components in the query.
 
-Support for boolean logic oporators is recommended. If a server chooses not to implement boolean logic, the server must respond to any request containing boolean logic with HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
+Support for boolean logic oporators is recommended. If a `server` chooses not to implement boolean logic, the `server` must respond to any `search` request containing boolean logic with HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
 
 The value of `logic` must be an object, which must contain either the boolean logic operator key "-AND" or "-OR".
 The value of a boolean logic key must be an array, where the items in the array must be either
     - a JSON Pointer string, or
     - an object, which contains single boolean logic operator key, which follows the same rules as above.
 
-This is a recursive structure to allow for creating complex queries using boolean logic.
+This is a recursive structure which allows the creation of arbitrarily complex queries using boolean logic.
 
 A JSON Pointer according to [RFC6901](https://tools.ietf.org/html/rfc6901) is a string which identifies a specific value within a JSON document.
 While JSON Pointer allows for complex pointers, this specification only requires the use of basic pointers, which must reference a query component.
