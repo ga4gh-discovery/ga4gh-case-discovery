@@ -50,7 +50,7 @@ The `apiVersion` property defines a string which represents the Search API versi
 
 The `query` object specifies the query the client is asking, and is required in the `search` request.
 
-It contains a `components` object, where the keys are the component name, and the values are an array of objects which represent that component type. The component versions are defined in the `meta` object.
+It contains a `components` object, where the keys are the component name, and the values are an array of objects which represent that component type.
 
 In the basic example, the `gene` component has one object, which represents BRCA2 in the form of an Ensembl Gene ID.
 
@@ -127,19 +127,19 @@ That's a bit more JSON than the minimal example, but we're asking a more specifi
 
 The `meta` object includes a `components` object, where the keys are component names and the values are the component data.
 
-These are Request Meta components, and allow the client to express things to the server about the request.
+These are Search Meta components, and allow the `client` to express things to the `server` about the `search` request.
 In this example, the client has identified this query by an ID which the server may reference.
 
-The `request` object in the `meta` object provides version information about the components used in the request.
-Each key is one of the component types found in a request (`search` or `requestMeta`).
-The values of these keys are objecets where the keys are component names and the values are the component data.
+The `request` object in the `meta` object provides version information about the components used in the `search` request.
+Each key is one of the component types found in the `search` request (in the `search` and `requestMeta` objects).
+The values of these keys are objects where the keys are component names and the values are the component data.
 
 ### Requires object
 
-The `requires` object allows the client to specify what components it requires in response for the response to be useful.
-As the expectation is that this API will be used in a federated method, making the same request to multiple servers without discression, it follows that not all servers will contain or be able to share the data the client needs to process the results, or what the clients users will expect.
+The `requires` object allows the client to specify what components it requires in the `results` response for it to be useful.
+The expectation is that this API will be used in a federated method, making the same `search` request to multiple servers, it follows that not all servers will contain or be able to share the data the client needs to process the results, or what the clients users will expect.
 
-In this example, the client is requesting that the `exists` and `count` components exist. This is quite minimal, as these are both Collection components, and it's possible that no record data might actually be included in the servers response.
+In this example, the client is requesting that the `exists` and `count` components exist. This is quite minimal, as these are both Collection components, and it's possible that no record data might actually be included in the `results` response.
 
 A client must also specify a version for the required components, in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string.
 If no specific version is required, simply "x" or "\*" represents "any version".
@@ -180,12 +180,7 @@ An example:
 
 In the above example, the query logic is `"gene/0 AND (gene/1 OR gene/2)"`.
 
-There is no defined limit to the complexity of the query that be constructed.
-As such, implementers may want to create recursive functions, which should be able define and detect a recursion depth limit.
-Should a client make a request which triggers a recursion limit defined by the server, the server must return with HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
-
-
-The user interface required to construct any query, including complex boolean logic, is outside the scope of this specification.
+There is no defined limit to the complexity of the query that be constructed using this system so it is quite possible for a `client` to contruct a query that is beyond a `server`'s capacity to process. In this case the `server` must return an HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
 
 # Acknowledgments
 
