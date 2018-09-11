@@ -24,7 +24,7 @@ This specification does not define the data model of any data on the `server`, n
 
 # Releases
 
-The master branch represents a work in progess and not necessarily any individual release state.
+The master branch represents a work in progress and not necessarily any individual release state.
 For releases, please see the [Releases page](https://github.com/ga4gh-discovery/ga4gh-discovery-search/releases).
 
 Clicking on the tag icon for a release will show the repository on Github at the selected release state, which will make it easier to view should you not wish to download release file bundles.
