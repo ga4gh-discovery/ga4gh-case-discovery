@@ -1,6 +1,6 @@
 # Record Components
 
-This contains the yaml for the record components.
+This contains the yaml files for the record components.
 
 ## gene.yaml
 
