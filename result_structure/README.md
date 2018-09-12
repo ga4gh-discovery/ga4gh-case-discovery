@@ -167,7 +167,7 @@ The `phenotype` component contains phenotypic assertions.
 
 The only required property for a `phenotype` component is `id`, which is an HPO identifier string.
 
-Omitting `observation` is the same as setting it to `"yes"`, so in this case it is redundant.
+The `observation` defaults to `yes` if omitted.
 
 The `label` property is a string which contains a human readable name of the phenotype.
 
