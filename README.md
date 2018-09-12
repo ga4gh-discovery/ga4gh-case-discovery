@@ -14,13 +14,13 @@ We define the two actors involved as the `client` and the `server`, following HT
 
 A `client` is a system which makes `search` requests to a `server` (or many servers in a federated system). This can be done on behalf of a user, or as part of an automated workflow/pipeline.
 
-A `server` is a database or system which contains data on which it can perform searches and from which it can return a `results` response.
+A `server` is a database or system that contains data on which it can perform searches and from which it can return `results` responses.
 
-A `search` request is a JSON document that contains a query and associated meta data.
+A `search` request is a JSON instance (or payload) that contains a query and associated meta data.
 
-A `results` response is a JSON document that contains the results produced by running a query and associated meta data.
+A `results` response is a JSON instance (or payload) that contains the results produced by running a query and associated meta data.
 
-This specification does not define the data model of any data on the `server`, not does it define how this data is to be indexed, searched, or ranked. For example a `server` could index annotations for specific genomic coordinates, patient cases, animal models, VCF files, phenotypes for diseases, etc...
+This specification does not define the data model of any data stored on the `server`, nor does it define how this data is indexed, searched, or ranked. For example a `server` could store and index annotations for specific genomic coordinates, patient cases, animal models, VCF files, phenotypes for disease ontologies, etc...
 
 # Releases
 
