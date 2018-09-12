@@ -23,11 +23,10 @@ The `terms` is the terms and conditions.
 
 The `disclaimer` is the disclaimer associated with the data.
 
-The `disclaimer` is the disclaimer associated with the data.
-
 The `reference` is the reference associated with the data.
 
 The `id` is the ID given to this set of acknowledgments.
+
 
 Multiple `acknowledgments` are represented as an array:
 
