@@ -57,10 +57,10 @@ The `meta` object contains a `response`, `request`, and `components` objects.
 
 #### Response object
 
-The `response` object must include an `apiVersion` string, which specifies the API version used in the response.
+The `response` object must include an `apiVersion` string, which specifies the API version used in the `results` response.
 
-The `response` object provides version information about the components used in the response.
-Each key is one of the component types found in a response (`record`, `recordMeta`, `collection`, or `responseMeta`).
+The `response` object provides version information about the components used in the `results` response.
+Each key is one of the component types found in a `results` response (`record`, `recordMeta`, `collection`, or `responseMeta`).
 The values of these keys are objects where the keys are component names and the values are the component data.
 
 The `response` object is required.
