@@ -1,6 +1,6 @@
 # Schemas Sources
 
-This contains the yaml for the basic building blocks for the API.
+This contains the yaml files for the basic building blocks of the API.
 
 ## definitions.yaml
 
@@ -13,5 +13,3 @@ Defines the `search` request.
 ## response.yaml
 
 Defines the `results` response.
-
-
