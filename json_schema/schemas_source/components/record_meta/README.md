@@ -1,6 +1,6 @@
 # Record Meta Components
 
-This contains the yaml for the record meta components.
+This contains the yaml files for the record meta components.
 
 ## contact.yaml
 
