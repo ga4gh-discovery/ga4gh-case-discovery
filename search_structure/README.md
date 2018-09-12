@@ -48,7 +48,7 @@ The `apiVersion` property defines a string which represents the Search API versi
 
 ### Query object
 
-The `query` object specifies the query the client is asking, and is required in the `search` request.
+The `query` object specifies the query the `client` is asking, and is required in the `search` request.
 
 It contains a `components` object, where the keys are the component name, and the values are an array of objects which represent that component type.
 
@@ -128,7 +128,7 @@ That's a bit more JSON than the minimal example, but we're asking a more specifi
 The `meta` object includes a `components` object, where the keys are component names and the values are the component data.
 
 These are Search Meta components, and allow the `client` to express things to the `server` about the `search` request.
-In this example, the client has identified this query by an ID which the server may reference.
+In this example, the `client` has identified this query by an ID which the `server` may reference.
 
 The `request` object in the `meta` object provides version information about the components used in the `search` request.
 Each key is one of the component types found in the `search` request (in the `search` and `requestMeta` objects).
@@ -136,21 +136,21 @@ The values of these keys are objects where the keys are component names and the 
 
 ### Requires object
 
-The `requires` object allows the client to specify what components it requires in the `results` response for it to be useful.
-The expectation is that this API will be used in a federated method, making the same `search` request to multiple servers, it follows that not all servers will contain or be able to share the data the client needs to process the results, or what the clients users will expect.
+The `requires` object allows the `client` to specify what components it requires in the `results` response for it to be useful.
+The expectation is that this API will be used in a federated method, making the same `search` request to multiple servers, it follows that not all servers will contain or be able to share the data the client needs to process the results, or what the clients will expect.
 
-In this example, the client is requesting that the `exists` and `count` components exist. This is quite minimal, as these are both Collection components, and it's possible that no record data might actually be included in the `results` response.
+In this example, the `client` is requesting that the `exists` and `count` components exist. This is quite minimal, as these are both Collection components, and it's possible that no record data might actually be included in the `results` response.
 
 A client must also specify a version for the required components, in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string.
 If no specific version is required, simply "x" or "\*" represents "any version".
 
 ### Logic object
 
-The `logic` object allows the client to specify more complex boolean query logic.
+The `logic` object allows the `client` to specify more complex boolean query logic.
 
-Omitting the `logic` key is the same as defining "AND" for all components in the query.
+Omitting the `logic` object is the same as defining "AND" for all components in the query.
 
-Support for boolean logic oporators is recommended. If a `server` chooses not to implement boolean logic, the `server` must respond to any `search` request containing boolean logic with HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
+Support for boolean logic oporators is strongly recommended. If a `server` chooses not to implement boolean logic, the `server` must respond to any `search` request containing boolean logic with HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
 
 The value of `logic` must be an object, which must contain either the boolean logic operator key "-AND" or "-OR".
 The value of a boolean logic key must be an array, where the items in the array must be either
