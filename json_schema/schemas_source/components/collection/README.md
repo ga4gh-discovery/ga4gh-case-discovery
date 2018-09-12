@@ -1,6 +1,6 @@
 # Collection Components
 
-This contains the yaml for the collection components.
+This contains the yaml files for the collection components.
 
 ## count.yaml
 
