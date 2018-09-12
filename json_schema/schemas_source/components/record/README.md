@@ -17,7 +17,7 @@ This contains the yaml for the record components.
 
 The `gene` component contains a gene identifier.
 
-The `ensemblID` is an Ensembl Gene ID and is required.
+The `ensemblID` is an Ensembl Gene ID, and is required.
 
 The `hgncName` can be added for readability.
 
@@ -37,9 +37,9 @@ The `hgncName` can be added for readability.
 
 The `phenotype` component contain phenotypic assertions. 
 
-The `id` is an HPO identifier and is required (see [HPO](https://hpo.jax.org)).
+The `id` is an HPO identifier, and is required (see [HPO](https://hpo.jax.org)).
 
-The `observation` can be set to "yes", "no" and "unknown", it is optional and defaults to "yes" if not specified.
+The `observation` can be set to "yes", "no" and "unknown", it defaults to "yes" if not specified.
 
 The `label` is the phenotype definition and can be added for readability. 
 
@@ -65,7 +65,7 @@ The `referenceName` is the chromosome, 1-22, "X", "Y", "MT", and is required.
 
 The `start` is the genomic coordinate, and is required.
 
-The `referenceBases` and `alternateBases` are the alleles, and are optional.
+The `referenceBases` and `alternateBases` are the alleles.
 
 The `assemblyID` is the NCBI assembly, "NCBI34", "NCBI35", "NCBI36", "GRCh37", "GRCh38", and is required.
 
