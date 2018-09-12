@@ -1,6 +1,6 @@
 # Request Meta Components
 
-This contains the yaml for the request meta components.
+This contains the yaml file for the request meta components.
 
 ## query_identification.yaml
 
