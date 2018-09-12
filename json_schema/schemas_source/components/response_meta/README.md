@@ -1,6 +1,6 @@
 # Response Meta Components
 
-This contains the yaml for the response meta components.
+This contains the yaml file for the response meta components.
 
 ## acknowledgments.yaml
 
