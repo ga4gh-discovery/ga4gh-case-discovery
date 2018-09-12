@@ -2,15 +2,15 @@
 
 This contains the basic yaml building blocks for the API.
 
-# definitions.yaml
+## definitions.yaml
 
 Contains the definitions of semantic versioning as defined in [https://semver.org](https://semver.org)
 
-# request.yaml
+## request.yaml
 
 Defines the `search` request.
 
-# response.yaml
+## response.yaml
 
 Defines the `results` response.
 
