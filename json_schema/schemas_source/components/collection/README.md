@@ -4,8 +4,6 @@ This contains the yaml for the collection components.
 
 ## count.yaml
 
-The `count` object is used to return the 
-
 ```javascript
 {
     "collectionComponents": {
