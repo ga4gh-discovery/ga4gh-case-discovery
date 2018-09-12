@@ -153,6 +153,8 @@ See the following documents for details on the format:
 
 The API reserves for its use JSON object keys which begin with an underscore "\_" or a dash "-".
 
+Keys that start with a dash "-" are reserved and cannot be used anywhere, for example the `logic` object uses "-AND", which means that "AND" cannot be used as a key anywhere else in the API.
+
 The API defined structure allows for clients or servers to define their own proprietary extensions as they see fit, by prefixing JSON object keys with an underscore "\_".
 
 A server may wish to reveal additional information about a record or summary information about the collection of records which are not defined by a component. A new component proprietary component can be included by prefixing the given component name with an underscore: `_mySpecialComponent`.
