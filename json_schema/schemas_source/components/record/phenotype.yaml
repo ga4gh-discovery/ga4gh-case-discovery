@@ -30,7 +30,7 @@ properties:
           enum:
           - 'yes'
           - 'no'
-          - unknown
+          - 'unknown'
         ageOfOnset:
           description: An HPO id of a term that represents a descendant of HP:0003674 "Clinical Course / Onset" or alternatives thereof.
           type: string
