@@ -61,7 +61,7 @@ The `label` is the phenotype definition and can be added for readability.
 
 The `subjectVariant` component contains a subject variant.
 
-The `referenceName` is the chromosome, "1"-"2"2, "X" and "Y", and is required.
+The `referenceName` is the chromosome, 1-22, "X", "Y", "MT", and is required.
 
 The `start` is the genomic coordinate, and is required.
 
