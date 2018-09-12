@@ -1,4 +1,4 @@
-# Schema Source
+# Schemas Sources
 
 This contains the basic yaml building blocks for the API.
 
