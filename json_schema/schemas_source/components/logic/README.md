@@ -1,6 +1,6 @@
 # Boolean Logic
 
-This contains the yaml for the boolean `logic` object.
+This contains the yaml file for the boolean `logic` object.
 
 ## boolean_logic.yaml
 
