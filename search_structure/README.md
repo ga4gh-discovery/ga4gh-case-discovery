@@ -40,7 +40,7 @@ An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json`
 This is a simple search request in the search API format.
 
 
-The JSON instance (or payload) is an object, and is required to have a `meta` and `query` object.
+The JSON payload is an object, and is required to have a `meta` and `query` object.
 
 ### Meta object
 
