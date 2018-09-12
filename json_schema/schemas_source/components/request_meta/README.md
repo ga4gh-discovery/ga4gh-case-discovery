@@ -17,7 +17,7 @@ This contains the yaml for the request meta components.
 
 The `queryIdentification` component contains a unique identifier for the query.
 
-The `queryID` is the unique identifier.
+The `queryID` is the unique identifier, and is required.
 
 The `queryLabel` can be added for readability.
 
