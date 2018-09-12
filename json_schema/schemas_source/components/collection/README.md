@@ -8,7 +8,7 @@ This contains the yaml for the collection components.
 {
     "collectionComponents": {
         "count": 1
-    }, 
+    }
 }
 ```
 
@@ -22,7 +22,7 @@ The `count` object contains the number of records retrieved in this search. This
         "exists": {
             "assertion": true
         }
-    }, 
+    }
 }
 ```
 
