@@ -12,7 +12,7 @@ This contains the yaml for the collection components.
 }
 ```
 
-The `count` object contains the number of records retrieved in this search. This is distinct from the number of records that may be contained in the `records` object.
+The `count` component contains the number of records retrieved in this search. This is distinct from the number of records that may be contained in the `records` object.
 
 ## exists.yaml
 
@@ -26,5 +26,5 @@ The `count` object contains the number of records retrieved in this search. This
 }
 ```
 
-The `exists` object contain an `assertion` object  that is set to "true" if the `servers` contains any data that matches the query.
+The `exists` component contain an `assertion` object  that is set to "true" if the `servers` contains any data that matches the query.
 
