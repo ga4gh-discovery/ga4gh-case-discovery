@@ -8,10 +8,10 @@ This contains the yaml for the response meta components.
 {
   "components": {
     "acknowledgments": {
-      "terms": "We are such stuff as dreams are made on, and our little life, is rounded with a sleep.",
-      "disclaimer": "We are such stuff as dreams are made on, and our little life, is rounded with a sleep.",
-      "reference": "We are such stuff as dreams are made on, and our little life, is rounded with a sleep.",
-      "id": "We are such stuff as dreams are made on, and our little life, is rounded with a sleep."
+      "terms": "Honesty is the best policy. If I lose mine honor, I lose myself.",
+      "disclaimer": "Though this be madness, yet there is method in it.",
+      "reference": "It was Greek to me.",
+      "id": "42"
     }
   }, 
 }
