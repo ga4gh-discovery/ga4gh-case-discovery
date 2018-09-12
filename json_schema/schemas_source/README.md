@@ -1,6 +1,6 @@
 # Schemas Sources
 
-This contains the basic yaml building blocks for the API.
+This contains the yaml for the basic building blocks for the API.
 
 ## definitions.yaml
 
