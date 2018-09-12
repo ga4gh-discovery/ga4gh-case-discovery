@@ -1,6 +1,6 @@
 # Components Sources
 
-This contains the yaml for each component section, along with a directory with the YAML for the components in each component section.
+This contains the yaml files for each component section, along with a directory with the YAML files for the components in each component section.
 
 ## collection_components.yaml
 
