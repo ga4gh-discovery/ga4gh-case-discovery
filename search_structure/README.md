@@ -1,17 +1,14 @@
 # Search Request
 
-This document describes a search request made by a client to a server.
-
+This document describes a `search` request made by a `client` to a `server`.
 
 # Format
 
-A search request is an HTTP POST request from a client to a server.
+A `search` request is an HTTP POST request from a `client` to a `server`.
 
 An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json` body with the following format.
 
-
-## Minimal example JSON body - A simple query
-
+## Basic example - A simple search
 
 ```javascript
 {
@@ -37,32 +34,27 @@ An `HTTP POST` request to `<base_remote_url>/search`, with an `application/json`
 }
 ```
 
-This is a simple search request in the search API format.
+This is a basic `search` request in the search API format.
 
-
-The JSON payload is an object, and is required to have a `meta` and `query` object.
+Required objects in a `search` request are `meta` and `query` which are both specified in the basic example above, `requires`, and `logic` are optional and not specified.
 
 ### Meta object
 
-The `meta` object allows the client to tell the server information about the request it's making.
+The `meta` object allows the `client` to tell the `server` information about the `search` request it is making. Again the `meta` object is required in the `search` request.
+
+The `request` object contains a `components` object. This is used to specific component version information for the components in the `query` object.
 
 The `apiVersion` property defines a string which represents the Search API version format being used.
 
-The `request` object contains a `components` object. This is further explained in the more advanced query below.
-
-The `meta` object is required.
-
 ### Query object
 
-The `query` object specifies the question the client is asking.
+The `query` object specifies the query the `client` is asking, and is required in the `search` request.
 
 It contains a `components` object, where the keys are the component name, and the values are an array of objects which represent that component type.
+
 In the basic example, the `gene` component has one object, which represents BRCA2 in the form of an Ensembl Gene ID.
 
-The `query` object is required.
-
-## More advanced query
-
+## A more advanced search
 
 ```javascript
 {
@@ -134,37 +126,38 @@ That's a bit more JSON than the minimal example, but we're asking a more specifi
 ### Meta object
 
 The `meta` object includes a `components` object, where the keys are component names and the values are the component data.
-These are Request Meta components, and allow the client to express things to the server about the request.
-In this example, the client has idenitifed this query by an ID which the server may reference.
 
-The `request` object in the `meta` object provides version information about the components used in the request.
-Each key is one of the component types found in a request (`search` or `requestMeta`).
-The values of these keys are objecets where the keys are component names and the values are the component data.
+These are Search Meta components, and allow the `client` to express things to the `server` about the `search` request.
+In this example, the `client` has identified this query by an ID which the `server` may reference.
+
+The `request` object in the `meta` object provides version information about the components used in the `search` request.
+Each key is one of the component types found in the `search` request (in the `search` and `requestMeta` objects).
+The values of these keys are objects where the keys are component names and the values are the component data.
 
 ### Requires object
 
-The `requires` object allows the client to specify what components it requires in response for the response to be useful.
-As the expectation is that this API will be used in a federated method, making the same request to multiple servers without discression, it follows that not all servers will contain or be able to share the data the client needs to process the results, or what the clients users will expect.
+The `requires` object allows the `client` to specify what components it requires in the `results` response for it to be useful.
+The expectation is that this API will be used in a federated method, making the same `search` request to multiple servers, it follows that not all servers will contain or be able to share the data the client needs to process the results, or what the clients will expect.
 
-In this example, the client is requesting that the `exists` and `count` components exist. This is quite minimal, as these are both Collection components, and it's possible that no record data might actually be included in the servers response.
+In this example, the `client` is requesting that the `exists` and `count` components exist. This is quite minimal, as these are both Collection components, and it's possible that no record data might actually be included in the `results` response.
 
 A client must also specify a version for the required components, in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string.
 If no specific version is required, simply "x" or "\*" represents "any version".
 
 ### Logic object
 
-The `logic` object allows the client to specify more complex boolean query logic.
+The `logic` object allows the `client` to specify more complex boolean query logic.
 
-Omitting the `logic` key is the same as defining "AND" for all components in the query.
+Omitting the `logic` object is the same as defining "AND" for all components in the query.
 
-Support for boolean logic oporators is recommended. If a server chooses not to implement boolean logic, the server must respond to any request containing boolean logic with HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
+Support for boolean logic oporators is strongly recommended. If a `server` chooses not to implement boolean logic, the `server` must respond to any `search` request containing boolean logic with HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
 
 The value of `logic` must be an object, which must contain either the boolean logic operator key "-AND" or "-OR".
 The value of a boolean logic key must be an array, where the items in the array must be either
     - a JSON Pointer string, or
     - an object, which contains single boolean logic operator key, which follows the same rules as above.
 
-This is a recursive structure to allow for creating complex queries using boolean logic.
+This is a recursive structure which allows the creation of arbitrarily complex queries using boolean logic.
 
 A JSON Pointer according to [RFC6901](https://tools.ietf.org/html/rfc6901) is a string which identifies a specific value within a JSON document.
 While JSON Pointer allows for complex pointers, this specification only requires the use of basic pointers, which must reference a query component.
@@ -187,12 +180,7 @@ An example:
 
 In the above example, the query logic is `"gene/0 AND (gene/1 OR gene/2)"`.
 
-There is no defined limit to the complexity of the query that be constructed.
-As such, implementers may want to create recursive functions, which should be able define and detect a recursion depth limit.
-Should a client make a request which triggers a recursion limit defined by the server, the server must return with HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
-
-
-The user interface required to construct any query, including complex boolean logic, is outside the scope of this specification.
+There is no defined limit to the complexity of the query that be constructed using this system so it is quite possible for a `client` to contruct a query that is beyond a `server`'s capacity to process. In this case the `server` must return an HTTP status code `422 Unprocessable Entity`, and may include a message body to indicate the type of error.
 
 # Acknowledgments
 
