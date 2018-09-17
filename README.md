@@ -143,7 +143,7 @@ The HTTP status code should be checked before attempting to process the `results
 
 ## Content
 
-The HTTP POST `search` request and the `results` response should both be JSON payloads.
+The HTTP POST `search` request and the `results` response HTTP body should both be JSON payloads.
 See the following documents for details on the format:
 * [The structure of the `search`](search_structure/README.md)
 * [The structure of the `result`](result_structure/README.md)
