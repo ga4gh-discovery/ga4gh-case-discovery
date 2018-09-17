@@ -1,109 +1,111 @@
 # GA4GH Discovery Search API
 
-A standard for a global federated data sharing network that allows the querying, and subsequent -optional- processing of the results on a cloud environment.
+A standard for a global federated data sharing network that allows the searching, and subsequent -optional- processing of the results in a cloud environment.
 
-Please note this standard is work in progress.
+Please note this standard is a work in progress.
 
 # Preface
 
-The Matchmaker Exchange (MME) API defined a JSON Structure representing a patient, which was used to perform a "query by example" as a federated request across a network of servers (or nodes). 
+The Search API is a new standard for data search. It is robust and flexible approach, considering databases that contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for search and response.
 
-While the MME network was designed to allow for easy federated case matching, due to the complexity of the problem, it is limited by design to allow each server to determine what best constitutes a match. This functionality is useful for databases of siloed cases, but it doesn't allow for broader, specifically targeted searching of cases, which can fulfil many more clinical and scientific use cases.
+# Concepts
 
-A new standard for case discovery, the Search API. A robust and flexible approach, considering databases which contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for query and response.
+We define the two actors involved as the `client` and the `server`, following HTTP semantics.
 
-# Concept
+A `client` is a system which makes `search` requests to a `server` (or many servers in a federated system). This can be done on behalf of a user or as part of an automated workflow/pipeline.
 
-We define the two actors involved as the `server` and the `client`, following HTTP semantics.
+A `server` is a system that contains data on which it can perform searches and from which it can return `results` responses.
 
-A server is a database or system which contains any number of cases and associated case data, which it is willing to perform searches on, and return data on.
+A `search` request is a JSON payload that contains a query and associated meta data.
 
-A client is a system which makes search requests to a server (or many servers in a federated request) on behalf of a user and displays any results to the user, or based on instructions as part of a workflow (like a pipeline).
+A `results` response is a JSON payload that contains the results produced by running a query and associated meta data.
 
-Unlike the MME API, there's no requirement for a client to make requests to a server on the basis of an existing patient record, allowing a user to construct any query they wish.
+This specification does not define the data model of any data stored on the `server`, nor does it define how this data is indexed, searched, or ranked. For example a `server` could store and index annotations for specific genomic coordinates, patient cases, animal models, VCF files, phenotypes for disease ontologies, etc...
 
 # Releases
 
-The master branch represents a work in progess and not necessarily any individual release state.
-For releases, please see the [Relesaes page](https://github.com/ga4gh-discovery/ga4gh-discovery-search/releases).
+The master branch represents a work in progress and not necessarily any individual release state.
+For releases, please see the [Releases page](https://github.com/ga4gh-discovery/ga4gh-discovery-search/releases).
 
 Clicking on the tag icon for a release will show the repository on Github at the selected release state, which will make it easier to view should you not wish to download release file bundles.
 
 ## Expected process
 
-1. The client poses a question regarding a patient to the server. We define this as the `query`
+1. The `client` sends a `search` request to a `server`.
 
-    The query contains a collection of components which define specific aspects of the query. They query may also optionally specify that it requires specific types of data in the response for the response to be useful.
+    The `search` request contains metadata and a collection of components which define specific aspects of the query. The `search` may also optionally specify that it requires specific types of data in the `results` for the response to be useful.
 
-2. The server uses the query components provided to perform a search on its data
+2. The `server` uses the query components provided to perform a search on its data.
 
-3. The server returns as much or as little of the data or metadata as it is able.
+3. The `server` returns a `results` response with as much or as little of the data or metadata as it is able.
     
-    The response may include as little as an assertion that some records exist for the query criteria, much in the same way Beacon works, or it may provide rich and full variant and phenotypic data for each case that fulfils the query criteria.
+    The `results` may include as little as an assertion that some data exist for the query criteria, much in the same way Beacon works, or it may provide, for example, rich and full variant and phenotypic data that fulfils the search criteria.
 
-## Request and Response overview
+## Search and Results overview
 
-The request a client makes to a server is over an HTTP POST, where the query is define in a JSON payload.
+The `client` makes a `search` request to a `server` as an HTTP POST, where the `search` is defined as a JSON payload.
 
-The main elements of the JSON query payload are `components`, `operators`, and `meta`.
+The main objects of the `search` request are `meta`, `query`, `requires`, and `logic`.
 
-The main elements of the JSON response payload are `records` and `meta`. An array of `records` will each contain any number of `components` which represent case data.
+The `server` responds to the `client` with `results`, where the `results` are defined as a JSON payload
 
-In both cases, the `meta` object is related to the query and response itself, and not any of the query or subject data.
+The main objects of the `results` response are `meta`, `collectionComponents` and `records`. An array of `records` each contain any number of `components` which represent data.
 
-The `components` that can be used in the query and response differ, although some are useable in both.
+In both cases, the `meta` object is related to the `search` and `results`, and not any of the `query` and `records` data.
 
-The `operators` may be used to define a single operator for all components (`AND` / `OR`), or define a more complex boolean logic query using components.
+The `components` that can be used in the `query` and `records` differ, though some are useable in both.
 
-More details for the Request and the Response structure and meaning are provided on the respective pages.
+The `logic` may be used to define a single operator for all components (`AND` / `OR`), or define a more complex boolean logic query using components.
 
-JSON Schemas is be provided as a normative reference for the request and response.
-OpenAPI specifications will be provided, but may be omitted for the initial release.
+More details for the [Search](search_structure/README.md) and the [Results](results_structure/README.md) structures are provided on the respective pages.
+
+JSON Schemas is be provided as a normative reference for the [Search](search_structure/README.md) and [Results](results_structure/README.md). OpenAPI specifications will be provided, but may be omitted for the initial release.
 
 ## Components
 
-The API defines six different types of components.
-- Record
+The API defines six different types of components:
+- Search Meta
+- Query
+- Results Meta
 - Collection
-- Search
-- Request Meta
-- Response Meta
+- Record
 - Record Meta
 
 All components are optional.
 
-Record components can represent record data which has been deposited to the server for searching.
+Search Meta components can represent information about the `search` request made by the `client` to the `server`, such as what record components are required in the `records` specified in the `results` returned by the `server` to the `client`.
 
-Collection components can represent summary information about records returned from a search.
+Query components can represent criteria for searching and filtering data. All "Record components" are currently also Query components. This is not expected to remain the case as components are developed in the future.
 
-Search components can represent criteria for filtering records. All "Record components" are currently also Search components.
+Results Meta components can represent information about what the server did with the `search` in order to return the `results`.
 
-Request Meta components can represent information about the request made by the client to the server, such as what record components it requires in response for records.
+Collection components can represent summary information about `records` returned from a search.
 
-Response Meta components can represent information about what the server did with the query in order to return the results.
+Record components can represent `record` data which has been deposited to the server for searching.
 
-Record Meta components can represent data associated to a record but not actually part of the record data, for example the contact information for a subjects responsible clinician.
+Record Meta components can represent data associated to a record but not actually part of the record data, for example the contact information for the clinician responsible for the case, and/or links to that case.
 
 ## Content of components
 
-Individual components are defined in individual JSON Schema files in YAML format, and combined using JSON Scheam referencing to construct the request and response JSON Scheam.
+Individual components are defined in individual JSON Schema files in YAML format, and combined using JSON Schema references to construct the search and results JSON Schema.
 
-It is recommended that request and response payloads are validated using these schemas to confirm compliance.
-The YAML files may be convered into JSON files using the npm run script provided.
-Further details on this are provided in the [json_schema](/ga4gh-discovery/ga4gh-discovery-search/json_schema) folder README.md.
+It is recommended that search and results payloads are validated using these schemas to confirm compliance.
+The YAML files may be converted into JSON files using the npm run script provided.
+Further details on this are provided in the [json_schema](https://github.com/ga4gh-discovery/ga4gh-discovery-search/tree/master/json_schema/schemas_source) folder README.md.
+
+It is expected that more components will be developed in the future as the standard evolves.
 
 # Security
 
 This specification is expected to support:
-
 - Open data sources that do not require authentication
 - Protected data sources that do require authentication
 
-In the situation where a host requires authentication for access, the client should provide an authentication token located in a header field `X-Auth-Token`.
+In the situation where a `server` requires authentication for access, the `client` should provide an authentication token located in a header field `X-Auth-Token`.
 
-The authentication token may be a predefined token generated by the server specifically for the client, which they must exchange via a secure method such as GPG encryption using public and private keys.
+The authentication token may be a predefined token generated by the `server` specifically for the `client`, which they must exchange via a secure method such as GPG encryption using public and private keys.
 
-The authentication token may be an O-Auth 2.0 barer access token provided in response to an O-Auth exchange, although how to achieve this is not specified. O-Auth 2.0 is recommended by GA4GH for authentication and authorisation purposes.
+The authentication token may be an (O-Auth 2.0 Bearer Token)[https://oauth.net/2/bearer-tokens/] provided in response to an O-Auth exchange, although how to achieve this is not specified. O-Auth 2.0 is recommended by GA4GH for authentication and authorisation purposes.
 
 # API Version
 
@@ -117,39 +119,41 @@ The API version will follow the rules set out by [Semantic Versioning 2.0.0](htt
 
     Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
-The MAJOR version MUST be included in the URL exposed by servers for the API, in the format of `vX`, where `X` is a major version. 
+The MAJOR version MUST be included in the URL exposed by servers for the API, in the format of `vX`, where `X` is a major version.
 
-The version of the API is linked to the request and response structure, and not any individual components used with the request and response, which have their own associated semantic version number.
+The version of the API is linked to the `search` request and `results` response, and not any individual components used with the `request` and `response`, which have their own associated semantic version number.
 
 An example API URL: `https://yournode.org/v1/search`
 
 ## Expectations
 
-A request may specify which API version response they require (if any) in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string (The Major version MUST match) using a header of `X-GA4GH-Discovery-Expect` with the request. The server must either respond with a backwards compatible version of the response, or respond with HTTP Status Code `400`, with a text body detailing the unsupported version request, which should include which versions are supported.
+A `search` request may specify which API version `results` response they require (if any) in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string (The Major version MUST match) using a header of `X-GA4GH-Discovery-Expect` with the request. The `server` must either respond with a backwards compatible version of the `results`, or respond with HTTP Status Code `400`, with a text body detailing the unsupported version request, which should include which versions are supported.
 
-If a request does not specify a required response version, the responding server must respond with the latest version they support of the major version defined in the API URL.
+If a `search` request does not specify a required `results` response version, the `server` must respond with the latest version they support of the major version defined in the API URL.
 
 Note: Patch versions are backwards and forwards compatible, while Minor versions are only backwards compatible.
 
 # Content type
 
-The Content Type for a Request must be `application/json`.
+The Content Type for a `search` must be `application/json`.
 
-The Content Type for a Response should be `application/json`, although it should be expected that in  the case of errors, the server may be prevented from returning JSON content.
+The Content Type for `results` must be `application/json` along with a `200` HTTP status code if the outcome is successful. The server is not required to return a JSON document if the outcome is not successful.
 
-The HTTP status code should be checked before attempting to process content. Severs may include error information in a JSON payload with a non `200` HTTP status code, but the structure of this is not defined.
+The HTTP status code should be checked before attempting to process the `results` response. `Severs` may include error information with a non `200` HTTP status code, but the structure for this is not defined.
 
 ## Content
 
-The HTTP POST request body and the response body should both be JSON.
-See the following documents for details on the format.
-
+The HTTP POST `search` request and the `results` response HTTP body should both be JSON payloads.
+See the following documents for details on the format:
 * [The structure of the `search`](search_structure/README.md)
 * [The structure of the `result`](result_structure/README.md)
 
+
 # Reserved keys and extensions
 
-The API reserves for its use, JSON object keys which begin with an underscore "\_" or a dash "-".
+The API reserves for its use JSON object keys which begin with an underscore "\_" or a dash "-".
+
+Keys that start with a dash "-" are reserved and cannot be used anywhere, for example the `logic` object uses "-AND", which means that "AND" cannot be used as a key anywhere else in the API.
 
 The API defined structure allows for clients or servers to define their own proprietary extensions as they see fit, by prefixing JSON object keys with an underscore "\_".
 
@@ -165,7 +169,6 @@ It is recommended a JSON Schema be supplied for a proprietary component to forma
 
 These example constructs are based on use-cases from the driver projects and their feedback: [examples](example_usage/README.md)
 
-
 # Acknowledgments
 
 This generalized standard was inspired, adapted, and built up from existing work by:
@@ -176,6 +179,10 @@ This generalized standard was inspired, adapted, and built up from existing work
 * Ben Hutton's (@relequestual) GA4GH Search API component based architecture [proposal](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86)
 * GePh-Query API ("Jeff") by Anthony J. Brookes and his team at the [Cafe Variome](https://www.cafevariome.org) discovery platform
 * The merging of concepts, content, and building of first draft by Harindra Arachchi @harindra-a
-* The Matchmaker Exchange APIs [@github](https://github.com/ga4gh/mme-apis/blob/master/search-api.md)
+* The Matchmaker Exchange APIs [@github](https://github.com/ga4gh/mme-apis)
 
-Also thanks to all [contributors](https://github.com/ga4gh-discovery/ga4gh-discovery-search/graphs/contributors)
+Thanks to all [contributors](https://github.com/ga4gh-discovery/ga4gh-discovery-search/graphs/contributors)
+
+# Matchmaker Exchange
+
+This standard is deeply informed by the [Matchmaker Exchange (MME) API](https://github.com/ga4gh/mme-apis), both in lessons learned during development and in the operation of this API in practice.
