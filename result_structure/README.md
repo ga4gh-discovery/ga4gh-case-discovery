@@ -2,9 +2,16 @@
 
 This document describes a `results` response by a `server` in response to a `search` request by a `client`.
 
+# Conventions and Terminology
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
+"OPTIONAL" in this document are to be interpreted as described in
+[RFC 2119](https://tools.ietf.org/html/rfc2119).
+
 # Format
 
-The `results` response to a valid `search` request which the `server` is able to process, must include a `application/json` body with the following format.
+The `results` response to a valid `search` request which the `server` is able to process, MUST include a `application/json` body with the following format.
 
 ## Basic Example - Simple results
 
@@ -47,39 +54,44 @@ The `results` response to a valid `search` request which the `server` is able to
 
 This is a simple `results` response in the search API format.
 
-Required objects in a `results` response are `meta` and `records` which are both specified in the basic example above, `collectionComponents` is optional and not specified.
+A `results` response MUST include `meta` and `records` keys, and are defined in the basic example above.
+
+The `results` response MAY include a `collectionComponents` object.
 
 ### Meta object
 
-The `meta` object allows the `server` to tell the `client` information about the `results` response it is giving, and how it determined these results. The `meta` object is required in the `results` response.
+The `meta` object allows the `server` to tell the `client` information about the `results` response it is giving, and how it determined these results. The `meta` object is REQUIRED in the `results` response.
 
-The `meta` object contains a `response`, `request`, and `components` objects.
+The `meta` object is REQUIRED, which MUST contain a `response` object.
+
+The `meta` object MAY contain a `request` and `components` object.
+
 
 #### Response object
 
-The `response` object must include an `apiVersion` string, which specifies the API version used in the `results` response.
+The `response` object MUST include an `apiVersion` string, which specifies the API version used in the `results` response.
 
 The `response` object provides version information about the components used in the `results` response.
 Each key is one of the component types found in a `results` response (`record`, `recordMeta`, `collection`, or `responseMeta`).
 The values of these keys are objects where the keys are component names and the values are the component data.
 
-The `response` object is required.
+The `response` object is REQUIRED.
 
 #### Request object
 
-The `request` object contains an `apiVersion` and `componentsUsed` property.
+The `request` object SHOULD contain an `apiVersion` and `componentsUsed` property.
 
 The `apiVersion` value is an object that allows the `server` to communicate to the `client` that it was provided with one specific API version, and used it as a different version.
 
 The `componentsUsed` value is an array which contains the list of component types the `server` has used to find the `results`.
 
-This includes components in the `query` and any `meta` components used, if any.
+This SHOULD includes components in the `query` and any `meta` components used, if any.
 
 #### Components object
 
-The `components` object (within the the `meta` object) must only contain response meta components.
+The `components` object (within the the `meta` object) MUST only contain response meta components.
 
-The `acknowledgments` response meta component has only one required property which is `terms`. The remaining properties are defined in the JSON Schema file for this component.
+The `acknowledgments` response meta component has only one REQUIRED property which is `terms`. The remaining properties are defined in the JSON Schema file for this component.
 
 ### CollectionComponents object
 
@@ -88,11 +100,11 @@ Collection components may include information about results which are not return
 
 In the above example, there are no individual `records` returned, however the collection components used communicate that records exist for the search, along with the number of records. This is similar to the Beacon response.
 
-The `collectionComponents` object must only contain collection components.
+The `collectionComponents` object MUST only contain collection components.
 
 ### Records object
 
-The `records` property is an array of objects, where each object represents an individual record, made up of record components and optional result meta components. 
+The `records` property MUST be an array of objects, where each object represents an individual record, made up of record components and optional result meta components. 
 
 In the above example, there are no records returned for the search.
 Below is an example of a `records` array with some components.
@@ -149,8 +161,6 @@ Below is an example of a `records` array with some components.
 
 Three components are used in the above example, `gene`, `subjectVariant`, and `phenotype`.
 
-The details in this document on specific components is not exhaustive. The JSON Schema YAML files should be referenced for the full component specification.
-
 #### Gene object
 
 The `gene` component uses `ensemblID` as the primary identifier, which must be an Ensembl Gene ID.
@@ -170,6 +180,10 @@ The only required property for a `phenotype` component is `id`, which is an HPO 
 The `observation` defaults to `yes` if omitted.
 
 The `label` property is a string which contains a human readable name of the phenotype.
+
+# Other components
+
+The details in this document on specific components is not exhaustive. The JSON Schema YAML files should be referenced for the full component specification, and are provided as a normative reference.
 
 # Acknowledgments
 
