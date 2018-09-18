@@ -29,6 +29,8 @@ A `results` response is a JSON payload that contains the results produced by run
 
 This specification does not define the data model of any data stored on the `server`, nor does it define how this data is indexed, searched, or ranked. For example a `server` could store and index annotations for specific genomic coordinates, patient cases, animal models, VCF files, phenotypes for disease ontologies, etc...
 
+A system or application may take on the role of a `server` and a `client`, allowing its data to be discoverable, while providing access to other discoverable data to its users.
+
 # Releases
 
 The master branch represents a work in progress and not necessarily any individual release state.
