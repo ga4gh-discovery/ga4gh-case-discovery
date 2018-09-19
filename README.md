@@ -27,7 +27,7 @@ Clicking on the tag icon for a release will show the repository on Github at the
 
 # Specification
 
-The specification document (a normative document for this specification) can be found in the [specification](specification) folder of this repository.
+The specification document (a normative document for this specification) can be found in the root of this repo: [specification](specification.md).
 The specification folder contains an overall readme.md which will introduce you to the concepts and basic aspects of the specification.
 The request and response format for the Search API are split into separate files which are linked to from the main specification document.
 
