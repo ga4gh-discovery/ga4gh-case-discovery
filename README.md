@@ -154,7 +154,7 @@ A JSON based error response body MAY follow the error object format defined by t
     {
       "status": "422",
       "title":  "Unsupported API response version",
-      "detail": "System does not support returning version 1.1. Please upgrade to support responses in version 1.2"
+      "detail": "System does not support returning version 1.1. Please upgrade to support responses in version 1.2",
       "meta": {
         "supportedVersions": [
           "1.2.0",
