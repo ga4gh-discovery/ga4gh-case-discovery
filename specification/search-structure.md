@@ -202,7 +202,7 @@ The details in this document on specific components is not exhaustive. The JSON 
 Ideas/inspiration from:
  - [@Relequestual's](https://github.com/Relequestual) [GA4GH Search API Proposal - Components](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86) 
  - [@Buske's](https://github.com/Buske) [mockup of MME v2](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md)
- - The Discovery Search API product team. Specially, François Schiettecatte, Anthony J Brookes, Colin Veal, Kyle Farh, Milan Karangutkar, Joerg Hakenberg, Harindra Arachchi
+ - The [Discovery Work Stream](https://ga4gh-discovery.github.io) Search API product team. Specially, François Schiettecatte, Anthony J Brookes, Colin Veal, Kyle Farh, Milan Karangutkar, Joerg Hakenberg, Harindra Arachchi
 
 
 
