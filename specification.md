@@ -31,13 +31,6 @@ This specification does not define the data model of any data stored on the `ser
 
 A system or application may take on the role of a `server` and a `client`, allowing its data to be discoverable, while providing access to other discoverable data to its users.
 
-# Releases
-
-The master branch represents a work in progress and not necessarily any individual release state.
-For releases, please see the [Releases page](https://github.com/ga4gh-discovery/ga4gh-discovery-search/releases).
-
-Clicking on the tag icon for a release will show the repository on Github at the selected release state, which will make it easier to view should you not wish to download release file bundles.
-
 ## Expected process
 
 1. The `client` sends a `search` request to a `server`.
