@@ -66,9 +66,9 @@ The `components` that can be used in the `query` and `records` differ, though so
 
 The `logic` may be used to define a single operator for all components (`AND` / `OR`), or define a more complex boolean logic query using components.
 
-More details for the [Search](search_structure/README.md) and the [Results](results_structure/README.md) structures are provided on the respective pages.
+More details for the [Search](specification/search-structure.md) and the [Results](specification/results-structure.md) structures are provided on the respective pages.
 
-JSON Schemas is be provided as a normative reference for the [Search](search_structure/README.md) and [Results](results_structure/README.md). OpenAPI specifications will be provided, but may be omitted for the initial release.
+JSON Schemas is be provided as a normative reference for the [Search](specification/search-structure.md) and [Results](specification/results-structure.md). OpenAPI specifications will be provided, but may be omitted for the initial release.
 
 ## Components
 
@@ -100,7 +100,7 @@ Individual components are defined in individual JSON Schema files in YAML format
 
 It is RECOMMENDED that search and results payloads are validated using these schemas to confirm compliance.
 The YAML files may be converted into JSON files using the npm run script provided.
-Further details on this are provided in the [json_schema](https://github.com/ga4gh-discovery/ga4gh-discovery-search/tree/master/json_schema/schemas_source) folder README.md.
+Further details on this are provided in the [json_schema](json_schema/schemas_source) folder README.md.
 
 It is expected that more components will be developed in the future as the standard evolves.
 
@@ -201,9 +201,10 @@ The HTTP status code should be checked before attempting to process the `results
 
 The HTTP POST `search` request and the `results` response HTTP body are both be JSON payloads.
 See the following documents for details on the format:
-* [The structure of the `search`](search_structure/README.md)
-* [The structure of the `result`](result_structure/README.md)
+* [The structure of the `search`](specification/search-structure.md)
+* [The structure of the `result`](specification/result-structure.md)
 
+These additional documents are normative for this specification.
 
 # Reserved keys and extensions
 
