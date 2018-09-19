@@ -136,11 +136,58 @@ An example API URL: `https://yournode.org/v1/search`
 
 ## Expectations
 
-A `search` request MAY specify which API version `results` response they require (if any) in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string (The Major version MUST match) using a header of `X-GA4GH-Discovery-Expect` with the request. The `server` must either respond with a backwards compatible version of the `results`, or respond with HTTP Status Code `400`, with a text body detailing the unsupported version request, which SHOULD include which versions are supported.
+A `search` request MAY specify which API version `results` response they require (if any) in the format of an [X-Range](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-) string (The Major version MUST match) using a header of `X-GA4GH-Discovery-Expect` with the request. The `server` MUST either respond with a backwards compatible version of the `results`, or respond with HTTP Status Code `422` which MAY include a text body or JSON body detailing the unsupported version request, which SHOULD include which versions are supported.
 
 If a `search` request does not specify a required `results` response version, the `server` MUST respond with the latest version they support of the major version defined in the API URL.
 
-Note: Patch versions are backwards and forwards compatible, while Minor versions are only backwards compatible.
+Note: Patch versions are backwards and forwards compatible, while Minor versions are only backwards compatible, and not forwards compatible.
+
+## Errors
+
+A possible text based error response body: `Error: System does not support returning version 1.1. Please upgrade to support responses in version 1.2`
+
+A JSON based error response body MAY follow the error object format defined by the (jsonapi specification)[http://jsonapi.org/format/#errors]. For example:
+
+```
+{
+  "errors": [
+    {
+      "status": "422",
+      "title":  "Unsupported API response version",
+      "detail": "System does not support returning version 1.1. Please upgrade to support responses in version 1.2"
+      "meta": {
+        "supportedVersions": [
+          "1.2.0",
+          "1.2.1",
+          "1.2.3",
+          "1.2.4",
+          "1.3.0"
+        ]
+      }
+    }
+  ]
+}
+```
+
+The above example makes use of the standard fields provided by jsonapi, and the meta section which supports non-standard fields.
+
+If an error is caused by the content of the JSON as opposed to a version missmatch, it's possible to use the jsonapi error format to point to specific parts of a JSON to indicate what is causing the error. The source pointer uses JSON Pointer [RFC6901](https://tools.ietf.org/html/rfc6901), which is already used in other parts of the `search` and `result` format.
+
+```
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+
+{
+  "errors": [
+    {
+      "status": "422",
+      "source": { "pointer": "/data/attributes/first-name" },
+      "title":  "Invalid Attribute",
+      "detail": "First name must contain at least three characters."
+    }
+  ]
+}
+```
 
 # Content type
 
