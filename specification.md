@@ -195,7 +195,7 @@ The HTTP status code should be checked before attempting to process the `results
 The HTTP POST `search` request and the `results` response HTTP body are both be JSON payloads.
 See the following documents for details on the format:
 * [The structure of the `search`](specification/search-structure.md)
-* [The structure of the `result`](specification/result-structure.md)
+* [The structure of the `result`](specification/results-structure.md)
 
 These additional documents are normative for this specification.
 
