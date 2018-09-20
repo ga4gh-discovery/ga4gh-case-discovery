@@ -207,7 +207,9 @@ Keys that start with a dash "-" are reserved for use in the `logic` object, and 
 
 The API defined structure allows for clients or servers to define their own proprietary extensions as they see fit, by prefixing JSON object keys with an underscore "\_".
 
-A server MAY include additional information about a record or summary information about the collection of records which are not defined by a component. A non-standard or proprietary component can be included by prefixing the given component name with an underscore, for example `_mySpecialComponent`.
+A server MAY include additional information about a record or summary information about the collection of records which are not defined by a component. A non-standard or proprietary component can be included by prefixing the given component name with an underscore, for example `_mySpecialComponent`. This provides flexibility for both the client AND server to evolve independently, but still remain compliant and interoperable. Further, diverse nodes have different levels of comfort and permissions to share data, and this standard does not impose sharing policy decisions, as it is a matter of that implementing nodes internal policy. 
+
+There is an expectation that non-standard or propritary components, if they gain usage, will look to become part of the standard set of components offered by GA4GH Discovery. Enabling groups to develop their own compliant extensions (as components) to the specification, allows new elements to be built rapidly without a need for general consensus, and facilitates encouraging usage by demonstrating utility and use case.
 
 A client and a server may have a special relationship where they want to allow additional information to be searched on, which doesn't require any authentication. The maintainers of the client and the server may agree on new components, but must prefix the component names with underscores.
 
@@ -232,7 +234,7 @@ This generalized standard was inspired, adapted, and built up from existing work
 * Orion Buske (@buske) and Ben Hutton (@relequestual) - [MME V2 Proposal](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md)
 * Ben Hutton's (@relequestual) GA4GH Search API component based architecture [proposal](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86)
 * GePh-Query API ("Jeff") by Anthony J. Brookes and his team at the [Cafe Variome](https://www.cafevariome.org) discovery platform
-* The merging of concepts, content, and building of first draft by Harindra Arachchi @harindra-a
+* The merging of concepts, content, and building of first draft by Harindra Arachchi, François Schiettecatte 
 * The Matchmaker Exchange APIs [@github](https://github.com/ga4gh/mme-apis)
 
 Thanks to all [contributors](https://github.com/ga4gh-discovery/ga4gh-discovery-search/graphs/contributors)
