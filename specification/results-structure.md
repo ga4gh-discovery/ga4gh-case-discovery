@@ -132,27 +132,29 @@ Below is an example of a `records` array with some components.
           }
         ]
       },
-      "gene": [
-        {
-          "ensemblID": "ENSG00000139618",
-          "hgncName": "BRCA2"
-        }
-      ],
-      "subjectVariant": [
-        {
-          "referenceName": "13",
-          "start": 32936732,
-          "end": 32936822,
-          "assemblyID": "GRCh37"
-        }
-      ],
-      "phenotype": [
-        {
-          "id": "HP:0000765",
-          "observation": "yes",
-          "label": "Abnormality of the thorax"
-        }
-      ]
+      "components": {
+        "gene": [
+          {
+            "ensemblID": "ENSG00000139618",
+            "hgncName": "BRCA2"
+          }
+        ],
+        "subjectVariant": [
+          {
+            "referenceName": "13",
+            "start": 32936732,
+            "end": 32936822,
+            "assemblyID": "GRCh37"
+          }
+        ],
+        "phenotype": [
+          {
+            "id": "HP:0000765",
+            "observation": "yes",
+            "label": "Abnormality of the thorax"
+          }
+        ]
+      }
     }
   ]
   ...
