@@ -8,7 +8,7 @@ The Search API is a new standard for data search. It is robust and flexible appr
 
 # Current Status
 
-This standard is a work in progress, and is planning to make the first stable release around October 2018.
+This standard is a work in progress, and we are making revisions based on feedback from the GA4GH 2018 plenary in Basel.
 
 # Contributing
 
