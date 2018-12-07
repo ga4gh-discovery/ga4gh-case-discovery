@@ -14,7 +14,7 @@ This standard is a work in progress, and is planning to make the first stable re
 
 The project has not as yet defined a formal guide for contributing, however the easiest way to get involved is to join our regular videoconference calls.
 
-If you wish to join, please email [Rishi Nag](mailto:rishi.nag@ga4gh.org?subject=Joining Discovery Search API calls)
+If you wish to join, please email [Rishi Nag](mailto:rishi.nag@ga4gh.org?subject=Joining%20Discovery%20Search%20API%20calls)
 
 You can view the minutes of our previous meetings on this [Google Docs document](https://docs.google.com/document/d/1lzN_pu8tATZXUvDtFKSG7IevE5TWLfFz0tdKfgtUSzU)
 
