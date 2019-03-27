@@ -15,10 +15,10 @@ definitions:
         type: string
       disclaimer:
         description: A disclaimer associated with the provided data by the server.
-        type: String
+        type: string
       reference:
         description: Reference text associated with the provided data by the server.
-        type: String
+        type: string
       id:
         description: An ID given to this set of acknowledgments should a server want to include multiple sets of acknowledgments to be referenced
         type: string
