@@ -1,4 +1,6 @@
-# GA4GH Discovery Search API
+# GA4GH Discovery - Case Discovery API
+
+**This readme is being updated to reflect the name and scope change of the project. Please stand by.**
 
 A standard for a global federated data sharing network that allows the searching, and subsequent -optional- processing of the results in a cloud environment.
 
