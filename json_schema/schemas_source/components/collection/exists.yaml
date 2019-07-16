@@ -1,0 +1,14 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/collection/exists
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  This component represents an assertion on if a record exists for a given search request from a server.
+type: object
+required:
+  - assertion
+properties:
+  assertion:
+    type: boolean
+    examples:
+      - true
+      - false

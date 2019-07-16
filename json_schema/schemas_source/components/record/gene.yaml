@@ -1,0 +1,26 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/record/gene
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  The component which represents a gene which is flagged as a gene of interest or a candidate gene.
+type: object
+required:
+  - gene
+properties:
+  subject_variant:
+    type: array
+    minItems: 0
+    items:
+      type: object
+      required:
+        - ensemblID
+      properties:
+        ensemblID:
+          description: An Ensembl ID which represents a gene.
+          type: string
+          pattern: ^ENSG\d{11}$
+          example: ENSG00000139618
+        hgncName:
+          description: A gene symbol from the HGNC database. This is primerily to make displaying results easier.
+          type: string
+          example: BRCA2

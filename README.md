@@ -1,93 +1,100 @@
-# GA4GH Discovery Search API
+# GA4GH Discovery - Case Discovery API
 
-A standard for a global federated data sharing network that allows the querying, and subsequent -optional- processing of the results on a cloud environment.
+**This readme is being updated to reflect the name and scope change of the project. Please stand by.**
 
-Please note this standard is work in progress.
+A standard for a global federated data sharing network that allows the searching, and subsequent -optional- processing of the results in a cloud environment.
 
-This generalized standard was inspired, adapted, and built up from existing work by:
+# Preface
 
-* Global Alliance for Genomics and Health Discovery Search API [team](https://docs.google.com/document/d/1lzN_pu8tATZXUvDtFKSG7IevE5TWLfFz0tdKfgtUSzU)
-* Requirements, design, brainstorming, and ideas gathered from the GA4GH driver project community, [summerized](https://docs.google.com/document/d/1jPPVhSvmzW5kK_rKTxkjPvxlcGicHhHPgO4cqqP3CBU/edit?ts=5a84936c#heading=h.4lfahcth694x).
-* Orion Buske (@buske) and Ben Hutton (@relequestual) - [MME V2 Proposal](https://github.com/ga4gh/mme-apis/blob/version2-mock/version2/overview.md)
-* Ben Hutton's (@relequestual) GA4GH Search API component based architecture [proposal](https://gist.github.com/Relequestual/65c0446944519a66f8562d02b3cb4c86)
-* GePh-Query API ("Jeff") by Anthony J. Brookes and his team at the [Cafe Variome](https://www.cafevariome.org) discovery platform
-* The merging of concepts, content, and building of first draft by Harindra Arachchi @harindra-a
-* The Matchmaker Exchange APIs [@github](https://github.com/ga4gh/mme-apis/blob/master/search-api.md)
+The Search API is a new standard for data search. It is robust and flexible approach, considering databases that contain many types of case associated data, without sacrificing the huge power of unilateral federated searching underpinned by an interoperable format for search and response.
 
+# Current Status
 
-# Concept
+This standard is a work in progress, and we are making revisions based on feedback from the GA4GH 2018 plenary in Basel.
 
-We define the two actors involved as the `server` and the `client`, following HTTP semantics.
+# Contributing
 
-A server is a database or system which contains any number of cases and associated case data, which it is willing to perform searches on, and return data on.
+The project has not as yet defined a formal guide for contributing, however the easiest way to get involved is to join our regular videoconference calls.
 
-A client is a system which makes search requests to a server (or many servers in a federated request) on behalf of a user and displays any results to the user, or based on instructions as part of a workflow (like a pipeline).
+If you wish to join, please email [Rishi Nag](mailto:rishi.nag@ga4gh.org?subject=Joining%20Discovery%20Search%20API%20calls)
 
-Unlike the MME API, there's no requirement for a client to make requests to a server on the basis of an existing patient record, allowing a user to construct any query they wish.
+You can view the minutes of our previous meetings on this [Google Docs document](https://docs.google.com/document/d/1lzN_pu8tATZXUvDtFKSG7IevE5TWLfFz0tdKfgtUSzU)
 
-## Expected process
+# Releases
 
-1. The client poses a question regarding a patient to the server. We define this as the `query`
+The master branch represents a work in progress and not necessarily any individual release state.
+For releases, please see the [Releases page](https://github.com/ga4gh-discovery/ga4gh-discovery-search/releases).
 
-    The query contains a collection of components which define specific aspects of the query. They query may also optionally specify that it requires specific types of data in the response for the response to be useful.
+Clicking on the tag icon for a release will show the repository on Github at the selected release state, which will make it easier to view should you not wish to download release file bundles.
 
-2. The server uses the query components provided to perform a search on its data
+# Specification
 
-3. The server returns as much or as little of the data or metadata as it is able.
-    
-    The response may include as little as an assertion that some records exist for the query criteria, much in the same way Beacon works, or it may provide rich and full variant and phenotypic data for each case that fulfils the query criteria.
+The specification document (a normative document for this specification) can be found in the root of this repo: [specification](specification.md).
+The specification folder contains an overall readme.md which will introduce you to the concepts and basic aspects of the specification.
+The request and response format for the Search API are split into separate files which are linked to from the main specification document.
 
-## Request and Response overview
+# JSON Schema
 
-The request a client makes to a server is over an HTTP POST, where the query is define in a JSON payload.
+[JSON Schema](http://json-schema.org/) is a JSON based vocabulary that allows for the annotation and validation of JSON documents.
+The bulk of the Search API specification is defining the request (search) and response (results) HTTP body structures.
+JSON Schema documents are provided as a normative reference for the Search API specification, and can be found in the [json_schema](json_schema) folder of this repository.
 
-The main elements of the JSON query payload are `components`, `operators`, and `meta`.
+# Future Work and Plans
 
-The main elements of the JSON response payload are `records` and `meta`. An array of `records` will each contain any number of `components` which represent case data.
+The first stable release of the Search API is designed as a minimal viable specification.
 
-In both cases, the `meta` object is related to the query and response itself, and not any of the query or subject data.
+Future work needs to be fleshed out in order to allow the building of a roadmap with rough estimations.
 
-The `components` that can be used in the query and response differ, although some are useable in both.
+## Testing
 
-The `operators` may be used to define a single operator for all components (`AND` / `OR`), or define a more complex boolean logic query using components.
+It is possible to create search and result format validation tests using the JSON Schema documents, however there is not a compliance testing suite to check that a search is handled correctly which returns the correct results.
 
-More details for the Request and the Response structure and meaning are provided on the respective pages.
+We would like to have a fully features test suite which is able to confirm compliance with all aspects of the specification as far as possible.
 
-JSON Schemas will be provided as a normative reference for the request and response.
-OpenAPI specifications will be provided, but may be omitted for the initial release.
+We would also like to develop continuous integration tests to check and confirm that all the JSON Schema documents are valid, and any JSON within the specification is valid JSON.
 
-## Security
+## Contributing
 
-This specification is expected to support:
-* Open data sources that does not require authentication
-* Protected data sources that would would expect authentication tokens in message headers
-* The host can decide to support the incoming search request. We will define specific standard HTTP responses to clarify when they do not.
-* Details for authentication and authorization will be in header fields. We envision a GA4GH decentralized (as-needed) broker based system that is being developed for this in the future. Till it is ready, we see a simple token exchange model (as MME does) or open (as Beacon) does to get things started.
+We would like to develop a full contributing guidelines document, which includes instructions on how to develop new non-standard components, and set out a process for making components recognised as standard.
 
+It is expected that systems or groups will want to add new components that are not defined with the initial release, as it only includes basic components required for a minimal working specification.
 
-## API Version
+## Tooling
 
-Where `<api-version>` takes the form `vX`, where `X` is a major version. Minor versions are cross-compatible. The target semantic version will be specified within the `question` to help the host identify the target of the `question`. The URL of the host must specify the major version that it supports. 
+We would like to develop tooling which allows for the creation of human readable documentation based on the JSON Schema files.
 
-For example:
+It is expected that someone implementing this Search API would be comfortable reading YAML, but they may not yet be familiar with JSON Schema.
 
-`https://yournode.org/v1/search`
+## Open API
 
+Open API is fast becoming the definitive API documentation format, and is already being used by other project in GA4GH.
 
-# Content type
+Althought OpenAPI does use a substantial part of the JSON Schema specification for defining payloads, it is not currently possible to drop in all JSON Schema documents in place of an OpenAPI JSON Schema object. The OpenAPI team have announced plans to allow the use of standard JSON Schema in a future release.
 
-The Content Type for a Request must be `application/json`.
+Tooling can be developed to convert some JSON Schema documents to be used within an OpenAPI specification. As the Search API will only have one endpoint, it's not clear how much value will be added by using an OpenAPI definition in addition to currently provided JSON Schema documents.
 
-The Content Type for a Response should be `application/json`, although it should be expected that in  the case of errors, the server may be prevented from returning JSON content.
+## Authentication
 
-The HTTP status code should be checked before attempting to process content. Severs may include error information in a JSON payload with a non `200` HTTP status code, but the structure of this is not defined.
+The Search API defines the use of a proprietary header for authentication.
 
-## Content
+If the use case presents that the Search API requires more standard authentication processes, we should consider using the Authorization header, following closer to HTTP semantics. This would allow for multiple possible authentication methods, but is more difficult to implement.
 
-* [The structure of the `question` document](search_structure/README.md)
-* [The structure of the `result` document](result_structure/README.md)
+## Collaboration
 
+Multiple GA4GH Workstream projects or products are defining object models which represent genomic data.
 
-## Example usage
+While other projects may require a complete release process for updated data definitions, we would like to create a central hub of "components" for use within the Search API (or any other project that wishes to use them). Additions or modifications will not effect the overall workings of the Search API.
 
-These example constructs are based on use-cases from the driver projects and their feedback: [examples](example_usage/README.md)
+Implementers of the Search API, may choose to pick and use new components put forward by any other group, as and when they are ready to do so.
+
+When other GA4GH products mature to release, where the product is a format specification we should seek to provide a tool to translate between the new format and Discovery components where possible.
+
+## Use of Non-Standard Component Schemas
+
+JSON Schema can be used to annotate a JSON document as well as provide validation.
+
+It is possible to create a workflow in which, non-standard components can be returned to provide additional data in relation to a search, and displayed to the end user of a system which uses the Search API, without the requirement to know the details of the non-standard component beforehand.
+
+If a non-standard component also provides a JSON Schema URL, the JSON data within the non-standard component has a context and knowledge about the non-standard component which can be used to meaningfully present the data.
+
+[schemastore.org](http://schemastore.org) hosts over 140 JSON Schema files for known JSON and YAML formatted files frequently used by developers. The popular code editor VSCode from Microsoft, utilises this JSON Schema store, automatically downloading schema files for validation and annotation of file types recognised by their file name conventions.

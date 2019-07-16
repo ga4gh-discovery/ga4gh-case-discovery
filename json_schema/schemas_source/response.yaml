@@ -1,0 +1,78 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/response
+"$schema": http://json-schema.org/draft-07/schema#
+definitions:
+  component-version:
+    description: An object where a key is the component name and the value specifies the version that was provided
+    type: object
+    additionalProperties:
+      "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
+  components-in-response:
+    description: An object which has component types that can be used in a response
+    type: object
+    propertyNames:
+      enum:
+        - record
+        - recordMeta
+        - collection
+        - responseMeta
+    additionalProperties:
+      "$ref": "#/definitions/component-version"
+    "$comment": |
+      `propertyNames` makes sure that all the properties of this object have one of the allowed names.
+      Combining this with `additionalProperties` which uses a reference means all property values have the same validation constraint
+type: object
+required:
+  - meta
+  - records
+properties:
+  meta:
+    description: Contains metadata about the response
+    type: object
+    required:
+      - response
+    properties:
+      response:
+        description: Details on the component versions used in the response
+        type: object
+        required:
+          - apiVersion
+        properties:
+          components:
+            "$ref": "#/definitions/components-in-response"
+          apiVersion:
+            description: The full version of the API that is being used for the response.
+            "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
+      request:
+        description: Contains metadata relating to the request from the client
+        type: object
+        properties:
+          apiVersion:
+            description: The API version that was given and what it was used as, if different
+            type: object
+            properties:
+              given:
+                "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
+              usedAs:
+                "$ref": http://ga4gh.org/schemas/discovery/search/definitions#definitions/semver
+          componentsUsed:
+            description: An array of the components that were used from the request
+            type: array
+            items:
+              type: string
+      components:
+        "$ref": http://ga4gh.org/schemas/discovery/search/components/response_meta_components
+  collectionComponents:
+    "$ref": http://ga4gh.org/schemas/discovery/search/components/collection_components
+  records:
+    type: array
+    minItems: 0
+    items:
+      type: object
+      required:
+        - components
+      properties:
+        meta:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta_components
+        components:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_components

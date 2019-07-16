@@ -1,0 +1,39 @@
+---
+"$id": http://ga4gh.org/schemas/discovery/search/components/response_meta/acknowledgments
+"$schema": http://json-schema.org/draft-07/schema#
+description: |
+  This component contains the terms and conditions of viewing and or using the data and related information.
+  All of the string values in this component must not include HTML, and should be treated as plain text.
+definitions:
+  acknowledgments:
+    type: object
+    required:
+      - terms
+    properties:
+      terms:
+        description: The terms and conditions attached to the provided data by the server.
+        type: string
+      disclaimer:
+        description: A disclaimer associated with the provided data by the server.
+        type: string
+      reference:
+        description: Reference text associated with the provided data by the server.
+        type: string
+      id:
+        description: An ID given to this set of acknowledgments should a server want to include multiple sets of acknowledgments to be referenced
+        type: string
+type: object
+required:
+  - acknowledgments
+properties:
+  acknowledgments:
+    type:
+      - object
+      - array
+    oneOf:
+      -
+        "$ref": "#/definitions/acknowledgments"
+      -
+        items:
+          "$ref": "#/definitions/acknowledgments"
+        minItems: 1
