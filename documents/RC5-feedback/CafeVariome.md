@@ -27,10 +27,10 @@ The Boolean logic is handled the same way regardless of which engine is used for
 Added a bearer token and token issuer section to allow us to use Cafe Variome access controls
 
 
-```json
+```javascript
 {
 	"cv_security": {
-		"user_token": "efeffeger1213",  # bearer token
+		"user_token": "efeffeger1213",  // bearer token
 		"network_key": "577995aef9ee9baf26f87da37f",  // Cafe Variome specific information
 		"installation_key": "gtjh435622e",			// Cafe Variome specific information
 		"authentication_server": "https://keycloak.cv.org"  // token issuer - whitelisted locally
@@ -40,7 +40,7 @@ Added a bearer token and token issuer section to allow us to use Cafe Variome ac
 
 Added phenotype similarity matching component
 
-```json
+```javascript
 {
 	"sim": {
 		"method" : "relative",
@@ -58,7 +58,7 @@ Added phenotype similarity matching component
 
 Added EAV query component, this takes any attribute and value with operators: `IS, IS LIKE, IS NOT, IS NOT LIKE, =, !=, <, >, <=, >=`
 
-```json
+```javascript
 {
 	"eav": [
 		{
