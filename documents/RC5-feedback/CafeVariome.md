@@ -77,7 +77,7 @@ Added EAV query component, this takes any attribute and value with operators: `I
 
 The response is returned as an array of datasets with indication of the user/dataset access level. 
 
-```json
+```javascript
 {
 	"sources": {
 		"dataset1_user_permitted": { //name of dataset
