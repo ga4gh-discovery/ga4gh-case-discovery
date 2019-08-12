@@ -24,10 +24,84 @@ The Boolean logic is handled the same way regardless of which engine is used for
 - Café Variome can query across different datasets with different access levels, the current response type is too restrictive.
 
 ### Extensions and Changes
-* Added a bearer token and token issuer section to allow us to use Cafe Variome access controls
-* The response is returned as an array of datasets
-* Added codes to indicate a user's access level per dataset
-* Added components for EAV and similarity matching
+Added a bearer token and token issuer section to allow us to use Cafe Variome access controls
+
+
+```json
+{
+	"cv_security": {
+		"user_token": "efeffeger1213",  // bearer token
+		"network_key": "577995aef9ee9baf26f87da37f",  // Cafe Variome specific information
+		"installation_key": "gtjh435622e",			// Cafe Variome specific information
+		"authentication_server": "https://keycloak.cv.org"  // token issuer - whitelisted locally
+	}
+}
+```
+
+Added phenotype similarity matching component
+
+```json
+{
+	"sim": {
+		"method" : "relative",
+		"r-paramter" : 0.7,
+		"s- paramter" : 1,
+		"hpo_terms" : [
+			"HP:0000234",
+			"HP:0000486",
+			"HP:0001263"
+		]
+	}
+}
+
+```
+
+Added EAV query component, this takes any attribute and value with operators: `IS, IS LIKE, IS NOT, IS NOT LIKE, =, !=, <, >, <=, >=`
+
+```json
+{
+	"eav": [
+		{
+			"attribute": "MMSE",
+			"operator": ">",
+			"value": "20"
+		},
+		{
+			"attribute": "diagnosis",
+			"operator": "is not",
+			"value": "AD"
+		}
+	]
+}
+```
+
+The response is returned as an array of datasets with indication of the user/dataset access level. 
+
+```json
+{
+	"sources": {
+		"dataset1_user_permitted": { //name of dataset
+			"status": "permitted", //status indicates a users permission level
+			"count": 0
+		},
+		"dataset2_user_permitted": {
+			"status": "permitted",
+			"count": 100
+		},
+		"dataset3_counts_under_threshold": {
+			"status": "threshold"
+		},
+		"dataset4_user_not_permitted": {
+			"status": "restricted"
+		},
+		"linked_dataset5": {
+			"linked": "https://external.link.org"
+		}
+	}
+}
+```
+
+
 
 
    [Elasticsearch]: <https://elastic.co>
