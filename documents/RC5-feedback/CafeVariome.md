@@ -30,7 +30,7 @@ Added a bearer token and token issuer section to allow us to use Cafe Variome ac
 ```json
 {
 	"cv_security": {
-		"user_token": "efeffeger1213",  // bearer token
+		"user_token": "efeffeger1213",  # bearer token
 		"network_key": "577995aef9ee9baf26f87da37f",  // Cafe Variome specific information
 		"installation_key": "gtjh435622e",			// Cafe Variome specific information
 		"authentication_server": "https://keycloak.cv.org"  // token issuer - whitelisted locally
