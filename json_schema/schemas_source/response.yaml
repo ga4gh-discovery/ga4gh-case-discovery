@@ -21,10 +21,40 @@ definitions:
     "$comment": |
       `propertyNames` makes sure that all the properties of this object have one of the allowed names.
       Combining this with `additionalProperties` which uses a reference means all property values have the same validation constraint
+  records:
+    type: array
+    minItems: 0
+    items:
+      type: object
+      required:
+        - components
+      properties:
+        meta:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta_components
+        components:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_components
+  collection-meta:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        description: A name for the collection (or data set / data source) which will be presented to the end user
+      id:
+        type: string
+        description: An internal string based identifier defined by the server for the collection. They may not be stable
+      description:
+        type: string
+        description: A description of the collection which will be presented to the end user
+      infoURL:
+        type: string
+        format: uri
+        description: A URL at which an end user can find information about the collection
 type: object
 required:
   - meta
-  - records
+  - recordCollections
 properties:
   meta:
     description: Contains metadata about the response
@@ -62,17 +92,14 @@ properties:
               type: string
       components:
         "$ref": http://ga4gh.org/schemas/discovery/search/components/response_meta_components
-  collectionComponents:
-    "$ref": http://ga4gh.org/schemas/discovery/search/components/collection_components
-  records:
+  recordCollections:
     type: array
-    minItems: 0
     items:
       type: object
-      required:
-        - components
       properties:
         meta:
-          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_meta_components
-        components:
-          "$ref": http://ga4gh.org/schemas/discovery/search/components/record_components
+          "ref": "#/definitions/collection-meta"
+        collectionComponents:
+          "$ref": http://ga4gh.org/schemas/discovery/search/components/collection_components
+        records:
+          "$ref": "#/definitions/records"
